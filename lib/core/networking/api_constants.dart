@@ -1,11 +1,11 @@
 class ApiConstants {
-  static const String apiBaseUrl = 'https://v3.football.api-sports.io/';
-  static const apiHeaderHost = 'v3.football.api-sports.io';
-  static const apiKey = '41f1fbacbf1729aafc51c5aaffabf91d';
+  static const String apiBaseUrl = 'https://api.themoviedb.org/3';
 }
 
 class ApiEndPoints {
-  static const String getTeams = 'teams';
+  static const String requestToken = '/authentication/token/new';
+  static const String createSession = '/authentication/session/new';
+  static const String account = '/account';
 }
 
 class ApiErrors {
