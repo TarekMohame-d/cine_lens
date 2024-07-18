@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/login/data/models/user_account_model.dart';
+import '../../features/login/data/models/user_account_model.dart';
 
 bool isLoggedInUser = false;
 

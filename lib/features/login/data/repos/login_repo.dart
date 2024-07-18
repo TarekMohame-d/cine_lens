@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/networking/api_constants.dart';
-import 'package:cine_rank/core/networking/api_services.dart';
-import 'package:cine_rank/features/login/data/models/request_token_model.dart';
-import 'package:cine_rank/features/login/data/models/session_model.dart';
-import 'package:cine_rank/features/login/data/models/user_account_model.dart';
+import '../../../../core/networking/api_constants.dart';
+import '../../../../core/networking/api_services.dart';
+import '../models/request_token_model.dart';
+import '../models/session_model.dart';
+import '../models/user_account_model.dart';
 import 'package:flutter/material.dart';
 
 class LoginRepo {

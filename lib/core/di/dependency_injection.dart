@@ -1,5 +1,4 @@
-import 'package:cine_rank/features/login/data/repos/login_repo.dart';
-import 'package:cine_rank/features/login/logic/login_cubit.dart';
+import '../../features/login/data/repos/login_repo.dart';
 import 'package:dio/dio.dart';
 import '../networking/api_services.dart';
 import '../networking/dio_factory.dart';
