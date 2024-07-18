@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'app_colors.dart';
 import 'font_weight_helper.dart';
 
@@ -33,6 +34,12 @@ static TextStyle font14GreySemiBold = TextStyle(
     fontSize: 18.0.sp,
     color: AppColors.white,
     fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font13BlueAccentSemiBold = TextStyle(
+    fontSize: 13.0.sp,
+    color: AppColors.blueAccent,
+    fontWeight: FontWeightHelper.semiBold,
   );
   
 }

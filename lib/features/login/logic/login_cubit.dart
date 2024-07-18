@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/core/helpers/shared_pref_helper.dart';
-import 'package:cine_rank/features/login/data/models/request_token_model.dart';
-import 'package:cine_rank/features/login/data/models/session_model.dart';
-import 'package:cine_rank/features/login/data/repos/login_repo.dart';
+import '../../../core/helpers/constants.dart';
+import '../../../core/helpers/shared_pref_helper.dart';
+import '../data/models/request_token_model.dart';
+import '../data/models/session_model.dart';
+import '../data/repos/login_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

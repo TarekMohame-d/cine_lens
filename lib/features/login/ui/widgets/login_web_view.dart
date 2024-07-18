@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/features/login/ui/widgets/login_web_view_button_bloc_builder.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/themes/app_text_styles.dart';
+import 'login_web_view_button_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

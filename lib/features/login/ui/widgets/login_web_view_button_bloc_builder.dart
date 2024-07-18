@@ -1,9 +1,9 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/core/widgets/app_text_button.dart';
-import 'package:cine_rank/features/login/logic/login_cubit.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/themes/app_colors.dart';
+import '../../../../core/themes/app_text_styles.dart';
+import '../../../../core/widgets/app_text_button.dart';
+import '../../logic/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

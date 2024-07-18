@@ -1,7 +1,12 @@
-import 'package:cine_rank/core/di/dependency_injection.dart';
-import 'package:cine_rank/features/home/ui/home_screen.dart';
-import 'package:cine_rank/features/login/logic/login_cubit.dart';
-import 'package:cine_rank/features/login/ui/widgets/login_web_view.dart';
+import '../di/dependency_injection.dart';
+import '../../features/actors/ui/actors_screen.dart';
+import '../../features/home/logic/home_cubit.dart';
+import '../../features/home/ui/home_screen.dart';
+import '../../features/login/logic/login_cubit.dart';
+import '../../features/login/ui/widgets/login_web_view.dart';
+import '../../features/movies/ui/movies_screen.dart';
+import '../../features/profile/ui/profile_screen.dart';
+import '../../features/series/ui/series_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +37,26 @@ class AppRouter {
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit(),
+            child: const HomeScreen(),
+          ),
+        );
+      case Routes.moviesScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MoviesScreen(),
+        );
+      case Routes.seriesScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SeriesScreen(),
+        );
+      case Routes.actorsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ActorsScreen(),
+        );
+      case Routes.profileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
         );
       default:
         return null;

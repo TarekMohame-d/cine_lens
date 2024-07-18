@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/features/login/ui/widgets/login_button_bloc_builder.dart';
+import '../../../core/helpers/constants.dart';
+import '../../../core/helpers/spacing.dart';
+import '../../../core/themes/app_text_styles.dart';
+import 'widgets/login_button_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
