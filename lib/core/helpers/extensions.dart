@@ -29,6 +29,10 @@ extension StringExtension on String? {
   bool isNullOrEmpty() => this == null || this == "";
 }
 
+extension IntExtension on int? {
+  bool isNullOrZero() => this == null || this == 0;
+}
+
 extension ListExtension<T> on List<T>? {
   bool isNullOrEmpty() => this == null || this!.isEmpty;
 }

@@ -1,3 +1,5 @@
+import 'package:cine_rank/features/login/data/repos/login_repo.dart';
+import 'package:cine_rank/features/login/logic/login_cubit.dart';
 import 'package:dio/dio.dart';
 import '../networking/api_services.dart';
 import '../networking/dio_factory.dart';
@@ -9,6 +11,9 @@ Future<void> setupGetIt() async {
 
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio: dio));
+
+  // login
+  getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(apiService: getIt()));
 
   // onBoarding
   // getIt.registerLazySingleton<OnboardingRepo>(

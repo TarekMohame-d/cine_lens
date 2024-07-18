@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,8 @@ class CineRankApp extends StatelessWidget {
         theme: AppThemes.lightTheme,
         darkTheme: AppThemes.darkTheme,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: Routes.loginScreen,
+        initialRoute:
+            isLoggedInUser ? Routes.homeScreen : Routes.loginScreen,
       ),
     );
   }
