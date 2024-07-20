@@ -12,6 +12,24 @@ class AppTextStyles {
     fontWeight: FontWeightHelper.regular,
   );
 
+  static TextStyle font12WhiteGreyMedium = TextStyle(
+    fontSize: 12.0.sp,
+    color: AppColors.whiteGrey,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14WhiteMedium = TextStyle(
+    fontSize: 14.0.sp,
+    color: Colors.white,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14BlueAccentMedium = TextStyle(
+    fontSize: 14.0.sp,
+    color: AppColors.blueAccent,
+    fontWeight: FontWeightHelper.medium,
+  );
+
 static TextStyle font14GreySemiBold = TextStyle(
     fontSize: 14.0.sp,
     color: AppColors.grey,

@@ -1,16 +1,18 @@
-import '../di/dependency_injection.dart';
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import 'package:cine_rank/features/movies/ui/widgets/general_see_all_movies_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/actors/ui/actors_screen.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/home_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
+import '../../features/login/ui/login_screen.dart';
 import '../../features/login/ui/widgets/login_web_view.dart';
 import '../../features/movies/ui/movies_screen.dart';
 import '../../features/profile/ui/profile_screen.dart';
 import '../../features/series/ui/series_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/login/ui/login_screen.dart';
+import '../di/dependency_injection.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -57,6 +59,12 @@ class AppRouter {
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
+        );
+      case Routes.seeAllMoviesScreen:
+        return MaterialPageRoute(
+          builder: (context) => GeneralSeeAllMoviesScreen(
+            moviesModel: arguments as Results,
+          ),
         );
       default:
         return null;
