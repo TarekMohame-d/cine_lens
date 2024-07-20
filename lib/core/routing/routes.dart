@@ -7,4 +7,6 @@ class Routes{
   static const String seriesScreen = '/seriesScreen';
   static const String actorsScreen = '/actorsScreen';
   static const String profileScreen = '/profileScreen';
+
+  static const String seeAllMoviesScreen = '/seeAllMoviesScreen';
 }

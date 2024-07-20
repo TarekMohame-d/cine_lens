@@ -6,6 +6,7 @@ class ApiEndPoints {
   static const String requestToken = '/authentication/token/new';
   static const String createSession = '/authentication/session/new';
   static const String account = '/account';
+  static const String moviesNowPlaying = '/movie/now_playing';
 }
 
 class ApiErrors {

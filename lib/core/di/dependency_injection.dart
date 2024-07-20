@@ -1,3 +1,5 @@
+import 'package:cine_rank/features/movies/data/repos/movies_repo.dart';
+
 import '../../features/login/data/repos/login_repo.dart';
 import 'package:dio/dio.dart';
 import '../networking/api_services.dart';
@@ -13,6 +15,10 @@ Future<void> setupGetIt() async {
 
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(apiService: getIt()));
+
+  // movies
+  getIt
+      .registerLazySingleton<MoviesRepo>(() => MoviesRepo(apiService: getIt()));
 
   // onBoarding
   // getIt.registerLazySingleton<OnboardingRepo>(
