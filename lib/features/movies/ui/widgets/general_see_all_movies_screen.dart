@@ -1,12 +1,10 @@
 import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralSeeAllMoviesScreen extends StatelessWidget {
-  const GeneralSeeAllMoviesScreen({super.key, required this.moviesModel});
-  final Results? moviesModel;
+  const GeneralSeeAllMoviesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +21,9 @@ class GeneralSeeAllMoviesScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0.w, vertical: 24.0.h),
-          child: Column(
+          child: const Column(
             children: [
-              Text(moviesModel!.originalTitle!),
+              Text('Movies List'),
             ],
           ),
         ),

@@ -16,7 +16,10 @@ class MoviesCubit extends Cubit<MoviesState> {
   }
 
   Future<void> getNowPlayingMovies({bool wantToUpdate = false}) async {
-    if (wantToUpdate == false && AppConstants.moviesModel != null) return;
+    if (wantToUpdate == false && AppConstants.moviesModel != null) {
+      emit(MoviesGetNowPlayingSuccess());
+      return;
+    }
     emit(MoviesGetNowPlayingLoading());
     final result = await moviesRepo.getNowPlayingMovies();
     if (result.$2) {

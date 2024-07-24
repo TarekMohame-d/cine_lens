@@ -1,24 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cine_rank/core/helpers/constants.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/features/movies/ui/widgets/now_playing/carousel_slider_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class CustomCarouselSlider extends StatefulWidget {
-  const CustomCarouselSlider({
-    super.key,
-  });
+class NowPlayingShimmerLoading extends StatefulWidget {
+  const NowPlayingShimmerLoading({super.key});
 
   @override
-  State<CustomCarouselSlider> createState() => _CustomCarouselSliderState();
+  State<NowPlayingShimmerLoading> createState() =>
+      _NowPlayingShimmerLoadingState();
 }
 
-class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
-  late int activeIndex;
+class _NowPlayingShimmerLoadingState extends State<NowPlayingShimmerLoading> {
   late CarouselController controller;
+  late int activeIndex;
 
   @override
   void initState() {
@@ -47,8 +45,17 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           ),
           itemCount: 10,
           itemBuilder: (context, index, realIndex) {
-            return CarouselSliderItem(
-              moviesModel: AppConstants.moviesModel!.results![index],
+            return Shimmer.fromColors(
+              baseColor: AppColors.grey,
+              highlightColor: Colors.white,
+              child: Container(
+                height: 200.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(16.0),
+                  color: Colors.white,
+                ),
+              ),
             );
           },
         ),
