@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_images_helper.dart';
+import 'package:cine_rank/core/helpers/api_data_helper.dart';
 import 'package:cine_rank/core/themes/app_colors.dart';
 import 'package:cine_rank/core/themes/app_text_styles.dart';
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
@@ -25,7 +25,7 @@ class CarouselSliderItem extends StatelessWidget {
       children: [
         CachedNetworkImage(
           imageUrl:
-              '${ApiImagesHelper.secureBaseUrl + ApiImagesHelper.posterSizes.last}${moviesModel!.posterPath}',
+              '${ApiDataHelper.secureBaseUrl + ApiDataHelper.posterSizes.last}${moviesModel!.posterPath}',
           placeholder: (context, url) {
             return Shimmer.fromColors(
               baseColor: AppColors.lineDark,

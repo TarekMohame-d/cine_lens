@@ -10,7 +10,7 @@ class GeneralMoviesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 24.0.w),
-      height: 230.h,
+      height: 260.h,
       child: ListView.builder(
         itemCount: 10,
         scrollDirection: Axis.horizontal,

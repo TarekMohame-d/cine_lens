@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_images_helper.dart';
+import 'package:cine_rank/core/helpers/api_data_helper.dart';
 import 'package:cine_rank/core/themes/app_text_styles.dart';
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
@@ -14,29 +14,27 @@ class GeneralMoviesListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String genre = ApiDataHelper.genres[movie.genreIds!.first]!;
+    String imageUrl = ApiDataHelper.getImageUrl(movie.posterPath!);
     return Container(
       margin: EdgeInsets.only(right: 12.0.w),
-      height: 230.h,
-      width: 135.w,
+      width: 150.w,
       child: Column(
         children: [
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Stack(
               children: [
                 CachedNetworkImage(
-                  imageUrl:
-                      '${ApiImagesHelper.secureBaseUrl + ApiImagesHelper.posterSizes.last}${movie.posterPath}',
+                  imageUrl: imageUrl,
                   placeholder: (context, url) {
                     return Shimmer.fromColors(
                       baseColor: AppColors.lineDark,
                       highlightColor: Colors.white,
                       child: Container(
-                        height: 230.h,
-                        width: 135.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(12.0),
+                          borderRadius: BorderRadius.circular(12),
                           color: Colors.white,
                         ),
                       ),
@@ -45,7 +43,10 @@ class GeneralMoviesListViewItem extends StatelessWidget {
                   imageBuilder: (context, imageProvider) => Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12.0),
+                        topRight: Radius.circular(12.0),
+                      ),
                       image: DecorationImage(
                         image: imageProvider,
                         fit: BoxFit.fill,
@@ -57,7 +58,7 @@ class GeneralMoviesListViewItem extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               padding: EdgeInsets.only(
                 left: 8.0.w,
@@ -65,18 +66,26 @@ class GeneralMoviesListViewItem extends StatelessWidget {
                 top: 12.0.h,
                 bottom: 8.0.h,
               ),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+                color: AppColors.soft,
+              ),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     movie.title!,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.font14WhiteSemiBold,
                   ),
+                  const Spacer(),
                   Text(
-                    'Action',
+                    genre,
                     style: AppTextStyles.font10GreyMedium,
                   ),
                 ],

@@ -10,7 +10,7 @@ class GeneralMoviesShimmerLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 24.0.w),
-      height: 230.h,
+      height: 260.h,
       child: ListView.builder(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
@@ -20,10 +20,9 @@ class GeneralMoviesShimmerLoading extends StatelessWidget {
             highlightColor: Colors.white,
             child: Container(
               margin: EdgeInsets.only(right: 12.0.w),
-              height: 230.h,
-              width: 135.w,
+              width: 150.w,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
               ),
             ),
