@@ -20,7 +20,7 @@ class CustomSearchBar extends StatelessWidget {
           size: 24,
         ),
         onChanged: (value) {
-          context.read<MoviesCubit>().searchMovies(query: value);
+          // context.read<MoviesCubit>().searchMovies(query: value);
         },
       ),
     );

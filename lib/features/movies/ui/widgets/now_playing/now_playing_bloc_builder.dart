@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/helpers/constants.dart';
 import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
 import 'package:cine_rank/features/movies/ui/widgets/now_playing/custom_carousel_slider.dart';
 import 'package:cine_rank/features/movies/ui/widgets/now_playing/now_playing_shimmer_loading.dart';
@@ -13,13 +14,14 @@ class NowPlayingBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesCubit, MoviesState>(
       buildWhen: (previous, current) =>
-          current is MoviesGetNowPlayingSuccess ||
-          current is MoviesGetNowPlayingLoading ||
-          current is MoviesGetNowPlayingFailure,
+          current is GetMoviesLoading ||
+          current is GetMoviesSuccess ||
+          current is GetMoviesFailure,
       builder: (context, state) {
-        if (state is MoviesGetNowPlayingLoading) {
+        bool dataLoaded = AppConstants.nowPlayingMovies != null;
+        if (state is GetMoviesLoading) {
           return setupLoading();
-        } else if (state is MoviesGetNowPlayingSuccess) {
+        } else if (dataLoaded) {
           return setupSuccess();
         } else {
           return setupError();

@@ -35,7 +35,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => MoviesCubit(getIt())..getNowPlayingMovies(),
+      create: (context) => MoviesCubit(getIt())..getMovies(),
       child: const MoviesScreen(),
     ),
     const SeriesScreen(),

@@ -26,7 +26,7 @@ class CarouselSliderItem extends StatelessWidget {
         CachedNetworkImage(
           imageUrl:
               '${ApiImagesHelper.secureBaseUrl + ApiImagesHelper.posterSizes.last}${moviesModel!.posterPath}',
-          progressIndicatorBuilder: (context, url, downloadProgress) {
+          placeholder: (context, url) {
             return Shimmer.fromColors(
               baseColor: AppColors.lineDark,
               highlightColor: Colors.white,

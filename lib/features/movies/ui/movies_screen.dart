@@ -25,6 +25,7 @@ class MoviesScreen extends StatelessWidget {
             (context, index) {
               return GeneralMoviesLists(
                 title: titles[index],
+                index: index,
               );
             },
           ),

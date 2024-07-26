@@ -9,24 +9,47 @@ class MoviesCubit extends Cubit<MoviesState> {
   final MoviesRepo moviesRepo;
   MoviesCubit(this.moviesRepo) : super(MoviesInitial());
 
-  String searchText = '';
-  void searchMovies({required String query}) {
-    searchText = query;
-    emit(MoviesSearch());
-  }
-
-  Future<void> getNowPlayingMovies({bool wantToUpdate = false}) async {
-    if (wantToUpdate == false && AppConstants.moviesModel != null) {
-      emit(MoviesGetNowPlayingSuccess());
-      return;
-    }
-    emit(MoviesGetNowPlayingLoading());
+  Future<void> getNowPlayingMovies() async {
     final result = await moviesRepo.getNowPlayingMovies();
     if (result.$2) {
-      AppConstants.moviesModel = result.$1;
-      emit(MoviesGetNowPlayingSuccess());
-    } else {
-      emit(MoviesGetNowPlayingFailure());
+      AppConstants.nowPlayingMovies = result.$1;
     }
+  }
+
+  Future<void> getMostPopularMovies() async {
+    final result = await moviesRepo.getMostPopularMovies();
+    if (result.$2) {
+      AppConstants.mostPopularMovies = result.$1;
+    }
+  }
+
+  Future<void> getTopRatedMovies() async {
+    final result = await moviesRepo.getTopRatedMovies();
+    if (result.$2) {
+      AppConstants.topRatedMovies = result.$1;
+    }
+  }
+
+  Future<void> getUpcomingMovies() async {
+    final result = await moviesRepo.getUpcomingMovies();
+    if (result.$2) {
+      AppConstants.upcomingMovies = result.$1;
+    }
+  }
+
+  Future<void> getMovies({bool wantToRefresh = false}) async {
+    if (wantToRefresh == false && AppConstants.mostPopularMovies != null) {
+      emit(GetMoviesSuccess());
+      return;
+    }
+    emit(GetMoviesLoading());
+    await Future.wait([
+      getNowPlayingMovies(),
+      getMostPopularMovies(),
+      getTopRatedMovies(),
+      getUpcomingMovies(),
+    ]);
+
+    emit(GetMoviesSuccess());
   }
 }

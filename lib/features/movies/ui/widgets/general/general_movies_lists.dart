@@ -1,12 +1,15 @@
+import 'package:cine_rank/core/helpers/constants.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
+import 'package:cine_rank/features/movies/ui/widgets/general/general_movies_bloc_builder.dart';
 import 'package:cine_rank/features/movies/ui/widgets/movies_lists_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralMoviesLists extends StatelessWidget {
-  const GeneralMoviesLists({super.key, required this.title});
+  const GeneralMoviesLists(
+      {super.key, required this.title, required this.index});
   final String title;
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,24 +21,8 @@ class GeneralMoviesLists extends StatelessWidget {
             title: title,
           ),
           verticalSpace(12),
-          Container(
-            margin: EdgeInsets.only(left: 24.0.w),
-            height: 230.h,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(right: 12.0.w),
-                  height: 230.h,
-                  width: 135.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.red,
-                  ),
-                );
-              },
-            ),
+          GeneralMoviesBlocBuilder(
+            index: index,
           ),
         ],
       ),

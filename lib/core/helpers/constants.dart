@@ -23,5 +23,8 @@ class AppConstants {
   static String? sessionId;
   static int? userId;
 
-  static MoviesModel? moviesModel;
+  static MoviesModel? nowPlayingMovies;
+  static MoviesModel? mostPopularMovies;
+  static MoviesModel? topRatedMovies;
+  static MoviesModel? upcomingMovies;
 }

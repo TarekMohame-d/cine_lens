@@ -1,11 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cine_rank/core/helpers/constants.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
 import 'package:cine_rank/features/movies/ui/widgets/now_playing/carousel_slider_item.dart';
+import 'package:cine_rank/features/movies/ui/widgets/now_playing/custom_animated_smooth_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   const CustomCarouselSlider({
@@ -48,23 +47,14 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           itemCount: 10,
           itemBuilder: (context, index, realIndex) {
             return CarouselSliderItem(
-              moviesModel: AppConstants.moviesModel!.results![index],
+              moviesModel: AppConstants.nowPlayingMovies!.results![index],
             );
           },
         ),
         verticalSpace(12),
-        AnimatedSmoothIndicator(
+        CustomAnimatedSmoothIndicator(
           activeIndex: activeIndex,
-          count: 10,
-          effect: ExpandingDotsEffect(
-            dotColor: AppColors.blueAccent.withOpacity(0.32),
-            activeDotColor: AppColors.blueAccent,
-            dotHeight: 10.h,
-            dotWidth: 10.w,
-          ),
-          onDotClicked: (index) {
-            controller.animateToPage(index);
-          },
+          controller: controller,
         ),
       ],
     );

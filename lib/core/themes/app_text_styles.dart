@@ -18,10 +18,22 @@ class AppTextStyles {
     fontWeight: FontWeightHelper.medium,
   );
 
+  static TextStyle font10GreyMedium = TextStyle(
+    fontSize: 10.0.sp,
+    color: AppColors.grey,
+    fontWeight: FontWeightHelper.medium,
+  );
+
   static TextStyle font14WhiteMedium = TextStyle(
     fontSize: 14.0.sp,
     color: Colors.white,
     fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14WhiteSemiBold = TextStyle(
+    fontSize: 14.0.sp,
+    color: Colors.white,
+    fontWeight: FontWeightHelper.semiBold,
   );
 
   static TextStyle font14BlueAccentMedium = TextStyle(
