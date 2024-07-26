@@ -1,4 +1,3 @@
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:cine_rank/features/movies/ui/widgets/general_see_all_movies_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,9 +61,7 @@ class AppRouter {
         );
       case Routes.seeAllMoviesScreen:
         return MaterialPageRoute(
-          builder: (context) => GeneralSeeAllMoviesScreen(
-            moviesModel: arguments as Results,
-          ),
+          builder: (context) => const GeneralSeeAllMoviesScreen(),
         );
       default:
         return null;
