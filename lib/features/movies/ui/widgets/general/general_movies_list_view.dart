@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralMoviesListView extends StatelessWidget {
   const GeneralMoviesListView({super.key, required this.movies});
-  final List<Results> movies;
+  final List<Movie> movies;
   @override
   Widget build(BuildContext context) {
     return Container(

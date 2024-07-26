@@ -10,7 +10,7 @@ import 'package:shimmer/shimmer.dart';
 
 class CarouselSliderItem extends StatelessWidget {
   const CarouselSliderItem({super.key, required this.moviesModel});
-  final Results? moviesModel;
+  final Movie? moviesModel;
 
   String changeDateFormate(String date) {
     final DateTime dateTime = DateTime.parse(date);

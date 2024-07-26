@@ -47,7 +47,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           itemCount: 10,
           itemBuilder: (context, index, realIndex) {
             return CarouselSliderItem(
-              moviesModel: AppConstants.nowPlayingMovies!.results![index],
+              moviesModel: AppConstants.nowPlayingMovies!.movies![index],
             );
           },
         ),

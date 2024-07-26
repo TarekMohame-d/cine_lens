@@ -10,7 +10,7 @@ import '../../../../../core/themes/app_colors.dart';
 
 class GeneralMoviesListViewItem extends StatelessWidget {
   const GeneralMoviesListViewItem({super.key, required this.movie});
-  final Results movie;
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
