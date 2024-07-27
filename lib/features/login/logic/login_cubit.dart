@@ -1,3 +1,5 @@
+import '../../../core/helpers/data_cache.dart';
+
 import '../../../core/helpers/constants.dart';
 import '../../../core/helpers/shared_pref_helper.dart';
 import '../data/models/request_token_model.dart';
@@ -57,9 +59,9 @@ class LoginCubit extends Cubit<LoginState> {
       sessionId: sessionId,
     );
     if (result.$2) {
-      AppConstants.userAccountModel = result.$1;
+      cache.setData(DataCacheKeys.userAccount, result.$1);
       SharedPrefHelper.setSecuredInt(
-          SharedPrefKeys.userId, AppConstants.userAccountModel!.id!);
+          SharedPrefKeys.userId, result.$1!.id!);
       emit(LoginGetUserDataSuccess());
     } else {
       emit(LoginGetUserDataFailure());

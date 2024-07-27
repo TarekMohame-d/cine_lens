@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/widgets/app_text_field.dart';
+import '../themes/app_colors.dart';
+import 'app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

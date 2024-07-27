@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,8 +8,10 @@ class MoviesListsHeader extends StatelessWidget {
   const MoviesListsHeader({
     super.key,
     required this.title,
+    this.dataLoaded = false,
   });
   final String title;
+  final bool dataLoaded;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class MoviesListsHeader extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
-              context.pushNamed(Routes.seeAllMoviesScreen);
+              if (dataLoaded) {
+                context.pushNamed(Routes.seeAllMoviesScreen);
+              }
             },
             child: Text(
               textAlign: TextAlign.start,

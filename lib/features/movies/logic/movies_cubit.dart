@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/features/movies/data/repos/movies_repo.dart';
+import '../../../core/helpers/data_cache.dart';
+import '../data/repos/movies_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,34 +11,35 @@ class MoviesCubit extends Cubit<MoviesState> {
 
   Future<void> getNowPlayingMovies() async {
     final result = await moviesRepo.getNowPlayingMovies();
-    if (result.$2) {
-      AppConstants.nowPlayingMovies = result.$1;
+    if (result.success) {
+      cache.setData(DataCacheKeys.nowPlayingMovies, result.moviesModel);
     }
   }
 
   Future<void> getMostPopularMovies() async {
     final result = await moviesRepo.getMostPopularMovies();
-    if (result.$2) {
-      AppConstants.mostPopularMovies = result.$1;
+    if (result.success) {
+      cache.setData(DataCacheKeys.mostPopularMovies, result.moviesModel);
     }
   }
 
   Future<void> getTopRatedMovies() async {
     final result = await moviesRepo.getTopRatedMovies();
-    if (result.$2) {
-      AppConstants.topRatedMovies = result.$1;
+    if (result.success) {
+      cache.setData(DataCacheKeys.topRatedMovies, result.moviesModel);
     }
   }
 
   Future<void> getUpcomingMovies() async {
     final result = await moviesRepo.getUpcomingMovies();
-    if (result.$2) {
-      AppConstants.upcomingMovies = result.$1;
+    if (result.success) {
+      cache.setData(DataCacheKeys.upcomingMovies, result.moviesModel);
     }
   }
 
   Future<void> getMovies({bool wantToRefresh = false}) async {
-    if (wantToRefresh == false && AppConstants.mostPopularMovies != null) {
+    var nowPlayingMovies = cache.getData(DataCacheKeys.nowPlayingMovies);
+    if (wantToRefresh == false && nowPlayingMovies != null) {
       emit(GetMoviesSuccess());
       return;
     }

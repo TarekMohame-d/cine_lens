@@ -1,10 +1,10 @@
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
-import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
-import 'package:cine_rank/features/movies/ui/widgets/general/general_movies_list_view.dart';
-import 'package:cine_rank/features/movies/ui/widgets/general/general_movies_shimmer_loading.dart';
-import 'package:cine_rank/features/movies/ui/widgets/movies_lists_header.dart';
+import '../../../../../core/helpers/data_cache.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../data/models/movies_model.dart';
+import '../../../logic/movies_cubit.dart';
+import 'general_movies_list_view.dart';
+import 'general_movies_shimmer_loading.dart';
+import '../movies_lists_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +39,6 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 12.0.h),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MoviesListsHeader(
             title: title,
@@ -55,10 +54,10 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 12.0.h),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MoviesListsHeader(
             title: title,
+            dataLoaded: true,
           ),
           verticalSpace(12),
           GeneralMoviesListView(
@@ -76,23 +75,18 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
   (List<Movie>?, bool, String) hasData(int index) {
     switch (index) {
       case 0:
+        MoviesModel? mostPopularMovies = cache.getData(DataCacheKeys.mostPopularMovies);
         return (
-          AppConstants.mostPopularMovies?.movies,
-          AppConstants.mostPopularMovies != null,
+          mostPopularMovies?.movies,
+          mostPopularMovies != null,
           'Most Popular'
         );
       case 1:
-        return (
-          AppConstants.topRatedMovies?.movies,
-          AppConstants.topRatedMovies != null,
-          'Top Rated'
-        );
+        MoviesModel? topRatedMovies = cache.getData(DataCacheKeys.topRatedMovies);
+        return (topRatedMovies?.movies, topRatedMovies != null, 'Top Rated');
       case 2:
-        return (
-          AppConstants.upcomingMovies?.movies,
-          AppConstants.upcomingMovies != null,
-          'Upcoming'
-        );
+        MoviesModel? upcomingMovies = cache.getData(DataCacheKeys.upcomingMovies);
+        return (upcomingMovies?.movies, upcomingMovies != null, 'Upcoming');
       default:
         return (null, false, '');
     }

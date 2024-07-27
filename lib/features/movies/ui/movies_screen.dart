@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
-import 'package:cine_rank/features/movies/ui/widgets/general/general_movies_bloc_builder.dart';
-import 'package:cine_rank/features/movies/ui/widgets/now_playing/now_playing_movies.dart';
+import '../../../core/helpers/spacing.dart';
+import '../../../core/themes/app_colors.dart';
+import '../logic/movies_cubit.dart';
+import 'widgets/general/general_movies_bloc_builder.dart';
+import 'widgets/now_playing/now_playing_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +22,7 @@ class MoviesScreen extends StatelessWidget {
             child: verticalSpace(24),
           ),
           const SliverToBoxAdapter(
-            child: NowPlayingMovies(),
+            child: NowPlayingBlocBuilder(),
           ),
           SliverToBoxAdapter(
             child: verticalSpace(24),

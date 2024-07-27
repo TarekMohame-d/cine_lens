@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_data_helper.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import '../../../../../core/helpers/api_data_helper.dart';
+import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_text_styles.dart';
+import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -31,7 +31,6 @@ class CarouselSliderItem extends StatelessWidget {
               baseColor: AppColors.lineDark,
               highlightColor: Colors.white,
               child: Container(
-                height: 200.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(16.0),
@@ -41,7 +40,6 @@ class CarouselSliderItem extends StatelessWidget {
             );
           },
           imageBuilder: (context, imageProvider) => Container(
-            height: 200.h,
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(16.0),
@@ -61,7 +59,7 @@ class CarouselSliderItem extends StatelessWidget {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Colors.grey.withOpacity(0.7),
+              color: AppColors.soft.withOpacity(0.7),
             ),
           ),
         ),

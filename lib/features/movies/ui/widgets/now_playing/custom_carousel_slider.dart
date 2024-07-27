@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/movies/ui/widgets/now_playing/carousel_slider_item.dart';
-import 'package:cine_rank/features/movies/ui/widgets/now_playing/custom_animated_smooth_indicator.dart';
+import '../../../../../core/helpers/data_cache.dart';
+import '../../../../../core/helpers/spacing.dart';
+import 'carousel_slider_item.dart';
+import 'custom_animated_smooth_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,35 +28,41 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CarouselSlider.builder(
-          carouselController: controller,
-          options: CarouselOptions(
-            autoPlay: true,
-            height: 200.0.h,
-            autoPlayInterval: const Duration(seconds: 2),
-            enlargeCenterPage: true,
-            enlargeFactor: 0.25,
-            onPageChanged: (index, reason) {
-              setState(() {
-                activeIndex = index;
-              });
-            },
+    return SizedBox(
+      height: 230.0.h,
+      child: Column(
+        children: [
+          Expanded(
+            child: CarouselSlider.builder(
+              carouselController: controller,
+              options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 2),
+                enlargeCenterPage: true,
+                enlargeFactor: 0.25,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    activeIndex = index;
+                  });
+                },
+              ),
+              itemCount: 10,
+              itemBuilder: (context, index, realIndex) {
+                var nowPlayingMovies =
+                    cache.getData(DataCacheKeys.nowPlayingMovies);
+                return CarouselSliderItem(
+                  moviesModel: nowPlayingMovies.movies![index],
+                );
+              },
+            ),
           ),
-          itemCount: 10,
-          itemBuilder: (context, index, realIndex) {
-            return CarouselSliderItem(
-              moviesModel: AppConstants.nowPlayingMovies!.movies![index],
-            );
-          },
-        ),
-        verticalSpace(12),
-        CustomAnimatedSmoothIndicator(
-          activeIndex: activeIndex,
-          controller: controller,
-        ),
-      ],
+          verticalSpace(12),
+          CustomAnimatedSmoothIndicator(
+            activeIndex: activeIndex,
+            controller: controller,
+          ),
+        ],
+      ),
     );
   }
 }
