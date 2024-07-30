@@ -12,3 +12,12 @@ final class GetMoviesLoading extends MoviesState {}
 final class GetMoviesSuccess extends MoviesState {}
 
 final class GetMoviesFailure extends MoviesState {}
+
+final class GetMovieDetailsLoading extends MoviesState {}
+
+final class GetMovieDetailsSuccess extends MoviesState {
+  final MovieDetailsModel movieDetailsModel;
+  GetMovieDetailsSuccess(this.movieDetailsModel);
+}
+
+final class GetMovieDetailsFailure extends MoviesState {}

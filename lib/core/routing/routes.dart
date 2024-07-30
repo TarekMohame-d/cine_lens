@@ -9,4 +9,5 @@ class Routes{
   static const String profileScreen = '/profileScreen';
 
   static const String seeAllMoviesScreen = '/seeAllMoviesScreen';
+  static const String movieDetails = '/movieDetails';
 }

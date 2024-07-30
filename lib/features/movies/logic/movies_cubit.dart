@@ -1,7 +1,10 @@
-import '../../../core/helpers/data_cache.dart';
-import '../data/repos/movies_repo.dart';
+import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/helpers/data_cache.dart';
+import '../data/repos/movies_repo.dart';
 
 part 'movies_state.dart';
 
@@ -9,31 +12,35 @@ class MoviesCubit extends Cubit<MoviesState> {
   final MoviesRepo moviesRepo;
   MoviesCubit(this.moviesRepo) : super(MoviesInitial());
 
-  Future<void> getNowPlayingMovies() async {
-    final result = await moviesRepo.getNowPlayingMovies();
+  Future<void> getNowPlayingMovies({int? page = 1}) async {
+    final result = await moviesRepo.getNowPlayingMovies(page: page!);
     if (result.success) {
-      cache.setData(DataCacheKeys.nowPlayingMovies, result.moviesModel);
+      saveToCache(
+          key: DataCacheKeys.nowPlayingMovies, value: result.moviesModel!);
     }
   }
 
-  Future<void> getMostPopularMovies() async {
-    final result = await moviesRepo.getMostPopularMovies();
+  Future<void> getMostPopularMovies({int? page = 1}) async {
+    final result = await moviesRepo.getMostPopularMovies(page: page!);
     if (result.success) {
-      cache.setData(DataCacheKeys.mostPopularMovies, result.moviesModel);
+      saveToCache(
+          key: DataCacheKeys.mostPopularMovies, value: result.moviesModel!);
     }
   }
 
-  Future<void> getTopRatedMovies() async {
-    final result = await moviesRepo.getTopRatedMovies();
+  Future<void> getTopRatedMovies({int? page = 1}) async {
+    final result = await moviesRepo.getTopRatedMovies(page: page!);
     if (result.success) {
-      cache.setData(DataCacheKeys.topRatedMovies, result.moviesModel);
+      saveToCache(
+          key: DataCacheKeys.topRatedMovies, value: result.moviesModel!);
     }
   }
 
-  Future<void> getUpcomingMovies() async {
-    final result = await moviesRepo.getUpcomingMovies();
+  Future<void> getUpcomingMovies({int? page = 1}) async {
+    final result = await moviesRepo.getUpcomingMovies(page: page!);
     if (result.success) {
-      cache.setData(DataCacheKeys.upcomingMovies, result.moviesModel);
+      saveToCache(
+          key: DataCacheKeys.upcomingMovies, value: result.moviesModel!);
     }
   }
 
@@ -44,13 +51,46 @@ class MoviesCubit extends Cubit<MoviesState> {
       return;
     }
     emit(GetMoviesLoading());
-    await Future.wait([
-      getNowPlayingMovies(),
-      getMostPopularMovies(),
-      getTopRatedMovies(),
-      getUpcomingMovies(),
-    ]);
+    int numberOfPages = 3;
+
+    List<Future> futures = [];
+
+    void addMovieFutures(Future<void> Function({int page}) getMoviesFunction) {
+      for (int page = 1; page <= numberOfPages; page++) {
+        futures.add(getMoviesFunction(page: page));
+      }
+    }
+
+    addMovieFutures(getNowPlayingMovies);
+    addMovieFutures(getMostPopularMovies);
+    addMovieFutures(getTopRatedMovies);
+    addMovieFutures(getUpcomingMovies);
+
+    await Future.wait(futures);
 
     emit(GetMoviesSuccess());
+  }
+
+
+  void getMovieDetails({required int movieId}) async {
+    emit(GetMovieDetailsLoading());
+    final result = await moviesRepo.getMovieDetails(movieId: movieId);
+    if (result.success) {
+      emit(GetMovieDetailsSuccess(result.movieDetails!));
+    } else {
+      emit(GetMovieDetailsFailure());
+    }
+  }
+
+  void saveToCache({required String key, required MoviesModel value}) {
+    MoviesModel? moviesData = cache.getData(key);
+    if (moviesData != null) {
+      Set<Movie>? set = moviesData.movies?.toSet();
+      set!.addAll(value.movies!);
+      moviesData.movies = set.toList();
+      cache.setData(key, moviesData);
+    } else {
+      cache.setData(key, value);
+    }
   }
 }
