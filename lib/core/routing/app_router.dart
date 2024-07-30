@@ -1,4 +1,6 @@
-import '../../features/movies/ui/widgets/see_all_movies_screen.dart';
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
+import 'package:cine_rank/features/movies/ui/widgets/movie_details/movie_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +11,7 @@ import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/login/ui/widgets/login_web_view.dart';
 import '../../features/movies/ui/movies_screen.dart';
+import '../../features/movies/ui/widgets/see_all_movies_screen.dart';
 import '../../features/profile/ui/profile_screen.dart';
 import '../../features/series/ui/series_screen.dart';
 import '../di/dependency_injection.dart';
@@ -61,7 +64,19 @@ class AppRouter {
         );
       case Routes.seeAllMoviesScreen:
         return MaterialPageRoute(
-          builder: (context) => const SeeAllMoviesScreen(),
+          builder: (context) => SeeAllMoviesScreen(
+            movies: arguments as List<Movie>,
+          ),
+        );
+      case Routes.movieDetails:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                MoviesCubit(getIt())..getMovieDetails(movieId: arguments),
+            child: MovieDetails(
+              movieId: arguments as int,
+            ),
+          ),
         );
       default:
         return null;

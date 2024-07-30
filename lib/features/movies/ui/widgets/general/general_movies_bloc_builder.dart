@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../data/models/movies_model.dart';
 import '../../../logic/movies_cubit.dart';
+import '../movies_lists_header.dart';
 import 'general_movies_list_view.dart';
 import 'general_movies_shimmer_loading.dart';
-import '../movies_lists_header.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralMoviesBlocBuilder extends StatelessWidget {
   const GeneralMoviesBlocBuilder({super.key, required this.index});
@@ -37,11 +38,12 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
 
   Widget setupLoading(String title) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.0.h),
+      padding: EdgeInsets.only(bottom: index == 2 ? 0 : 28.0.h),
       child: Column(
         children: [
           MoviesListsHeader(
             title: title,
+            movies: const [],
           ),
           verticalSpace(12),
           const GeneralMoviesShimmerLoading(),
@@ -52,14 +54,15 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
 
   Widget setupSuccess(List<Movie> movies, String title) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.0.h),
+      padding: EdgeInsets.only(bottom: index == 2 ? 0 : 28.0.h),
       child: Column(
         children: [
           MoviesListsHeader(
             title: title,
             dataLoaded: true,
+            movies: movies,
           ),
-          verticalSpace(12),
+          verticalSpace(16),
           GeneralMoviesListView(
             movies: movies,
           ),
@@ -75,17 +78,20 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
   (List<Movie>?, bool, String) hasData(int index) {
     switch (index) {
       case 0:
-        MoviesModel? mostPopularMovies = cache.getData(DataCacheKeys.mostPopularMovies);
+        MoviesModel? mostPopularMovies =
+            cache.getData(DataCacheKeys.mostPopularMovies);
         return (
           mostPopularMovies?.movies,
           mostPopularMovies != null,
           'Most Popular'
         );
       case 1:
-        MoviesModel? topRatedMovies = cache.getData(DataCacheKeys.topRatedMovies);
+        MoviesModel? topRatedMovies =
+            cache.getData(DataCacheKeys.topRatedMovies);
         return (topRatedMovies?.movies, topRatedMovies != null, 'Top Rated');
       case 2:
-        MoviesModel? upcomingMovies = cache.getData(DataCacheKeys.upcomingMovies);
+        MoviesModel? upcomingMovies =
+            cache.getData(DataCacheKeys.upcomingMovies);
         return (upcomingMovies?.movies, upcomingMovies != null, 'Upcoming');
       default:
         return (null, false, '');

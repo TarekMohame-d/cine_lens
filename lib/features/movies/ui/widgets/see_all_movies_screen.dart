@@ -1,29 +1,29 @@
-import '../../../../core/helpers/extensions.dart';
-import '../../../../core/themes/app_colors.dart';
+import 'package:cine_rank/core/helpers/spacing.dart';
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import 'package:cine_rank/features/movies/ui/widgets/custom_app_bar.dart';
+import 'package:cine_rank/features/movies/ui/widgets/see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeeAllMoviesScreen extends StatelessWidget {
-  const SeeAllMoviesScreen({super.key});
+  const SeeAllMoviesScreen({super.key, required this.movies});
+  final List<Movie> movies;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.scaffoldBackgroundColor,
-        leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-        ),
-      ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0.w, vertical: 24.0.h),
-          child: const Column(
+          padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 8.0.h),
+          child: Column(
             children: [
-              Text('Movies List'),
+              CustomAppBar(
+                onChanged: (value) {},
+              ),
+              verticalSpace(12.0),
+              Expanded(
+                child: SeeAllListView(movies: movies),
+              ),
             ],
           ),
         ),

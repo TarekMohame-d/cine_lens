@@ -21,14 +21,14 @@ class CarouselSliderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(moviesModel!.releaseDate!);
+    String imageUrl = ApiDataHelper.getImageUrl(moviesModel!.posterPath!);
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl:
-              '${ApiDataHelper.secureBaseUrl + ApiDataHelper.posterSizes.last}${moviesModel!.posterPath}',
+          imageUrl: imageUrl,
           placeholder: (context, url) {
             return Shimmer.fromColors(
-              baseColor: AppColors.lineDark,
+              baseColor: AppColors.grey,
               highlightColor: Colors.white,
               child: Container(
                 decoration: BoxDecoration(

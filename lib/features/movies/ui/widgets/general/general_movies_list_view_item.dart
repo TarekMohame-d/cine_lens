@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../../core/helpers/api_data_helper.dart';
-import '../../../../../core/themes/app_text_styles.dart';
-import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../../core/helpers/api_data_helper.dart';
 import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_text_styles.dart';
+import '../../../data/models/movies_model.dart';
 
 class GeneralMoviesListViewItem extends StatelessWidget {
   const GeneralMoviesListViewItem({super.key, required this.movie});
@@ -29,7 +29,7 @@ class GeneralMoviesListViewItem extends StatelessWidget {
                   imageUrl: imageUrl,
                   placeholder: (context, url) {
                     return Shimmer.fromColors(
-                      baseColor: AppColors.lineDark,
+                      baseColor: AppColors.grey,
                       highlightColor: Colors.white,
                       child: Container(
                         decoration: BoxDecoration(

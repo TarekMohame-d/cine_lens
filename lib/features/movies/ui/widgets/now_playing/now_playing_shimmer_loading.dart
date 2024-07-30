@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/themes/app_colors.dart';
-import 'custom_animated_smooth_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/themes/app_colors.dart';
+import 'custom_animated_smooth_indicator.dart';
 
 class NowPlayingShimmerLoading extends StatefulWidget {
   const NowPlayingShimmerLoading({super.key});
@@ -65,6 +66,7 @@ class _NowPlayingShimmerLoadingState extends State<NowPlayingShimmerLoading> {
           CustomAnimatedSmoothIndicator(
             activeIndex: activeIndex,
             controller: controller,
+            count: 10,
           ),
         ],
       ),

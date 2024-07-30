@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
 import 'carousel_slider_item.dart';
 import 'custom_animated_smooth_indicator.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   const CustomCarouselSlider({
@@ -28,6 +29,10 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
+    var nowPlayingMovies = cache.getData(DataCacheKeys.nowPlayingMovies);
+    int itemCount = nowPlayingMovies.movies.length > 10
+        ? 10
+        : nowPlayingMovies.movies!.length;
     return SizedBox(
       height: 230.0.h,
       child: Column(
@@ -46,10 +51,8 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   });
                 },
               ),
-              itemCount: 10,
+              itemCount: itemCount,
               itemBuilder: (context, index, realIndex) {
-                var nowPlayingMovies =
-                    cache.getData(DataCacheKeys.nowPlayingMovies);
                 return CarouselSliderItem(
                   moviesModel: nowPlayingMovies.movies![index],
                 );
@@ -60,6 +63,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           CustomAnimatedSmoothIndicator(
             activeIndex: activeIndex,
             controller: controller,
+            count: itemCount,
           ),
         ],
       ),

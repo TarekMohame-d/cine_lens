@@ -9,16 +9,18 @@ class CustomAnimatedSmoothIndicator extends StatelessWidget {
     super.key,
     required this.activeIndex,
     required this.controller,
+    required this.count,
   });
 
   final int activeIndex;
   final CarouselController controller;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedSmoothIndicator(
       activeIndex: activeIndex,
-      count: 10,
+      count: count,
       effect: ExpandingDotsEffect(
         dotColor: AppColors.blueAccent.withOpacity(0.32),
         activeDotColor: AppColors.blueAccent,

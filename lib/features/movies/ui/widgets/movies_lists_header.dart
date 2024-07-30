@@ -1,3 +1,5 @@
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_text_styles.dart';
@@ -9,9 +11,11 @@ class MoviesListsHeader extends StatelessWidget {
     super.key,
     required this.title,
     this.dataLoaded = false,
+    required this.movies,
   });
   final String title;
   final bool dataLoaded;
+  final List<Movie>? movies;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class MoviesListsHeader extends StatelessWidget {
             highlightColor: Colors.transparent,
             onTap: () {
               if (dataLoaded) {
-                context.pushNamed(Routes.seeAllMoviesScreen);
+                context.pushNamed(Routes.seeAllMoviesScreen, arguments: movies);
               }
             },
             child: Text(

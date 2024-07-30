@@ -7,14 +7,14 @@ class DataCache {
 
   DataCache._internal();
 
-  final Map<String, dynamic> cache = {};
+  final Map<String, dynamic> _cache = {};
 
   void setData(String key, dynamic value) {
-    cache[key] = value;
+    _cache[key] = value;
   }
 
   dynamic getData(String key) {
-    return cache[key];
+    return _cache[key];
   }
 }
 

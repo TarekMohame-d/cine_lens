@@ -1,8 +1,8 @@
-import '../themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../themes/app_colors.dart';
+import '../themes/app_text_styles.dart';
 
 class AppTextField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
@@ -65,7 +65,7 @@ class AppTextField extends StatelessWidget {
         fillColor: backGroundColor ?? AppColors.soft,
       ),
       style: AppTextStyles.font14WhiteMedium,
-      cursorColor: AppColors.white,
+      cursorColor: AppColors.grey,
       onChanged: onChanged,
     );
   }
