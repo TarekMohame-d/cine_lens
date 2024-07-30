@@ -1,10 +1,9 @@
-import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/helpers/data_cache.dart';
-import '../data/repos/movies_repo.dart';
+import '../../../../core/helpers/data_cache.dart';
+import '../../data/repos/movies_repo.dart';
 
 part 'movies_state.dart';
 
@@ -69,17 +68,6 @@ class MoviesCubit extends Cubit<MoviesState> {
     await Future.wait(futures);
 
     emit(GetMoviesSuccess());
-  }
-
-
-  void getMovieDetails({required int movieId}) async {
-    emit(GetMovieDetailsLoading());
-    final result = await moviesRepo.getMovieDetails(movieId: movieId);
-    if (result.success) {
-      emit(GetMovieDetailsSuccess(result.movieDetails!));
-    } else {
-      emit(GetMovieDetailsFailure());
-    }
   }
 
   void saveToCache({required String key, required MoviesModel value}) {

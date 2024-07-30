@@ -1,5 +1,5 @@
 import '../../../core/di/dependency_injection.dart';
-import '../../movies/logic/movies_cubit.dart';
+import '../../movies/logic/movies_cubit/movies_cubit.dart';
 
 import '../../actors/ui/actors_screen.dart';
 import '../../movies/ui/movies_screen.dart';

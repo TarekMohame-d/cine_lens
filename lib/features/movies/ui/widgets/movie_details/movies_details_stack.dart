@@ -239,6 +239,25 @@ class MoviesDetailsStack extends StatelessWidget {
                   horizontalSpace(16),
                   InkWell(
                     onTap: () {
+                      debugPrint('Watch providers');
+                    },
+                    borderRadius: BorderRadius.circular(30),
+                    child: Container(
+                      width: 48.0.w,
+                      height: 48.0.h,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.soft,
+                      ),
+                      child: const Icon(
+                        Icons.cast,
+                        color: AppColors.blueAccent,
+                      ),
+                    ),
+                  ),
+                  horizontalSpace(16),
+                  InkWell(
+                    onTap: () {
                       debugPrint('Open in browser');
                     },
                     borderRadius: BorderRadius.circular(30),

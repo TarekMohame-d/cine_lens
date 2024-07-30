@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../data/models/movies_model.dart';
-import '../../../logic/movies_cubit.dart';
+import '../../../logic/movies_cubit/movies_cubit.dart';
 import '../movies_lists_header.dart';
 import 'general_movies_list_view.dart';
 import 'general_movies_shimmer_loading.dart';

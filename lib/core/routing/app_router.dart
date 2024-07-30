@@ -1,5 +1,5 @@
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
-import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
+import 'package:cine_rank/features/movies/logic/movies_details_cubit/movies_details_cubit.dart';
 import 'package:cine_rank/features/movies/ui/widgets/movie_details/movie_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,8 +71,8 @@ class AppRouter {
       case Routes.movieDetails:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) =>
-                MoviesCubit(getIt())..getMovieDetails(movieId: arguments),
+            create: (context) => MoviesDetailsCubit(getIt())
+              ..getMovieDetailsAndCast(movieId: arguments),
             child: MovieDetails(
               movieId: arguments as int,
             ),

@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,32 @@ class MovieDetailsShimmerLoading extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.0.w,
+                    vertical: 24.0.h,
+                  ),
+                  child: Container(
+                    width: 32.w,
+                    height: 32.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: AppColors.soft,
+                    ),
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        context.pop();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
                     ),
                   ),
                 ),

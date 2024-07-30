@@ -1,3 +1,5 @@
+import 'package:cine_rank/features/movies/data/repos/movies_details_repo.dart';
+
 import '../helpers/data_cache.dart';
 import '../../features/movies/data/repos/movies_repo.dart';
 
@@ -20,6 +22,10 @@ Future<void> setupGetIt() async {
   // movies
   getIt
       .registerLazySingleton<MoviesRepo>(() => MoviesRepo(apiService: getIt()));
+
+  // movies details
+  getIt.registerLazySingleton<MoviesDetailsRepo>(
+      () => MoviesDetailsRepo(apiService: getIt()));
 
   // DataCache
   getIt.registerSingleton<DataCache>(DataCache());

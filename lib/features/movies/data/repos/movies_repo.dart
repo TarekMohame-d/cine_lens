@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cine_rank/core/networking/api_constants.dart';
 import 'package:cine_rank/core/networking/api_services.dart';
-import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 
@@ -92,24 +91,6 @@ class MoviesRepo {
     } catch (e) {
       debugPrint('Error while fetching upcoming movies: ${e.toString()}');
       return (moviesModel: null, success: false);
-    }
-  }
-
-  Future<({MovieDetailsModel? movieDetails, bool success})> getMovieDetails(
-      {required int movieId}) async {
-    try {
-      final String endPoint = '/movie/$movieId';
-      final response = await apiService.get(
-        endPoint: endPoint,
-        queryParameters: {
-          'language': 'en-US',
-        },
-      );
-      MovieDetailsModel movieDetails = MovieDetailsModel.fromJson(response);
-      return (movieDetails: movieDetails, success: true);
-    } catch (e) {
-      debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (movieDetails: null, success: false);
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../../logic/movies_cubit.dart';
+import '../../../logic/movies_cubit/movies_cubit.dart';
 import '../movies_lists_header.dart';
 import 'custom_carousel_slider.dart';
 import 'now_playing_shimmer_loading.dart';
