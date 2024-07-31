@@ -1,17 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../../core/helpers/extensions.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/themes/app_colors.dart';
-import '../../../../../core/widgets/app_text_button.dart';
-import '../../../data/models/movie_details_model.dart';
-import '../../../logic/movies_details_cubit/movies_details_cubit.dart';
+import 'package:cine_rank/features/movies/ui/widgets/movie_details/watch_providers/watch_providers_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/themes/app_colors.dart';
 import '../../../../../core/themes/app_text_styles.dart';
+import '../../../../../core/widgets/app_text_button.dart';
+import '../../../data/models/movie_details_model.dart';
+import '../../../logic/movies_details_cubit/movies_details_cubit.dart';
 
 class MoviesDetailsStack extends StatelessWidget {
   const MoviesDetailsStack({
@@ -246,9 +247,23 @@ class MoviesDetailsStack extends StatelessWidget {
                       await cubit.getMovieWatchProviders(
                           movieId: movieDetails.id!);
                       if (cubit.movieWatchProviderModel?.country?.uS != null) {
-                        print(cubit.movieWatchProviderModel!.country!.uS!.buy!
-                            .first.providerName);
-                        //todo: show dialog of watch providers
+                        showWatchProvidersBottomSheet(
+                          context: context,
+                          watchProvidersList: cubit.watchProviders,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(milliseconds: 400),
+                            content: Text(
+                              'No watch providers available right now',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
                       }
                     },
                     borderRadius: BorderRadius.circular(30),

@@ -162,16 +162,12 @@ WatchProvider _$WatchProviderFromJson(Map<String, dynamic> json) =>
       rent: (json['rent'] as List<dynamic>?)
           ?.map((e) => Rent.fromJson(e as Map<String, dynamic>))
           .toList(),
-      buy: (json['buy'] as List<dynamic>?)
-          ?.map((e) => Buy.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$WatchProviderToJson(WatchProvider instance) =>
     <String, dynamic>{
       'link': instance.link,
       'rent': instance.rent,
-      'buy': instance.buy,
     };
 
 Rent _$RentFromJson(Map<String, dynamic> json) => Rent(
@@ -182,20 +178,6 @@ Rent _$RentFromJson(Map<String, dynamic> json) => Rent(
     );
 
 Map<String, dynamic> _$RentToJson(Rent instance) => <String, dynamic>{
-      'logo_path': instance.logoPath,
-      'provider_id': instance.providerId,
-      'provider_name': instance.providerName,
-      'display_priority': instance.displayPriority,
-    };
-
-Buy _$BuyFromJson(Map<String, dynamic> json) => Buy(
-      logoPath: json['logo_path'] as String?,
-      providerId: (json['provider_id'] as num?)?.toInt(),
-      providerName: json['provider_name'] as String?,
-      displayPriority: (json['display_priority'] as num?)?.toInt(),
-    );
-
-Map<String, dynamic> _$BuyToJson(Buy instance) => <String, dynamic>{
       'logo_path': instance.logoPath,
       'provider_id': instance.providerId,
       'provider_name': instance.providerName,

@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../data/models/movie_cast_model.dart';
 import '../../data/models/movie_details_model.dart';
 import '../../data/models/movie_watch_providers_model.dart';
 import '../../data/models/similar_movies_model.dart';
 import '../../data/repos/movies_details_repo.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'movies_details_state.dart';
 
@@ -48,11 +49,14 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
     }
   }
 
+  List<(WatchProvider,String)> watchProviders = [];
   Future<void> getMovieWatchProviders({required int movieId}) async {
     if (movieWatchProviderModel != null) return;
     final result = await moviesRepo.getMovieWatchProviders(movieId: movieId);
     if (result.success) {
       movieWatchProviderModel = result.movieWatchProviderModel;
+      watchProviders =
+          result.movieWatchProviderModel!.country!.toWatchProviderList();
     }
   }
 
