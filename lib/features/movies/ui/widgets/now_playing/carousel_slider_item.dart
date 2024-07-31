@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../../core/helpers/api_data_helper.dart';
-import '../../../../../core/themes/app_colors.dart';
-import '../../../../../core/themes/app_text_styles.dart';
-import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../../../../core/helpers/api_data_helper.dart';
+import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_text_styles.dart';
+import '../../../data/models/movies_model.dart';
 
 class CarouselSliderItem extends StatelessWidget {
   const CarouselSliderItem({super.key, required this.moviesModel});
@@ -21,7 +22,7 @@ class CarouselSliderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(moviesModel!.releaseDate!);
-    String imageUrl = ApiDataHelper.getImageUrl(moviesModel!.posterPath!);
+    String imageUrl = ApiDataHelper.getImageUrl(path: moviesModel!.posterPath!);
     return Stack(
       children: [
         CachedNetworkImage(
@@ -76,7 +77,7 @@ class CarouselSliderItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  moviesModel!.originalTitle!,
+                  moviesModel!.title!,
                   style: AppTextStyles.font16WhiteSemiBold,
                 ),
                 Text(

@@ -1,9 +1,10 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/themes/app_colors.dart';
 
 class MovieDetailsShimmerLoading extends StatelessWidget {
   const MovieDetailsShimmerLoading({super.key});
@@ -25,41 +26,47 @@ class MovieDetailsShimmerLoading extends StatelessWidget {
                 width: double.infinity,
                 color: AppColors.lineDark,
               ),
-              Positioned(
-                bottom: 160.h,
-                left: ((screenWidth - 200.w) / 2).w,
-                child: Shimmer.fromColors(
-                  baseColor: AppColors.grey,
-                  highlightColor: Colors.white,
-                  child: Container(
-                    height: 280.h,
-                    width: 200.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                    ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 130.h,
                   ),
-                ),
-              ),
-              Positioned(
-                bottom: 50.h,
-                left: ((screenWidth - 270.w) / 2).w,
-                child: Shimmer.fromColors(
-                  baseColor: AppColors.grey,
-                  highlightColor: Colors.white,
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 70.0.h),
-                    height: 20.h,
-                    width: 270.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
+                  child: Shimmer.fromColors(
+                    baseColor: AppColors.grey,
+                    highlightColor: Colors.white,
+                    child: Container(
+                      height: 280.h,
+                      width: 200.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 28.0.h),
+                  child: Shimmer.fromColors(
+                    baseColor: AppColors.grey,
+                    highlightColor: Colors.white,
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 70.0.h),
+                      height: 20.h,
+                      width: 270.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 12.0.w,
@@ -90,7 +97,7 @@ class MovieDetailsShimmerLoading extends StatelessWidget {
                   baseColor: AppColors.grey,
                   highlightColor: Colors.white,
                   child: Container(
-                    margin: EdgeInsets.only(bottom: 16.0.h),
+                    margin: EdgeInsets.only(bottom: 20.0.h),
                     height: 48.h,
                     width: 240.w,
                     decoration: BoxDecoration(

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'movie_images_model.g.dart';
 
 @JsonSerializable()

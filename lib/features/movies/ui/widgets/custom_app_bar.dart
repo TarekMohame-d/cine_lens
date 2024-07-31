@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/widgets/app_text_field.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/themes/app_colors.dart';
+import '../../../../core/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {

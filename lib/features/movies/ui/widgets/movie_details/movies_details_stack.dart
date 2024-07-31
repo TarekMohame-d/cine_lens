@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/widgets/app_text_button.dart';
-import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/widgets/app_text_button.dart';
+import '../../../data/models/movie_details_model.dart';
+import '../../../logic/movies_details_cubit/movies_details_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -30,6 +33,7 @@ class MoviesDetailsStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<MoviesDetailsCubit>();
     String releaseDate = extractYearFromDateString(movieDetails.releaseDate!);
     return SizedBox(
       height: (screenHeight * 0.6).h,
@@ -107,8 +111,8 @@ class MoviesDetailsStack extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 32.w,
-                    height: 32.h,
+                    width: 36.w,
+                    height: 36.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: AppColors.soft,
@@ -128,7 +132,7 @@ class MoviesDetailsStack extends StatelessWidget {
                     flex: 8,
                     child: Text(
                       textAlign: TextAlign.center,
-                      movieDetails.originalTitle!,
+                      movieDetails.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.font16WhiteSemiBold,
@@ -136,8 +140,8 @@ class MoviesDetailsStack extends StatelessWidget {
                   ),
                   const Spacer(),
                   Container(
-                    width: 32.w,
-                    height: 32.h,
+                    width: 36.w,
+                    height: 36.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: AppColors.soft,
@@ -238,8 +242,14 @@ class MoviesDetailsStack extends StatelessWidget {
                   ),
                   horizontalSpace(16),
                   InkWell(
-                    onTap: () {
-                      debugPrint('Watch providers');
+                    onTap: () async {
+                      await cubit.getMovieWatchProviders(
+                          movieId: movieDetails.id!);
+                      if (cubit.movieWatchProviderModel?.country?.uS != null) {
+                        print(cubit.movieWatchProviderModel!.country!.uS!.buy!
+                            .first.providerName);
+                        //todo: show dialog of watch providers
+                      }
                     },
                     borderRadius: BorderRadius.circular(30),
                     child: Container(
@@ -258,7 +268,10 @@ class MoviesDetailsStack extends StatelessWidget {
                   horizontalSpace(16),
                   InkWell(
                     onTap: () {
-                      debugPrint('Open in browser');
+                      context.pushNamed(
+                        Routes.movieDetailsWebView,
+                        arguments: movieDetails.homepage,
+                      );
                     },
                     borderRadius: BorderRadius.circular(30),
                     child: Container(

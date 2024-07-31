@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/helpers/spacing.dart';
 import '../../../core/themes/app_colors.dart';
 import '../logic/movies_cubit/movies_cubit.dart';
 import 'widgets/general/general_movies_bloc_builder.dart';
 import 'widgets/now_playing/now_playing_bloc_builder.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});

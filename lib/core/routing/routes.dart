@@ -1,4 +1,4 @@
-class Routes{
+class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String loginScreen = '/loginScreen';
   static const String webViewScreen = '/webViewScreen';
@@ -9,5 +9,7 @@ class Routes{
   static const String profileScreen = '/profileScreen';
 
   static const String seeAllMoviesScreen = '/seeAllMoviesScreen';
-  static const String movieDetails = '/movieDetails';
+  static const String movieDetailsScreen = '/movieDetailsScreen';
+  static const String movieDetailsCastAndCrewSeeAll = '/movieDetailsCastAndCrewSeeAll';
+  static const String movieDetailsWebView = '/movieDetailsWebView';
 }

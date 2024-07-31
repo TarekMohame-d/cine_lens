@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/movies/data/repos/movies_details_repo.dart';
+import '../../features/movies/data/repos/movies_details_repo.dart';
 
 import '../helpers/data_cache.dart';
 import '../../features/movies/data/repos/movies_repo.dart';

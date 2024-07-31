@@ -5,7 +5,7 @@ import 'app_colors.dart';
 import 'font_weight_helper.dart';
 
 class AppTextStyles {
-
+  AppTextStyles._();
   static TextStyle font13WhiteRegular = TextStyle(
     fontSize: 13.0.sp,
     color: Colors.white,

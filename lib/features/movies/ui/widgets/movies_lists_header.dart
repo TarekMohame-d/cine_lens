@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import '../../data/models/movies_model.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';

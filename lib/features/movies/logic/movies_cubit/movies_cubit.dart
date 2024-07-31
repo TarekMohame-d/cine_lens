@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import '../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +44,7 @@ class MoviesCubit extends Cubit<MoviesState> {
   }
 
   Future<void> getMovies({bool wantToRefresh = false}) async {
-    var nowPlayingMovies = cache.getData(DataCacheKeys.nowPlayingMovies);
+    var nowPlayingMovies = localCache.getData(DataCacheKeys.nowPlayingMovies);
     if (wantToRefresh == false && nowPlayingMovies != null) {
       emit(GetMoviesSuccess());
       return;
@@ -71,14 +71,14 @@ class MoviesCubit extends Cubit<MoviesState> {
   }
 
   void saveToCache({required String key, required MoviesModel value}) {
-    MoviesModel? moviesData = cache.getData(key);
+    MoviesModel? moviesData = localCache.getData(key);
     if (moviesData != null) {
       Set<Movie>? set = moviesData.movies?.toSet();
       set!.addAll(value.movies!);
       moviesData.movies = set.toList();
-      cache.setData(key, moviesData);
+      localCache.setData(key, moviesData);
     } else {
-      cache.setData(key, value);
+      localCache.setData(key, value);
     }
   }
 }

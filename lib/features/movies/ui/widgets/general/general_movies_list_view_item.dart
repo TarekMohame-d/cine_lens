@@ -14,8 +14,8 @@ class GeneralMoviesListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String genre = ApiDataHelper.genres[movie.genreIds!.first]!;
-    String imageUrl = ApiDataHelper.getImageUrl(movie.posterPath!);
+    String genre = ApiDataHelper.getGenreName(movie.genreIds!.first);
+    String imageUrl = ApiDataHelper.getImageUrl(path: movie.posterPath!);
     return Container(
       margin: EdgeInsets.only(right: 12.0.w),
       width: 150.w,

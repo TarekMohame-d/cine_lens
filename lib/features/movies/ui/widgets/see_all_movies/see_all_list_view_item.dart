@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_data_helper.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import '../../../../../core/helpers/api_data_helper.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_text_styles.dart';
+import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -18,15 +18,15 @@ class SeeAllListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(movie.releaseDate!);
-    String genre = ApiDataHelper.genres[movie.genreIds!.first]!;
-    String imageUrl = ApiDataHelper.getImageUrl(movie.posterPath!);
+    String genre = ApiDataHelper.getGenreName(movie.genreIds!.first);
+    String imageUrl = ApiDataHelper.getImageUrl(path: movie.posterPath!);
     return InkWell(
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () {
-        context.pushNamed(Routes.movieDetails, arguments: movie.id);
+        context.pushNamed(Routes.movieDetailsScreen, arguments: movie.id);
       },
       child: Container(
         height: 170.0.h,
@@ -70,7 +70,7 @@ class SeeAllListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.originalTitle!,
+                    movie.title!,
                     style: AppTextStyles.font16WhiteSemiBold,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

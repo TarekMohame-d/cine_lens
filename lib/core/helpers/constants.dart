@@ -1,4 +1,5 @@
 bool isLoggedInUser = false;
+bool isGuestUser = false;
 
 class SharedPrefKeys {
   SharedPrefKeys._();

@@ -1,4 +1,4 @@
-import 'package:cine_rank/core/themes/app_text_styles.dart';
+import '../../../../../core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

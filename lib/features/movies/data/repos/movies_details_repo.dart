@@ -111,7 +111,7 @@ class MoviesDetailsRepo {
   Future<({MovieWatchProviderModel? movieWatchProviderModel, bool success})>
       getMovieWatchProviders({required int movieId}) async {
     try {
-      final String endPoint = '/movie/$movieId/similar';
+      final String endPoint = '/movie/$movieId/watch/providers';
       final response = await apiService.get(
         endPoint: endPoint,
         queryParameters: {

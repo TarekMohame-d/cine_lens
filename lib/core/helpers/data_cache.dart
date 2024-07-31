@@ -1,12 +1,6 @@
+late DataCache localCache;
+
 class DataCache {
-  static final DataCache _instance = DataCache._internal();
-
-  factory DataCache() {
-    return _instance;
-  }
-
-  DataCache._internal();
-
   final Map<String, dynamic> _cache = {};
 
   void setData(String key, dynamic value) {
@@ -16,16 +10,26 @@ class DataCache {
   dynamic getData(String key) {
     return _cache[key];
   }
-}
 
-late DataCache cache;
+  bool hasData(String key) {
+    return _cache.containsKey(key);
+  }
+
+  void removeData(String key) {
+    _cache.remove(key);
+  }
+
+  void clear() {
+    _cache.clear();
+  }
+}
 
 class DataCacheKeys {
   static String nowPlayingMovies = 'nowPlayingMovies';
   static String mostPopularMovies = 'mostPopularMovies';
   static String topRatedMovies = 'topRatedMovies';
   static String upcomingMovies = 'upcomingMovies';
-  static String userAccount = 'userAccount';
+  static String userAccountData = 'userAccountData';
   static String sessionId = 'sessionId';
   static String userId = 'userId';
 }

@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
-import 'package:cine_rank/features/movies/ui/widgets/custom_app_bar.dart';
-import 'package:cine_rank/features/movies/ui/widgets/see_all_list_view.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../data/models/movies_model.dart';
+import '../custom_app_bar.dart';
+import 'see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

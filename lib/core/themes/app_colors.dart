@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  AppColors._();
   static const Color scaffoldBackgroundColor = Color(0xFF1F1D2B);
 
   // Primary

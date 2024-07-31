@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_data_helper.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/app_colors.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
-import 'package:cine_rank/features/movies/data/models/movie_cast_model.dart';
+import '../../../../../core/helpers/api_data_helper.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_text_styles.dart';
+import '../../../data/models/movie_cast_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
@@ -32,7 +34,9 @@ class CastAndCrew extends StatelessWidget {
                 hoverColor: Colors.transparent,
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(Routes.movieDetailsCastAndCrewSeeAll);
+                },
                 child: Text(
                   'See all',
                   style: AppTextStyles.font14BlueAccentMedium,
@@ -48,7 +52,7 @@ class CastAndCrew extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 String imageUrl = ApiDataHelper.getImageUrl(
-                    castModel!.cast![index].profilePath!);
+                    path: castModel!.cast![index].profilePath!);
                 return Padding(
                   padding: EdgeInsets.only(right: 12.0.w),
                   child: Row(

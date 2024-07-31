@@ -25,100 +25,100 @@ Map<String, dynamic> _$MovieWatchProviderModelToJson(
 Country _$CountryFromJson(Map<String, dynamic> json) => Country(
       aR: json['AR'] == null
           ? null
-          : Country.fromJson(json['AR'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['AR'] as Map<String, dynamic>),
       aT: json['AT'] == null
           ? null
-          : Country.fromJson(json['AT'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['AT'] as Map<String, dynamic>),
       aU: json['AU'] == null
           ? null
-          : Country.fromJson(json['AU'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['AU'] as Map<String, dynamic>),
       bO: json['BO'] == null
           ? null
-          : Country.fromJson(json['BO'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['BO'] as Map<String, dynamic>),
       bR: json['BR'] == null
           ? null
-          : Country.fromJson(json['BR'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['BR'] as Map<String, dynamic>),
       cA: json['CA'] == null
           ? null
-          : Country.fromJson(json['CA'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['CA'] as Map<String, dynamic>),
       cH: json['CH'] == null
           ? null
-          : Country.fromJson(json['CH'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['CH'] as Map<String, dynamic>),
       cL: json['CL'] == null
           ? null
-          : Country.fromJson(json['CL'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['CL'] as Map<String, dynamic>),
       cO: json['CO'] == null
           ? null
-          : Country.fromJson(json['CO'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['CO'] as Map<String, dynamic>),
       cR: json['CR'] == null
           ? null
-          : Country.fromJson(json['CR'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['CR'] as Map<String, dynamic>),
       dE: json['DE'] == null
           ? null
-          : Country.fromJson(json['DE'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['DE'] as Map<String, dynamic>),
       eC: json['EC'] == null
           ? null
-          : Country.fromJson(json['EC'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['EC'] as Map<String, dynamic>),
       fR: json['FR'] == null
           ? null
-          : Country.fromJson(json['FR'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['FR'] as Map<String, dynamic>),
       gB: json['GB'] == null
           ? null
-          : Country.fromJson(json['GB'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['GB'] as Map<String, dynamic>),
       gT: json['GT'] == null
           ? null
-          : Country.fromJson(json['GT'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['GT'] as Map<String, dynamic>),
       hK: json['HK'] == null
           ? null
-          : Country.fromJson(json['HK'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['HK'] as Map<String, dynamic>),
       hN: json['HN'] == null
           ? null
-          : Country.fromJson(json['HN'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['HN'] as Map<String, dynamic>),
       iD: json['ID'] == null
           ? null
-          : Country.fromJson(json['ID'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['ID'] as Map<String, dynamic>),
       iE: json['IE'] == null
           ? null
-          : Country.fromJson(json['IE'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['IE'] as Map<String, dynamic>),
       iN: json['IN'] == null
           ? null
-          : Country.fromJson(json['IN'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['IN'] as Map<String, dynamic>),
       kR: json['KR'] == null
           ? null
-          : Country.fromJson(json['KR'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['KR'] as Map<String, dynamic>),
       mX: json['MX'] == null
           ? null
-          : Country.fromJson(json['MX'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['MX'] as Map<String, dynamic>),
       mY: json['MY'] == null
           ? null
-          : Country.fromJson(json['MY'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['MY'] as Map<String, dynamic>),
       nZ: json['NZ'] == null
           ? null
-          : Country.fromJson(json['NZ'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['NZ'] as Map<String, dynamic>),
       pE: json['PE'] == null
           ? null
-          : Country.fromJson(json['PE'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['PE'] as Map<String, dynamic>),
       pH: json['PH'] == null
           ? null
-          : Country.fromJson(json['PH'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['PH'] as Map<String, dynamic>),
       pL: json['PL'] == null
           ? null
-          : Country.fromJson(json['PL'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['PL'] as Map<String, dynamic>),
       pY: json['PY'] == null
           ? null
-          : Country.fromJson(json['PY'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['PY'] as Map<String, dynamic>),
       tH: json['TH'] == null
           ? null
-          : Country.fromJson(json['TH'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['TH'] as Map<String, dynamic>),
       tW: json['TW'] == null
           ? null
-          : Country.fromJson(json['TW'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['TW'] as Map<String, dynamic>),
       uS: json['US'] == null
           ? null
-          : Country.fromJson(json['US'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['US'] as Map<String, dynamic>),
       vE: json['VE'] == null
           ? null
-          : Country.fromJson(json['VE'] as Map<String, dynamic>),
+          : WatchProvider.fromJson(json['VE'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CountryToJson(Country instance) => <String, dynamic>{

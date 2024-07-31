@@ -29,7 +29,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
-    var nowPlayingMovies = cache.getData(DataCacheKeys.nowPlayingMovies);
+    var nowPlayingMovies = localCache.getData(DataCacheKeys.nowPlayingMovies);
     int itemCount = nowPlayingMovies.movies.length > 10
         ? 10
         : nowPlayingMovies.movies!.length;

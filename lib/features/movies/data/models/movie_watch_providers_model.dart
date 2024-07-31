@@ -20,69 +20,69 @@ class MovieWatchProviderModel {
 @JsonSerializable()
 class Country {
   @JsonKey(name: 'AR')
-  Country? aR;
+  WatchProvider? aR;
   @JsonKey(name: 'AT')
-  Country? aT;
+  WatchProvider? aT;
   @JsonKey(name: 'AU')
-  Country? aU;
+  WatchProvider? aU;
   @JsonKey(name: 'BO')
-  Country? bO;
+  WatchProvider? bO;
   @JsonKey(name: 'BR')
-  Country? bR;
+  WatchProvider? bR;
   @JsonKey(name: 'CA')
-  Country? cA;
+  WatchProvider? cA;
   @JsonKey(name: 'CH')
-  Country? cH;
+  WatchProvider? cH;
   @JsonKey(name: 'CL')
-  Country? cL;
+  WatchProvider? cL;
   @JsonKey(name: 'CO')
-  Country? cO;
+  WatchProvider? cO;
   @JsonKey(name: 'CR')
-  Country? cR;
+  WatchProvider? cR;
   @JsonKey(name: 'DE')
-  Country? dE;
+  WatchProvider? dE;
   @JsonKey(name: 'EC')
-  Country? eC;
+  WatchProvider? eC;
   @JsonKey(name: 'FR')
-  Country? fR;
+  WatchProvider? fR;
   @JsonKey(name: 'GB')
-  Country? gB;
+  WatchProvider? gB;
   @JsonKey(name: 'GT')
-  Country? gT;
+  WatchProvider? gT;
   @JsonKey(name: 'HK')
-  Country? hK;
+  WatchProvider? hK;
   @JsonKey(name: 'HN')
-  Country? hN;
+  WatchProvider? hN;
   @JsonKey(name: 'ID')
-  Country? iD;
+  WatchProvider? iD;
   @JsonKey(name: 'IE')
-  Country? iE;
+  WatchProvider? iE;
   @JsonKey(name: 'IN')
-  Country? iN;
+  WatchProvider? iN;
   @JsonKey(name: 'KR')
-  Country? kR;
+  WatchProvider? kR;
   @JsonKey(name: 'MX')
-  Country? mX;
+  WatchProvider? mX;
   @JsonKey(name: 'MY')
-  Country? mY;
+  WatchProvider? mY;
   @JsonKey(name: 'NZ')
-  Country? nZ;
+  WatchProvider? nZ;
   @JsonKey(name: 'PE')
-  Country? pE;
+  WatchProvider? pE;
   @JsonKey(name: 'PH')
-  Country? pH;
+  WatchProvider? pH;
   @JsonKey(name: 'PL')
-  Country? pL;
+  WatchProvider? pL;
   @JsonKey(name: 'PY')
-  Country? pY;
+  WatchProvider? pY;
   @JsonKey(name: 'TH')
-  Country? tH;
+  WatchProvider? tH;
   @JsonKey(name: 'TW')
-  Country? tW;
+  WatchProvider? tW;
   @JsonKey(name: 'US')
-  Country? uS;
+  WatchProvider? uS;
   @JsonKey(name: 'VE')
-  Country? vE;
+  WatchProvider? vE;
 
   Country({
     this.aR,

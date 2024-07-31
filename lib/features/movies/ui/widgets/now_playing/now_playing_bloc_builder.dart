@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
+import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +23,8 @@ class NowPlayingBlocBuilder extends StatelessWidget {
           current is GetMoviesSuccess ||
           current is GetMoviesFailure,
       builder: (context, state) {
-        var nowPlayingMovies = cache.getData(DataCacheKeys.nowPlayingMovies);
+        var nowPlayingMovies =
+            localCache.getData(DataCacheKeys.nowPlayingMovies);
         bool dataLoaded = nowPlayingMovies != null;
         if (state is GetMoviesLoading) {
           return setupLoading();
@@ -54,7 +55,7 @@ class NowPlayingBlocBuilder extends StatelessWidget {
 
   Widget setupSuccess() {
     MoviesModel nowPlayingMovies =
-        cache.getData(DataCacheKeys.nowPlayingMovies);
+        localCache.getData(DataCacheKeys.nowPlayingMovies);
     return Padding(
       padding: EdgeInsets.only(bottom: 12.0.h),
       child: Column(

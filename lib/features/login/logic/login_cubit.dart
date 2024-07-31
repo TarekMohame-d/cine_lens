@@ -1,12 +1,12 @@
-import '../../../core/helpers/data_cache.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/helpers/constants.dart';
+import '../../../core/helpers/data_cache.dart';
 import '../../../core/helpers/shared_pref_helper.dart';
 import '../data/models/request_token_model.dart';
 import '../data/models/session_model.dart';
 import '../data/repos/login_repo.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
 
@@ -59,9 +59,8 @@ class LoginCubit extends Cubit<LoginState> {
       sessionId: sessionId,
     );
     if (result.$2) {
-      cache.setData(DataCacheKeys.userAccount, result.$1);
-      SharedPrefHelper.setSecuredInt(
-          SharedPrefKeys.userId, result.$1!.id!);
+      localCache.setData(DataCacheKeys.userAccountData, result.$1);
+      SharedPrefHelper.setSecuredInt(SharedPrefKeys.userId, result.$1!.id!);
       emit(LoginGetUserDataSuccess());
     } else {
       emit(LoginGetUserDataFailure());

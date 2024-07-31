@@ -79,7 +79,7 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
     switch (index) {
       case 0:
         MoviesModel? mostPopularMovies =
-            cache.getData(DataCacheKeys.mostPopularMovies);
+            localCache.getData(DataCacheKeys.mostPopularMovies);
         return (
           mostPopularMovies?.movies,
           mostPopularMovies != null,
@@ -87,11 +87,11 @@ class GeneralMoviesBlocBuilder extends StatelessWidget {
         );
       case 1:
         MoviesModel? topRatedMovies =
-            cache.getData(DataCacheKeys.topRatedMovies);
+            localCache.getData(DataCacheKeys.topRatedMovies);
         return (topRatedMovies?.movies, topRatedMovies != null, 'Top Rated');
       case 2:
         MoviesModel? upcomingMovies =
-            cache.getData(DataCacheKeys.upcomingMovies);
+            localCache.getData(DataCacheKeys.upcomingMovies);
         return (upcomingMovies?.movies, upcomingMovies != null, 'Upcoming');
       default:
         return (null, false, '');
