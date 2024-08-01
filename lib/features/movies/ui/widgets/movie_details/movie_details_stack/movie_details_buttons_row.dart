@@ -6,8 +6,10 @@ import 'package:cine_rank/core/themes/app_text_styles.dart';
 import 'package:cine_rank/core/widgets/app_text_button.dart';
 import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
 import 'package:cine_rank/features/movies/logic/movies_details_cubit/movies_details_cubit.dart';
+import 'package:cine_rank/features/movies/ui/widgets/movie_details/movie_details_stack/video_player_widget.dart';
 import 'package:cine_rank/features/movies/ui/widgets/movie_details/watch_providers/watch_providers_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +26,25 @@ class MovieDetailsButtonsRow extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           AppTextButton(
-            onPressed: () {},
+            onPressed: () async {
+              await cubit.getMovieVideos(movieId: movieDetails.id!);
+              if (cubit.videoData != null) {
+                _showTrailerDialog(context, cubit.videoData!.key!);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    duration: Duration(milliseconds: 400),
+                    content: Text(
+                      'No trailers available right now',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
             backgroundColor: AppColors.blueAccent,
             borderRadius: 32,
             buttonWidth: 115.w,
@@ -120,5 +140,23 @@ class MovieDetailsButtonsRow extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _showTrailerDialog(BuildContext context, String videoUrl) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: YouTubePlayerWidget(videoUrl: videoUrl),
+        );
+      },
+    ).then((_) {
+      // Reset orientation when dialog is dismissed
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    });
   }
 }
