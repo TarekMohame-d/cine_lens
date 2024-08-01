@@ -1,4 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
+
 import '../../../../../core/helpers/api_data_helper.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -6,10 +11,6 @@ import '../../../../../core/routing/routes.dart';
 import '../../../../../core/themes/app_colors.dart';
 import '../../../../../core/themes/app_text_styles.dart';
 import '../../../data/models/movies_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SeeAllListViewItem extends StatelessWidget {
   const SeeAllListViewItem({super.key, required this.movie});
@@ -94,7 +95,7 @@ class SeeAllListViewItem extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.star,
-                        color: AppColors.grey,
+                        color: AppColors.orange,
                       ),
                       horizontalSpace(4),
                       Text(
