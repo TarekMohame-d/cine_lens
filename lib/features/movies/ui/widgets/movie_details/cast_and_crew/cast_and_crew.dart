@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../../core/helpers/api_data_helper.dart';
-import '../../../../../core/helpers/extensions.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/themes/app_colors.dart';
-import '../../../../../core/themes/app_text_styles.dart';
-import '../../../data/models/movie_cast_model.dart';
+import '../../../../../../core/helpers/api_data_helper.dart';
+import '../../../../../../core/helpers/extensions.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/routing/routes.dart';
+import '../../../../../../core/themes/app_colors.dart';
+import '../../../../../../core/themes/app_text_styles.dart';
+import '../../../../data/models/movie_cast_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
@@ -35,7 +35,8 @@ class CastAndCrew extends StatelessWidget {
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () {
-                  context.pushNamed(Routes.movieDetailsCastAndCrewSeeAll);
+                  context.pushNamed(Routes.movieDetailsCastAndCrewSeeAll,
+                      arguments: castModel);
                 },
                 child: Text(
                   'See all',

@@ -1,6 +1,7 @@
-import '../../../../../core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/themes/app_text_styles.dart';
 
 class MoviesDetailsOverview extends StatelessWidget {
   const MoviesDetailsOverview({super.key, required this.overview});
@@ -10,7 +11,6 @@ class MoviesDetailsOverview extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 24.0.w,
-        vertical: 20.0.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
