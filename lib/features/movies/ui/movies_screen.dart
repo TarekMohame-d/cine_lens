@@ -1,10 +1,12 @@
+import 'package:cine_rank/features/movies/ui/widgets/general/top_rated_movies_bloc_builder.dart';
+import 'package:cine_rank/features/movies/ui/widgets/general/up_comming_movies_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/helpers/spacing.dart';
 import '../../../core/themes/app_colors.dart';
 import '../logic/movies_cubit/movies_cubit.dart';
-import 'widgets/general/general_movies_bloc_builder.dart';
+import 'widgets/general/most_popular_movies_bloc_builder.dart';
 import 'widgets/now_playing/now_playing_bloc_builder.dart';
 
 class MoviesScreen extends StatelessWidget {
@@ -26,17 +28,22 @@ class MoviesScreen extends StatelessWidget {
             child: NowPlayingBlocBuilder(),
           ),
           SliverToBoxAdapter(
-            child: verticalSpace(24),
+            child: verticalSpace(16),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 3,
-              (context, index) {
-                return GeneralMoviesBlocBuilder(
-                  index: index,
-                );
-              },
-            ),
+          const SliverToBoxAdapter(
+            child: MostPopularMoviesBlocBuilder(),
+          ),
+          SliverToBoxAdapter(
+            child: verticalSpace(16),
+          ),
+          const SliverToBoxAdapter(
+            child: TopRatedMoviesBlocBuilder(),
+          ),
+          SliverToBoxAdapter(
+            child: verticalSpace(16),
+          ),
+          const SliverToBoxAdapter(
+            child: UpCommingMoviesBlocBuilder(),
           ),
         ],
       ),

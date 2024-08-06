@@ -40,8 +40,6 @@ class MoviesRepo {
           'language': 'en-US',
           'page': page,
           'sort_by': 'popularity.desc',
-          // 'release_date.gte': '{min_date}',
-          // 'release_date.lte': '{max_date},'
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
@@ -61,8 +59,6 @@ class MoviesRepo {
           'language': 'en-US',
           'page': page,
           'sort_by': 'popularity.desc',
-          // 'release_date.gte': '{min_date}',
-          // 'release_date.lte': '{max_date},'
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
@@ -82,8 +78,6 @@ class MoviesRepo {
           'language': 'en-US',
           'page': page,
           'sort_by': 'popularity.desc',
-          // 'release_date.gte': '{min_date}',
-          // 'release_date.lte': '{max_date},'
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);

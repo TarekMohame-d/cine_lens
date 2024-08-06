@@ -1,20 +1,18 @@
-import '../../data/models/movies_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_text_styles.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../data/models/movies_model.dart';
 
-class MoviesListsHeader extends StatelessWidget {
-  const MoviesListsHeader({
+class MoviesListsTitleAndSeeAll extends StatelessWidget {
+  const MoviesListsTitleAndSeeAll({
     super.key,
     required this.title,
-    this.dataLoaded = false,
-    required this.movies,
+    this.movies,
   });
   final String title;
-  final bool dataLoaded;
   final List<Movie>? movies;
 
   @override
@@ -35,7 +33,7 @@ class MoviesListsHeader extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
-              if (dataLoaded) {
+              if (movies != null) {
                 context.pushNamed(Routes.seeAllMoviesScreen, arguments: movies);
               }
             },

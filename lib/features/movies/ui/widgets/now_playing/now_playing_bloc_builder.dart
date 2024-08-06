@@ -1,12 +1,12 @@
-import '../../../data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
+import '../../../data/models/movies_model.dart';
 import '../../../logic/movies_cubit/movies_cubit.dart';
-import '../movies_lists_header.dart';
+import '../movies_lists_title_and_see_all.dart';
 import 'custom_carousel_slider.dart';
 import 'now_playing_shimmer_loading.dart';
 
@@ -19,16 +19,15 @@ class NowPlayingBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesCubit, MoviesState>(
       buildWhen: (previous, current) =>
-          current is GetMoviesLoading ||
-          current is GetMoviesSuccess ||
-          current is GetMoviesFailure,
+          current is GetNowPlayingMoviesLoading ||
+          current is GetNowPlayingMoviesSuccess ||
+          current is GetNowPlayingMoviesFailure ||
+          current is GetMoviesFromCache,
       builder: (context, state) {
-        var nowPlayingMovies =
-            localCache.getData(DataCacheKeys.nowPlayingMovies);
-        bool dataLoaded = nowPlayingMovies != null;
-        if (state is GetMoviesLoading) {
+        if (state is GetNowPlayingMoviesLoading) {
           return setupLoading();
-        } else if (dataLoaded) {
+        } else if (state is GetNowPlayingMoviesSuccess ||
+            state is GetMoviesFromCache) {
           return setupSuccess();
         } else {
           return setupError();
@@ -42,7 +41,7 @@ class NowPlayingBlocBuilder extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 12.0.h),
       child: Column(
         children: [
-          const MoviesListsHeader(
+          const MoviesListsTitleAndSeeAll(
             title: 'Now Playing',
             movies: [],
           ),
@@ -56,19 +55,15 @@ class NowPlayingBlocBuilder extends StatelessWidget {
   Widget setupSuccess() {
     MoviesModel nowPlayingMovies =
         localCache.getData(DataCacheKeys.nowPlayingMovies);
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12.0.h),
-      child: Column(
-        children: [
-          MoviesListsHeader(
-            title: 'Now Playing',
-            dataLoaded: true,
-            movies: nowPlayingMovies.movies,
-          ),
-          verticalSpace(12),
-          const CustomCarouselSlider(),
-        ],
-      ),
+    return Column(
+      children: [
+        MoviesListsTitleAndSeeAll(
+          title: 'Now Playing',
+          movies: nowPlayingMovies.movies,
+        ),
+        verticalSpace(12),
+        const CustomCarouselSlider(),
+      ],
     );
   }
 
