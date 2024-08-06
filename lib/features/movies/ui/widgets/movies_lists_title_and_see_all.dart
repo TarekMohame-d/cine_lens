@@ -37,11 +37,13 @@ class MoviesListsTitleAndSeeAll extends StatelessWidget {
                 context.pushNamed(Routes.seeAllMoviesScreen, arguments: movies);
               }
             },
-            child: Text(
-              textAlign: TextAlign.start,
-              'See all',
-              style: AppTextStyles.font14BlueAccentMedium,
-            ),
+            child: movies != null
+                ? Text(
+                    textAlign: TextAlign.start,
+                    'See all',
+                    style: AppTextStyles.font14BlueAccentMedium,
+                  )
+                : const SizedBox.shrink(),
           ),
         ],
       ),

@@ -1,4 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
+
 import '../../../../../../core/helpers/api_data_helper.dart';
 import '../../../../../../core/helpers/extensions.dart';
 import '../../../../../../core/helpers/spacing.dart';
@@ -6,9 +10,6 @@ import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/themes/app_colors.dart';
 import '../../../../../../core/themes/app_text_styles.dart';
 import '../../../../data/models/movie_cast_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CastAndCrew extends StatelessWidget {
   const CastAndCrew({super.key, required this.castModel});
@@ -52,8 +53,10 @@ class CastAndCrew extends StatelessWidget {
                   castModel!.cast!.length > 5 ? 5 : castModel!.cast!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                String imageUrl = ApiDataHelper.getImageUrl(
-                    path: castModel!.cast![index].profilePath!);
+                String imageUrl = castModel!.cast![index].profilePath != null
+                    ? ApiDataHelper.getImageUrl(
+                        path: castModel!.cast![index].profilePath!)
+                    : 'https://static-00.iconduck.com/assets.00/no-image-icon-2048x2048-2t5cx953.png';
                 return Padding(
                   padding: EdgeInsets.only(right: 12.0.w),
                   child: Row(
@@ -78,6 +81,7 @@ class CastAndCrew extends StatelessWidget {
                           width: 48.0.w,
                           height: 48.0.h,
                           decoration: BoxDecoration(
+                            color: AppColors.white,
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: imageProvider,

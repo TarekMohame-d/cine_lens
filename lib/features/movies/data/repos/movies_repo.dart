@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cine_rank/core/networking/api_constants.dart';
+import 'package:cine_rank/core/networking/api_error_handler.dart';
+import 'package:cine_rank/core/networking/api_result.dart';
 import 'package:cine_rank/core/networking/api_services.dart';
 import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,7 @@ class MoviesRepo {
     required this.apiService,
   });
 
-  Future<({MoviesModel? moviesModel, bool success})> getNowPlayingMovies(
+  Future<ApiResult<MoviesModel>> getNowPlayingMovies(
       {required int page}) async {
     try {
       final response = await apiService.get(
@@ -24,14 +26,14 @@ class MoviesRepo {
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
-      return (moviesModel: moviesModel, success: true);
+      return ApiResult.success(moviesModel);
     } catch (e) {
       debugPrint('Error while fetching now playing movies: ${e.toString()}');
-      return (moviesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MoviesModel? moviesModel, bool success})> getMostPopularMovies(
+  Future<ApiResult<MoviesModel>> getMostPopularMovies(
       {required int page}) async {
     try {
       final response = await apiService.get(
@@ -43,15 +45,14 @@ class MoviesRepo {
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
-      return (moviesModel: moviesModel, success: true);
+      return ApiResult.success(moviesModel);
     } catch (e) {
       debugPrint('Error while fetching most popular movies: ${e.toString()}');
-      return (moviesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MoviesModel? moviesModel, bool success})> getTopRatedMovies(
-      {required int page}) async {
+  Future<ApiResult<MoviesModel>> getTopRatedMovies({required int page}) async {
     try {
       final response = await apiService.get(
         endPoint: ApiEndPoints.moviesTopRated,
@@ -62,15 +63,14 @@ class MoviesRepo {
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
-      return (moviesModel: moviesModel, success: true);
+      return ApiResult.success(moviesModel);
     } catch (e) {
       debugPrint('Error while fetching top rated movies: ${e.toString()}');
-      return (moviesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MoviesModel? moviesModel, bool success})> getUpcomingMovies(
-      {required int page}) async {
+  Future<ApiResult<MoviesModel>> getUpcomingMovies({required int page}) async {
     try {
       final response = await apiService.get(
         endPoint: ApiEndPoints.moviesUpcoming,
@@ -81,10 +81,10 @@ class MoviesRepo {
         },
       );
       MoviesModel moviesModel = MoviesModel.fromJson(response);
-      return (moviesModel: moviesModel, success: true);
+      return ApiResult.success(moviesModel);
     } catch (e) {
       debugPrint('Error while fetching upcoming movies: ${e.toString()}');
-      return (moviesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 }

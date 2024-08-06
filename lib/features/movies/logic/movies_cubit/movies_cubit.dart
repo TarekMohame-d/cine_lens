@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/networking/api_error_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,54 +15,49 @@ class MoviesCubit extends Cubit<MoviesState> {
   Future<void> getNowPlayingMovies({int? page = 1}) async {
     emit(GetNowPlayingMoviesLoading());
     final result = await moviesRepo.getNowPlayingMovies(page: page!);
-    if (result.success) {
-      saveToCache(
-          key: DataCacheKeys.nowPlayingMovies, value: result.moviesModel!);
+    if (result.isSuccess) {
+      saveToCache(key: DataCacheKeys.nowPlayingMovies, value: result.data!);
       emit(GetNowPlayingMoviesSuccess());
     } else {
-      emit(GetNowPlayingMoviesFailure());
+      emit(GetNowPlayingMoviesFailure(result.error!));
     }
   }
 
   Future<void> getMostPopularMovies({int? page = 1}) async {
     emit(GetMostPopularMoviesLoading());
     final result = await moviesRepo.getMostPopularMovies(page: page!);
-    if (result.success) {
-      saveToCache(
-          key: DataCacheKeys.mostPopularMovies, value: result.moviesModel!);
+    if (result.isSuccess) {
+      saveToCache(key: DataCacheKeys.mostPopularMovies, value: result.data!);
       emit(GetMostPopularMoviesSuccess());
     } else {
-      emit(GetMostPopularMoviesFailure());
+      emit(GetMostPopularMoviesFailure(result.error!));
     }
   }
 
   Future<void> getTopRatedMovies({int? page = 1}) async {
     emit(GetTopRatedMoviesLoading());
     final result = await moviesRepo.getTopRatedMovies(page: page!);
-    if (result.success) {
-      saveToCache(
-          key: DataCacheKeys.topRatedMovies, value: result.moviesModel!);
+    if (result.isSuccess) {
+      saveToCache(key: DataCacheKeys.topRatedMovies, value: result.data!);
       emit(GetTopRatedMoviesSuccess());
     } else {
-      emit(GetTopRatedMoviesFailure());
+      emit(GetTopRatedMoviesFailure(result.error!));
     }
   }
 
   Future<void> getUpcomingMovies({int? page = 1}) async {
     final result = await moviesRepo.getUpcomingMovies(page: page!);
     emit(GetUpcomingMoviesLoading());
-    if (result.success) {
-      saveToCache(
-          key: DataCacheKeys.upcomingMovies, value: result.moviesModel!);
+    if (result.isSuccess) {
+      saveToCache(key: DataCacheKeys.upcomingMovies, value: result.data!);
       emit(GetUpcomingMoviesSuccess());
     } else {
-      emit(GetUpcomingMoviesFailure());
+      emit(GetUpcomingMoviesFailure(result.error!));
     }
   }
 
   Future<void> getMovies({bool wantToRefresh = false}) async {
-    var nowPlayingMovies = localCache.getData(DataCacheKeys.nowPlayingMovies);
-    if (wantToRefresh == false && nowPlayingMovies != null) {
+    if (wantToRefresh == false && allMovieDataExistsInCache()) {
       emit(GetMoviesFromCache());
       return;
     }
@@ -81,6 +77,18 @@ class MoviesCubit extends Cubit<MoviesState> {
     addMovieFutures(getUpcomingMovies);
 
     await Future.wait(futures);
+  }
+
+  bool allMovieDataExistsInCache() {
+    var nowPlayingMovies = localCache.getData(DataCacheKeys.nowPlayingMovies);
+    var mostPopularMovies = localCache.getData(DataCacheKeys.mostPopularMovies);
+    var topRatedMovies = localCache.getData(DataCacheKeys.topRatedMovies);
+    var upcomingMovies = localCache.getData(DataCacheKeys.upcomingMovies);
+
+    return nowPlayingMovies != null &&
+        mostPopularMovies != null &&
+        topRatedMovies != null &&
+        upcomingMovies != null;
   }
 
   void saveToCache({required String key, required MoviesModel value}) {

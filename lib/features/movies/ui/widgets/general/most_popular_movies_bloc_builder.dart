@@ -1,5 +1,8 @@
+import 'package:cine_rank/core/themes/app_colors.dart';
+import 'package:cine_rank/core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -22,13 +25,18 @@ class MostPopularMoviesBlocBuilder extends StatelessWidget {
           current is GetMostPopularMoviesFailure ||
           current is GetMoviesFromCache,
       builder: (context, state) {
-        if (state is GetMostPopularMoviesLoading) {
-          return setupLoading();
-        } else if (state is GetMostPopularMoviesSuccess ||
-            state is GetMoviesFromCache) {
-          return setupSuccess();
-        } else {
-          return setupError();
+        switch (state) {
+          case GetMostPopularMoviesLoading _:
+            return setupLoading();
+          case GetMostPopularMoviesSuccess _:
+          case GetMoviesFromCache _:
+            return setupSuccess();
+          case GetMostPopularMoviesFailure _:
+            return setupError(
+                state.errorModel.statusMessage ?? 'Unknown error',
+                MediaQuery.of(context).size.width);
+          default:
+            return const SizedBox.shrink();
         }
       },
     );
@@ -63,9 +71,36 @@ class MostPopularMoviesBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupError() {
-    return const Center(
-      child: Text('Something went wrong'),
+  Widget setupError(String errorMessage, double screenWidth) {
+    return Column(
+      children: [
+        const MoviesListsTitleAndSeeAll(
+          title: 'Most Popular',
+        ),
+        verticalSpace(12),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+          child: Container(
+            height: 230.0.h,
+            width: screenWidth,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: AppColors.soft,
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  errorMessage,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.font16WhiteSemiBold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

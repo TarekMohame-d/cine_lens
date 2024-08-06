@@ -34,8 +34,10 @@ class MovieProductionCompanies extends StatelessWidget {
                   : productionCompanies.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                String imageUrl = ApiDataHelper.getImageUrl(
-                    path: productionCompanies[index].logoPath!);
+                String imageUrl = productionCompanies[index].logoPath != null
+                    ? ApiDataHelper.getImageUrl(
+                        path: productionCompanies[index].logoPath!)
+                    : 'https://static-00.iconduck.com/assets.00/no-image-icon-2048x2048-2t5cx953.png';
                 return Padding(
                   padding: EdgeInsets.only(right: 12.0.w),
                   child: Row(
