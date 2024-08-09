@@ -33,8 +33,7 @@ class NowPlayingBlocBuilder extends StatelessWidget {
           case GetMoviesFromCache _:
             return setupSuccess();
           case GetNowPlayingMoviesFailure _:
-            return setupError(
-                state.errorModel.statusMessage ?? 'Unknown error',
+            return setupError(state.errorModel.statusMessage ?? 'Unknown error',
                 MediaQuery.of(context).size.width);
           default:
             return const SizedBox.shrink();
@@ -68,7 +67,7 @@ class NowPlayingBlocBuilder extends StatelessWidget {
           movies: nowPlayingMovies.movies,
         ),
         verticalSpace(12),
-        const CustomCarouselSlider(),
+        CustomCarouselSlider(nowPlayingMovies: nowPlayingMovies),
       ],
     );
   }

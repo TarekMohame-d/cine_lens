@@ -16,14 +16,14 @@ class NowPlayingShimmerLoading extends StatefulWidget {
 }
 
 class _NowPlayingShimmerLoadingState extends State<NowPlayingShimmerLoading> {
-  late CarouselController controller;
+  late CarouselSliderController controller;
   late int activeIndex;
 
   @override
   void initState() {
     super.initState();
     activeIndex = 0;
-    controller = CarouselController();
+    controller = CarouselSliderController();
   }
 
   @override

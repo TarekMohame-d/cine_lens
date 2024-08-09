@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/helpers/data_cache.dart';
 import '../../../../../core/helpers/spacing.dart';
 import 'carousel_slider_item.dart';
 import 'custom_animated_smooth_indicator.dart';
@@ -10,7 +9,10 @@ import 'custom_animated_smooth_indicator.dart';
 class CustomCarouselSlider extends StatefulWidget {
   const CustomCarouselSlider({
     super.key,
+    required this.nowPlayingMovies,
   });
+
+  final MoviesModel nowPlayingMovies;
 
   @override
   State<CustomCarouselSlider> createState() => _CustomCarouselSliderState();
@@ -18,21 +20,20 @@ class CustomCarouselSlider extends StatefulWidget {
 
 class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
   late int activeIndex;
-  late CarouselController controller;
+  late CarouselSliderController controller;
 
   @override
   void initState() {
     super.initState();
     activeIndex = 0;
-    controller = CarouselController();
+    controller = CarouselSliderController();
   }
 
   @override
   Widget build(BuildContext context) {
-    var nowPlayingMovies = localCache.getData(DataCacheKeys.nowPlayingMovies);
-    int itemCount = nowPlayingMovies.movies.length > 10
+    int itemCount = widget.nowPlayingMovies.movies!.length > 10
         ? 10
-        : nowPlayingMovies.movies!.length;
+        : widget.nowPlayingMovies.movies!.length;
     return SizedBox(
       height: 230.0.h,
       child: Column(
@@ -54,7 +55,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
               itemCount: itemCount,
               itemBuilder: (context, index, realIndex) {
                 return CarouselSliderItem(
-                  moviesModel: nowPlayingMovies.movies![index],
+                  moviesModel: widget.nowPlayingMovies.movies![index],
                 );
               },
             ),

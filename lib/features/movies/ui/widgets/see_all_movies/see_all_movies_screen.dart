@@ -1,13 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/helpers/spacing.dart';
 import '../../../data/models/movies_model.dart';
 import '../custom_app_bar.dart';
 import 'see_all_list_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SeeAllMoviesScreen extends StatelessWidget {
+class SeeAllMoviesScreen extends StatefulWidget {
   const SeeAllMoviesScreen({super.key, required this.movies});
   final List<Movie> movies;
+
+  @override
+  State<SeeAllMoviesScreen> createState() => _SeeAllMoviesScreenState();
+}
+
+class _SeeAllMoviesScreenState extends State<SeeAllMoviesScreen> {
+  List<Movie> searchList = [];
+  @override
+  void initState() {
+    super.initState();
+    searchList.addAll(widget.movies);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +31,18 @@ class SeeAllMoviesScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppBar(
-                onChanged: (value) {},
+                onChanged: (value) {
+                  searchList = widget.movies
+                      .where((movie) => movie.title!
+                          .toLowerCase()
+                          .contains(value.toLowerCase()))
+                      .toList();
+                  setState(() {});
+                },
               ),
               verticalSpace(12.0),
               Expanded(
-                child: SeeAllListView(movies: movies),
+                child: SeeAllListView(movies: searchList),
               ),
             ],
           ),
