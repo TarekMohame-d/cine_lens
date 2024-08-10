@@ -1,4 +1,6 @@
-import 'package:cine_rank/features/movies/ui/widgets/general_see_all_movies_screen.dart';
+import 'package:cine_rank/features/movies/data/models/movie_cast_model.dart';
+import 'package:cine_rank/features/movies/logic/movies_search_cubit/movies_search_cubit.dart';
+import 'package:cine_rank/features/movies/ui/widgets/search_movies/movies_search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +10,13 @@ import '../../features/home/ui/home_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/login/ui/widgets/login_web_view.dart';
+import '../../features/movies/data/models/movies_model.dart';
+import '../../features/movies/logic/movies_details_cubit/movies_details_cubit.dart';
 import '../../features/movies/ui/movies_screen.dart';
+import '../../features/movies/ui/widgets/movie_details/cast_and_crew/all_cast_and_crew_screen.dart';
+import '../../features/movies/ui/widgets/movie_details/movie_details_screen.dart';
+import '../../features/movies/ui/widgets/movie_details/movie_web_view.dart';
+import '../../features/movies/ui/widgets/see_all_movies/see_all_movies_screen.dart';
 import '../../features/profile/ui/profile_screen.dart';
 import '../../features/series/ui/series_screen.dart';
 import '../di/dependency_injection.dart';
@@ -61,7 +69,38 @@ class AppRouter {
         );
       case Routes.seeAllMoviesScreen:
         return MaterialPageRoute(
-          builder: (context) => const GeneralSeeAllMoviesScreen(),
+          builder: (context) => SeeAllMoviesScreen(
+            movies: arguments as List<Movie>,
+          ),
+        );
+      case Routes.movieDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => MoviesDetailsCubit(getIt())
+              ..getMovieDetailsAndCast(movieId: arguments),
+            child: MovieDetailsScreen(
+              movieId: arguments as int,
+            ),
+          ),
+        );
+      case Routes.movieDetailsWebView:
+        return MaterialPageRoute(
+          builder: (context) => MovieWebView(
+            webViewUrl: arguments as String,
+          ),
+        );
+      case Routes.movieDetailsCastAndCrewSeeAll:
+        return MaterialPageRoute(
+          builder: (context) => AllCastAndCrewScreen(
+            castModel: arguments as CastModel,
+          ),
+        );
+      case Routes.moviesSearchScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => MoviesSearchCubit(getIt()),
+            child: const MoviesSearchScreen(),
+          ),
         );
       default:
         return null;

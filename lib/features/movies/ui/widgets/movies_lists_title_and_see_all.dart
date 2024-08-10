@@ -1,15 +1,19 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MoviesListsHeader extends StatelessWidget {
-  const MoviesListsHeader({
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/themes/app_text_styles.dart';
+import '../../data/models/movies_model.dart';
+
+class MoviesListsTitleAndSeeAll extends StatelessWidget {
+  const MoviesListsTitleAndSeeAll({
     super.key,
     required this.title,
+    this.movies,
   });
   final String title;
+  final List<Movie>? movies;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +33,17 @@ class MoviesListsHeader extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
-              context.pushNamed(Routes.seeAllMoviesScreen);
+              if (movies != null) {
+                context.pushNamed(Routes.seeAllMoviesScreen, arguments: movies);
+              }
             },
-            child: Text(
-              textAlign: TextAlign.start,
-              'See all',
-              style: AppTextStyles.font14BlueAccentMedium,
-            ),
+            child: movies != null
+                ? Text(
+                    textAlign: TextAlign.start,
+                    'See all',
+                    style: AppTextStyles.font14BlueAccentMedium,
+                  )
+                : const SizedBox.shrink(),
           ),
         ],
       ),

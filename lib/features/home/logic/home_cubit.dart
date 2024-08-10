@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/di/dependency_injection.dart';
-import 'package:cine_rank/features/movies/logic/movies_cubit.dart';
+import '../../../core/di/dependency_injection.dart';
+import '../../movies/logic/movies_cubit/movies_cubit.dart';
 
 import '../../actors/ui/actors_screen.dart';
 import '../../movies/ui/movies_screen.dart';
@@ -35,7 +35,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => MoviesCubit(getIt())..getNowPlayingMovies(),
+      create: (context) => MoviesCubit(getIt())..getMovies(),
       child: const MoviesScreen(),
     ),
     const SeriesScreen(),
