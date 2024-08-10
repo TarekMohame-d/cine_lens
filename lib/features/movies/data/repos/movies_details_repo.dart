@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cine_rank/core/networking/api_error_handler.dart';
+import 'package:cine_rank/core/networking/api_result.dart';
 import 'package:cine_rank/core/networking/api_services.dart';
 import 'package:cine_rank/features/movies/data/models/movie_cast_model.dart';
 import 'package:cine_rank/features/movies/data/models/movie_details_model.dart';
@@ -14,7 +16,7 @@ class MoviesDetailsRepo {
     required this.apiService,
   });
 
-  Future<({MovieDetailsModel? movieDetails, bool success})> getMovieDetails(
+  Future<ApiResult<MovieDetailsModel>> getMovieDetails(
       {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId';
@@ -25,14 +27,14 @@ class MoviesDetailsRepo {
         },
       );
       MovieDetailsModel movieDetails = MovieDetailsModel.fromJson(response);
-      return (movieDetails: movieDetails, success: true);
+      return ApiResult.success(movieDetails);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (movieDetails: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({CastModel? castModel, bool success})> getMovieCastAndCrew(
+  Future<ApiResult<CastModel>> getMovieCastAndCrew(
       {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId/credits';
@@ -44,14 +46,14 @@ class MoviesDetailsRepo {
         },
       );
       CastModel castModel = CastModel.fromJson(response);
-      return (castModel: castModel, success: true);
+      return ApiResult.success(castModel);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (castModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MovieVideoModel? movieVideoModel, bool success})> getMovieVideos(
+  Future<ApiResult<MovieVideoModel>> getMovieVideos(
       {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId/videos';
@@ -62,14 +64,14 @@ class MoviesDetailsRepo {
         },
       );
       MovieVideoModel movieVideoModel = MovieVideoModel.fromJson(response);
-      return (movieVideoModel: movieVideoModel, success: true);
+      return ApiResult.success(movieVideoModel);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (movieVideoModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MovieImagesModel? movieImagesModel, bool success})> getMovieImages(
+  Future<ApiResult<MovieImagesModel>> getMovieImages(
       {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId/images';
@@ -81,15 +83,15 @@ class MoviesDetailsRepo {
         },
       );
       MovieImagesModel movieImagesModel = MovieImagesModel.fromJson(response);
-      return (movieImagesModel: movieImagesModel, success: true);
+      return ApiResult.success(movieImagesModel);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (movieImagesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({SimilarMoviesModel? similarMoviesModel, bool success})>
-      getSimilarMovies({required int movieId}) async {
+  Future<ApiResult<SimilarMoviesModel>> getSimilarMovies(
+      {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId/similar';
       final response = await apiService.get(
@@ -101,15 +103,15 @@ class MoviesDetailsRepo {
       );
       SimilarMoviesModel similarMoviesModel =
           SimilarMoviesModel.fromJson(response);
-      return (similarMoviesModel: similarMoviesModel, success: true);
+      return ApiResult.success(similarMoviesModel);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (similarMoviesModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 
-  Future<({MovieWatchProviderModel? movieWatchProviderModel, bool success})>
-      getMovieWatchProviders({required int movieId}) async {
+  Future<ApiResult<MovieWatchProviderModel>> getMovieWatchProviders(
+      {required int movieId}) async {
     try {
       final String endPoint = '/movie/$movieId/watch/providers';
       final response = await apiService.get(
@@ -121,10 +123,10 @@ class MoviesDetailsRepo {
       );
       MovieWatchProviderModel movieWatchProviderModel =
           MovieWatchProviderModel.fromJson(response);
-      return (movieWatchProviderModel: movieWatchProviderModel, success: true);
+      return ApiResult.success(movieWatchProviderModel);
     } catch (e) {
       debugPrint('Error while fetching movie details: ${e.toString()}');
-      return (movieWatchProviderModel: null, success: false);
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 }

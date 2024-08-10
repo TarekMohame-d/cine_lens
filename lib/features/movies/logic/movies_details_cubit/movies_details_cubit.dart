@@ -24,8 +24,8 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
 
   Future<bool> getMovieDetails({required int movieId}) async {
     final result = await moviesRepo.getMovieDetails(movieId: movieId);
-    if (result.success) {
-      movieDetails = result.movieDetails;
+    if (result.isSuccess) {
+      movieDetails = result.data;
       return true;
     } else {
       return false;
@@ -34,8 +34,8 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
 
   Future<bool> getMovieCastAndCrew({required int movieId}) async {
     final result = await moviesRepo.getMovieCastAndCrew(movieId: movieId);
-    if (result.success) {
-      cast = result.castModel;
+    if (result.isSuccess) {
+      cast = result.data;
       return true;
     } else {
       return false;
@@ -48,8 +48,8 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
     if (videoData != null) return;
 
     final result = await moviesRepo.getMovieVideos(movieId: movieId);
-    if (result.success) {
-      movieVideoModel = result.movieVideoModel;
+    if (result.isSuccess) {
+      movieVideoModel = result.data;
       var trailers = <VideoData>[];
 
       for (var video in movieVideoModel!.videoData!) {
@@ -76,8 +76,8 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
 
   Future<bool> getSimilarMovies({required int movieId}) async {
     final result = await moviesRepo.getSimilarMovies(movieId: movieId);
-    if (result.success) {
-      similarMoviesModel = result.similarMoviesModel;
+    if (result.isSuccess) {
+      similarMoviesModel = result.data;
       return true;
     } else {
       return false;
@@ -88,10 +88,10 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
   Future<void> getMovieWatchProviders({required int movieId}) async {
     if (movieWatchProviderModel != null) return;
     final result = await moviesRepo.getMovieWatchProviders(movieId: movieId);
-    if (result.success) {
-      movieWatchProviderModel = result.movieWatchProviderModel;
+    if (result.isSuccess) {
+      movieWatchProviderModel = result.data;
       watchProviders =
-          result.movieWatchProviderModel!.country!.toWatchProviderList();
+          result.data!.country!.toWatchProviderList();
     }
   }
 
