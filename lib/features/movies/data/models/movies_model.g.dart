@@ -11,8 +11,8 @@ MoviesModel _$MoviesModelFromJson(Map<String, dynamic> json) => MoviesModel(
           ? null
           : Dates.fromJson(json['dates'] as Map<String, dynamic>),
       page: (json['page'] as num?)?.toInt(),
-      results: (json['results'] as List<dynamic>?)
-          ?.map((e) => Results.fromJson(e as Map<String, dynamic>))
+      movies: (json['results'] as List<dynamic>?)
+          ?.map((e) => Movie.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalPages: (json['total_pages'] as num?)?.toInt(),
       totalResults: (json['total_results'] as num?)?.toInt(),
@@ -22,7 +22,7 @@ Map<String, dynamic> _$MoviesModelToJson(MoviesModel instance) =>
     <String, dynamic>{
       'dates': instance.dates,
       'page': instance.page,
-      'results': instance.results,
+      'results': instance.movies,
       'total_pages': instance.totalPages,
       'total_results': instance.totalResults,
     };
@@ -37,7 +37,7 @@ Map<String, dynamic> _$DatesToJson(Dates instance) => <String, dynamic>{
       'minimum': instance.minimum,
     };
 
-Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
+Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
       genreIds: (json['genre_ids'] as List<dynamic>?)
@@ -56,7 +56,7 @@ Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
       voteCount: (json['vote_count'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$ResultsToJson(Results instance) => <String, dynamic>{
+Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
       'genre_ids': instance.genreIds,
