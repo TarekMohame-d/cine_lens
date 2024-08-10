@@ -19,8 +19,11 @@ class SeeAllListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(movie.releaseDate!);
-    String genre = ApiDataHelper.getGenreName(movie.genreIds!.first);
-    String imageUrl = ApiDataHelper.getImageUrl(path: movie.posterPath!);
+    String genre = ApiDataHelper.getGenreName(
+        movie.genreIds.isNullOrEmpty() ? -1 : movie.genreIds![0]);
+    String imageUrl = movie.posterPath != null
+        ? ApiDataHelper.getImageUrl(path: movie.posterPath!)
+        : 'https://static-00.iconduck.com/assets.00/no-image-icon-2048x2048-2t5cx953.png';
     return InkWell(
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
@@ -63,6 +66,9 @@ class SeeAllListViewItem extends StatelessWidget {
                   ),
                 ),
               ),
+              errorWidget: (context, url, error) {
+                return const Icon(Icons.error);
+              },
             ),
             horizontalSpace(16),
             Expanded(

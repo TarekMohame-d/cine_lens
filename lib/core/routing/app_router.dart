@@ -1,4 +1,6 @@
 import 'package:cine_rank/features/movies/data/models/movie_cast_model.dart';
+import 'package:cine_rank/features/movies/logic/movies_search_cubit/movies_search_cubit.dart';
+import 'package:cine_rank/features/movies/ui/widgets/search_movies/movies_search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -91,6 +93,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => AllCastAndCrewScreen(
             castModel: arguments as CastModel,
+          ),
+        );
+      case Routes.moviesSearchScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => MoviesSearchCubit(getIt()),
+            child: const MoviesSearchScreen(),
           ),
         );
       default:

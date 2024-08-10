@@ -1,7 +1,10 @@
+import 'package:cine_rank/core/helpers/extensions.dart';
+import 'package:cine_rank/core/routing/routes.dart';
 import 'package:cine_rank/features/movies/ui/widgets/general/top_rated_movies_bloc_builder.dart';
 import 'package:cine_rank/features/movies/ui/widgets/general/up_comming_movies_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/helpers/spacing.dart';
 import '../../../core/themes/app_colors.dart';
@@ -21,8 +24,20 @@ class MoviesScreen extends StatelessWidget {
       backgroundColor: AppColors.soft,
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: verticalSpace(24),
+          SliverAppBar(
+            backgroundColor: AppColors.dark,
+            actions: [
+              IconButton(
+                iconSize: 28.0.r,
+                onPressed: () {
+                  context.pushNamed(Routes.moviesSearchScreen);
+                },
+                icon: const Icon(
+                  Icons.search_outlined,
+                  color: AppColors.grey,
+                ),
+              ),
+            ],
           ),
           const SliverToBoxAdapter(
             child: NowPlayingBlocBuilder(),

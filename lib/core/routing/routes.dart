@@ -10,6 +10,9 @@ class Routes {
 
   static const String seeAllMoviesScreen = '/seeAllMoviesScreen';
   static const String movieDetailsScreen = '/movieDetailsScreen';
-  static const String movieDetailsCastAndCrewSeeAll = '/movieDetailsCastAndCrewSeeAll';
+  static const String movieDetailsCastAndCrewSeeAll =
+      '/movieDetailsCastAndCrewSeeAll';
   static const String movieDetailsWebView = '/movieDetailsWebView';
+
+  static const String moviesSearchScreen = '/moviesSearchScreen';
 }
