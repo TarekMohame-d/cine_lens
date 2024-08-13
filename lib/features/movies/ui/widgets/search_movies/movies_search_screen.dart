@@ -7,9 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviesSearchScreen extends StatelessWidget {
   const MoviesSearchScreen({super.key});
-  // todo: make moves search bloc
-  // todo: make moves search repo
-  // todo: finish movies search screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(

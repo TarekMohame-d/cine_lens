@@ -18,7 +18,7 @@ class SeeAllListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String date = changeDateFormate(movie.releaseDate!);
+    String date = changeDateFormate(movie.releaseDate ?? '');
     String genre = ApiDataHelper.getGenreName(
         movie.genreIds.isNullOrEmpty() ? -1 : movie.genreIds![0]);
     String imageUrl = movie.posterPath != null
@@ -134,8 +134,12 @@ class SeeAllListViewItem extends StatelessWidget {
   }
 
   String changeDateFormate(String date) {
-    final DateTime dateTime = DateTime.parse(date);
-    final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
-    return formattedDate;
+    try {
+      final DateTime dateTime = DateTime.parse(date);
+      final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
+      return formattedDate;
+    } on Exception {
+      return 'N/A';
+    }
   }
 }

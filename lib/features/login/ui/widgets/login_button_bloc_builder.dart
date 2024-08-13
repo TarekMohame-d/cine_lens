@@ -16,7 +16,7 @@ class LoginButtonBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         var cubit = context.read<LoginCubit>();
         return AppTextButton(
-          onPressed: () async {
+          onPressed: () {
             context.pushNamed(
               Routes.webViewScreen,
               arguments: cubit.requestTokenModel!.requestToken!,

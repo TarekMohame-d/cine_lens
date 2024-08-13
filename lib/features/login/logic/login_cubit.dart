@@ -20,8 +20,8 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> getRequestToken() async {
     emit(LoginGetRequestTokenLoading());
     final result = await loginRepo.getRequestToken();
-    if (result.$2) {
-      requestTokenModel = result.$1;
+    if (result.isSuccess) {
+      requestTokenModel = result.data;
       SharedPrefHelper.setSecuredString(
           SharedPrefKeys.requestToken, requestTokenModel!.requestToken!);
       emit(LoginGetRequestTokenSuccess());
@@ -39,8 +39,8 @@ class LoginCubit extends Cubit<LoginState> {
         'request_token': requestToken,
       },
     );
-    if (result.$2) {
-      sessionModel = result.$1;
+    if (result.isSuccess) {
+      sessionModel = result.data;
       if (sessionModel!.success! == true) {
         SharedPrefHelper.setSecuredString(
             SharedPrefKeys.sessionId, sessionModel!.sessionId!);
@@ -58,9 +58,9 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await loginRepo.getUserAccount(
       sessionId: sessionId,
     );
-    if (result.$2) {
-      localCache.setData(DataCacheKeys.userAccountData, result.$1);
-      SharedPrefHelper.setSecuredInt(SharedPrefKeys.userId, result.$1!.id!);
+    if (result.isSuccess) {
+      localCache.setData(DataCacheKeys.userAccountData, result.data);
+      SharedPrefHelper.setSecuredInt(SharedPrefKeys.userId, result.data!.id!);
       emit(LoginGetUserDataSuccess());
     } else {
       emit(LoginGetUserDataFailure());

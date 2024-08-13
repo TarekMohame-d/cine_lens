@@ -24,17 +24,17 @@ class SharedPrefHelper {
   static setData(String key, value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     debugPrint("SharedPrefHelper : setData with key : $key and value : $value");
-    switch (value.runtimeType) {
-      case String:
+    switch (value) {
+      case String _:
         await sharedPreferences.setString(key, value);
         break;
-      case int:
+      case int _:
         await sharedPreferences.setInt(key, value);
         break;
-      case bool:
+      case bool _:
         await sharedPreferences.setBool(key, value);
         break;
-      case double:
+      case double _:
         await sharedPreferences.setDouble(key, value);
         break;
       default:
