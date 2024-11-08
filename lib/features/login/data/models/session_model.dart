@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'session_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class SessionModel {
   bool? success;
   bool? failure;
@@ -24,6 +24,4 @@ class SessionModel {
 
   factory SessionModel.fromJson(Map<String, dynamic> json) =>
       _$SessionModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SessionModelToJson(this);
 }

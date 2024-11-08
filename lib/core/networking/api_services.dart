@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'api_constants.dart';
 
 class ApiService {
-  final _baseUrl = ApiConstants.apiBaseUrl;
+  final _baseUrl = KApiConstants.apiBaseUrl;
   final Dio _dio;
   ApiService({
     required Dio dio,

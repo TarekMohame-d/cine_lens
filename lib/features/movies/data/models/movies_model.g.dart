@@ -12,32 +12,18 @@ MoviesModel _$MoviesModelFromJson(Map<String, dynamic> json) => MoviesModel(
           : Dates.fromJson(json['dates'] as Map<String, dynamic>),
       page: (json['page'] as num?)?.toInt(),
       movies: (json['results'] as List<dynamic>?)
-          ?.map((e) => Movie.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => MovieData.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalPages: (json['total_pages'] as num?)?.toInt(),
       totalResults: (json['total_results'] as num?)?.toInt(),
     );
-
-Map<String, dynamic> _$MoviesModelToJson(MoviesModel instance) =>
-    <String, dynamic>{
-      'dates': instance.dates,
-      'page': instance.page,
-      'results': instance.movies,
-      'total_pages': instance.totalPages,
-      'total_results': instance.totalResults,
-    };
 
 Dates _$DatesFromJson(Map<String, dynamic> json) => Dates(
       maximum: json['maximum'] as String?,
       minimum: json['minimum'] as String?,
     );
 
-Map<String, dynamic> _$DatesToJson(Dates instance) => <String, dynamic>{
-      'maximum': instance.maximum,
-      'minimum': instance.minimum,
-    };
-
-Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
+MovieData _$MovieDataFromJson(Map<String, dynamic> json) => MovieData(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
       genreIds: (json['genre_ids'] as List<dynamic>?)
@@ -55,20 +41,3 @@ Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
       voteAverage: (json['vote_average'] as num?)?.toDouble(),
       voteCount: (json['vote_count'] as num?)?.toInt(),
     );
-
-Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
-      'adult': instance.adult,
-      'backdrop_path': instance.backdropPath,
-      'genre_ids': instance.genreIds,
-      'id': instance.id,
-      'original_language': instance.originalLanguage,
-      'original_title': instance.originalTitle,
-      'overview': instance.overview,
-      'popularity': instance.popularity,
-      'poster_path': instance.posterPath,
-      'release_date': instance.releaseDate,
-      'title': instance.title,
-      'video': instance.video,
-      'vote_average': instance.voteAverage,
-      'vote_count': instance.voteCount,
-    };

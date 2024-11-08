@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../themes/app_colors.dart';
-import '../themes/app_text_styles.dart';
+import '../themes/colors.dart';
+import '../themes/text_styles.dart';
 
 class AppTextField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
@@ -44,7 +44,7 @@ class AppTextField extends StatelessWidget {
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: AppColors.soft,
+                color: KColors.soft,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(24),
@@ -52,20 +52,20 @@ class AppTextField extends StatelessWidget {
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: AppColors.soft,
+                color: KColors.soft,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(24),
             ),
-        hintStyle: hintStyle ?? AppTextStyles.font14GreySemiBold,
+        hintStyle: hintStyle ?? KTextStyles.font14GreySemiBold,
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         filled: true,
-        fillColor: backGroundColor ?? AppColors.soft,
+        fillColor: backGroundColor ?? KColors.soft,
       ),
-      style: AppTextStyles.font14WhiteMedium,
-      cursorColor: AppColors.grey,
+      style: KTextStyles.font14WhiteMedium,
+      cursorColor: KColors.grey,
       onChanged: onChanged,
     );
   }

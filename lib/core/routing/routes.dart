@@ -1,4 +1,4 @@
-class Routes {
+class KRoutes {
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String loginScreen = '/loginScreen';
   static const String webViewScreen = '/webViewScreen';

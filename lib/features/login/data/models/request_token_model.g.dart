@@ -12,10 +12,3 @@ RequestTokenModel _$RequestTokenModelFromJson(Map<String, dynamic> json) =>
       expiresAt: json['expires_at'] as String?,
       requestToken: json['request_token'] as String?,
     );
-
-Map<String, dynamic> _$RequestTokenModelToJson(RequestTokenModel instance) =>
-    <String, dynamic>{
-      'success': instance.success,
-      'expires_at': instance.expiresAt,
-      'request_token': instance.requestToken,
-    };

@@ -1,107 +1,71 @@
-import 'package:cine_rank/features/movies/data/models/movie_cast_model.dart';
-import 'package:cine_rank/features/movies/logic/movies_search_cubit/movies_search_cubit.dart';
-import 'package:cine_rank/features/movies/ui/widgets/search_movies/movies_search_screen.dart';
+import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
+import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
+import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
+import 'package:cine_rank/features/login/presentation/widgets/login_web_view.dart';
+import 'package:cine_rank/features/movies/presentation/widgets/see_all_movies/see_all_movies_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/actors/ui/actors_screen.dart';
-import '../../features/home/logic/home_cubit.dart';
-import '../../features/home/ui/home_screen.dart';
-import '../../features/login/logic/login_cubit.dart';
-import '../../features/login/ui/login_screen.dart';
-import '../../features/login/ui/widgets/login_web_view.dart';
 import '../../features/movies/data/models/movies_model.dart';
-import '../../features/movies/logic/movies_details_cubit/movies_details_cubit.dart';
-import '../../features/movies/ui/movies_screen.dart';
-import '../../features/movies/ui/widgets/movie_details/cast_and_crew/all_cast_and_crew_screen.dart';
-import '../../features/movies/ui/widgets/movie_details/movie_details_screen.dart';
-import '../../features/movies/ui/widgets/movie_details/movie_web_view.dart';
-import '../../features/movies/ui/widgets/see_all_movies/see_all_movies_screen.dart';
-import '../../features/profile/ui/profile_screen.dart';
-import '../../features/series/ui/series_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 
-class AppRouter {
+class KAppRouter {
   Route? generateRoute(RouteSettings settings) {
     // this arguments to be passed in any screen like this => arguments as ClassName
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      case Routes.loginScreen:
+      case KRoutes.loginScreen:
+        return MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        );
+      case KRoutes.webViewScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => LoginCubit(getIt())..getRequestToken(),
-            child: const LoginScreen(),
+            create: (context) => LoginCubit(getIt(), getIt(), getIt()),
+            child: LoginWebView(),
           ),
         );
-      case Routes.webViewScreen:
+      case KRoutes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => LoginCubit(getIt()),
-            child: LoginWebView(
-              requestToken: arguments as String,
-            ),
-          ),
+          builder: (context) => const HomeScreen(),
         );
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => HomeCubit(),
-            child: const HomeScreen(),
-          ),
-        );
-      case Routes.moviesScreen:
-        return MaterialPageRoute(
-          builder: (context) => const MoviesScreen(),
-        );
-      case Routes.seriesScreen:
-        return MaterialPageRoute(
-          builder: (context) => const SeriesScreen(),
-        );
-      case Routes.actorsScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ActorsScreen(),
-        );
-      case Routes.profileScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
-        );
-      case Routes.seeAllMoviesScreen:
+      case KRoutes.seeAllMoviesScreen:
         return MaterialPageRoute(
           builder: (context) => SeeAllMoviesScreen(
-            movies: arguments as List<Movie>,
+            movies: arguments as List<MovieData>,
           ),
         );
-      case Routes.movieDetailsScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => MoviesDetailsCubit(getIt())
-              ..getMovieDetailsAndCast(movieId: arguments),
-            child: MovieDetailsScreen(
-              movieId: arguments as int,
-            ),
-          ),
-        );
-      case Routes.movieDetailsWebView:
-        return MaterialPageRoute(
-          builder: (context) => MovieWebView(
-            webViewUrl: arguments as String,
-          ),
-        );
-      case Routes.movieDetailsCastAndCrewSeeAll:
-        return MaterialPageRoute(
-          builder: (context) => AllCastAndCrewScreen(
-            castModel: arguments as CastModel,
-          ),
-        );
-      case Routes.moviesSearchScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => MoviesSearchCubit(getIt()),
-            child: const MoviesSearchScreen(),
-          ),
-        );
+      // case KRoutes.movieDetailsScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => BlocProvider(
+      //       create: (context) => MoviesDetailsCubit(getIt())
+      //         ..getMovieDetailsAndCast(movieId: arguments),
+      //       child: MovieDetailsScreen(
+      //         movieId: arguments as int,
+      //       ),
+      //     ),
+      //   );
+      // case KRoutes.movieDetailsWebView:
+      //   return MaterialPageRoute(
+      //     builder: (context) => MovieWebView(
+      //       webViewUrl: arguments as String,
+      //     ),
+      //   );
+      // case KRoutes.movieDetailsCastAndCrewSeeAll:
+      //   return MaterialPageRoute(
+      //     builder: (context) => AllCastAndCrewScreen(
+      //       castModel: arguments as CastModel,
+      //     ),
+      //   );
+      // case KRoutes.moviesSearchScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => BlocProvider(
+      //       create: (context) => MoviesSearchCubit(getIt()),
+      //       child: const MoviesSearchScreen(),
+      //     ),
+      //   );
       default:
         return null;
     }

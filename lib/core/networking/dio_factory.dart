@@ -8,22 +8,21 @@ class DioFactory {
   static Dio? dio;
 
   static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 30);
-
     if (dio == null) {
+      Duration timeOut = const Duration(seconds: 30);
       dio = Dio();
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
-      addDioHeaders();
-      addDioInterceptor();
+      _addDioHeaders();
+      _addDioInterceptor();
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioHeaders() async {
+  static void _addDioHeaders() async {
     dio?.options.headers = {
       'accept': 'application/json',
       'Authorization':
@@ -31,7 +30,7 @@ class DioFactory {
     };
   }
 
-  static void addDioInterceptor() {
+  static void _addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,
