@@ -1,40 +1,40 @@
-// import 'package:easy_gpa/core/theme/colors.dart';
-// import 'package:flutter/material.dart';
+import 'package:cine_rank/core/themes/colors.dart';
+import 'package:flutter/material.dart';
 
-// class KInputDecorationTheme {
-//   KInputDecorationTheme._();
+class KInputDecorationTheme {
+  KInputDecorationTheme._();
 
-//   static final inputDecorationTheme = InputDecorationTheme(
-//     isDense: true,
-//     focusedBorder: OutlineInputBorder(
-//       borderSide: const BorderSide(
-//         color: KColors.lightOrange,
-//         width: 1.3,
-//       ),
-//       borderRadius: BorderRadius.circular(12),
-//     ),
-//     enabledBorder: OutlineInputBorder(
-//       borderSide: const BorderSide(
-//         color: Colors.grey,
-//         width: 1.3,
-//       ),
-//       borderRadius: BorderRadius.circular(12),
-//     ),
-//     errorBorder: OutlineInputBorder(
-//       borderSide: const BorderSide(
-//         color: Colors.red,
-//         width: 1.3,
-//       ),
-//       borderRadius: BorderRadius.circular(12),
-//     ),
-//     focusedErrorBorder: OutlineInputBorder(
-//       borderSide: const BorderSide(
-//         color: Colors.red,
-//         width: 1.3,
-//       ),
-//       borderRadius: BorderRadius.circular(12),
-//     ),
-//     filled: true,
-//     fillColor: KColors.white,
-//   );
-// }
+  static final inputDecorationTheme = InputDecorationTheme(
+    isDense: true,
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: KColors.soft,
+        width: 1.3,
+      ),
+      borderRadius: BorderRadius.circular(24),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: KColors.soft,
+        width: 1.3,
+      ),
+      borderRadius: BorderRadius.circular(24),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Colors.red,
+        width: 1.3,
+      ),
+      borderRadius: BorderRadius.circular(24),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Colors.red,
+        width: 1.3,
+      ),
+      borderRadius: BorderRadius.circular(24),
+    ),
+    filled: true,
+    fillColor: KColors.soft,
+  );
+}

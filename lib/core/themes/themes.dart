@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/themes/custom_themes/input_decoration_theme.dart';
 import 'package:cine_rank/core/themes/custom_themes/snack_bar_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +14,7 @@ class KThemes {
     scaffoldBackgroundColor: KColors.scaffoldBackgroundColor,
     fontFamily: 'Montserrat',
     snackBarTheme: KSnackBarTheme.snackBarDarkTheme,
+    inputDecorationTheme: KInputDecorationTheme.inputDecorationTheme,
   );
 
   static final ThemeData lightTheme = ThemeData(

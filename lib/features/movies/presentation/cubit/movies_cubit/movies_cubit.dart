@@ -21,9 +21,9 @@ class MoviesCubit extends Cubit<MoviesState> {
     this._getUpcomingMoviesUseCase,
   ) : super(MoviesInitial());
 
-  Future<void> getNowPlayingMovies([int page = 1]) async {
+  Future<void> getNowPlayingMovies({int page = 1, bool refresh = false}) async {
     emit(GetNowPlayingMoviesLoading());
-    final result = await _getNowPlayingMoviesUseCase.call(page);
+    final result = await _getNowPlayingMoviesUseCase.call(page, refresh);
     if (result.isSuccess) {
       emit(GetNowPlayingMoviesSuccess(result.data!));
     } else {
@@ -31,9 +31,10 @@ class MoviesCubit extends Cubit<MoviesState> {
     }
   }
 
-  Future<void> getMostPopularMovies([int page = 1]) async {
+  Future<void> getMostPopularMovies(
+      {int page = 1, bool refresh = false}) async {
     emit(GetMostPopularMoviesLoading());
-    final result = await _getMostPopularMoviesUseCase.call(page);
+    final result = await _getMostPopularMoviesUseCase.call(page, refresh);
     if (result.isSuccess) {
       emit(GetMostPopularMoviesSuccess(result.data!));
     } else {
@@ -41,9 +42,9 @@ class MoviesCubit extends Cubit<MoviesState> {
     }
   }
 
-  Future<void> getTopRatedMovies([int page = 1]) async {
+  Future<void> getTopRatedMovies({int page = 1, bool refresh = false}) async {
     emit(GetTopRatedMoviesLoading());
-    final result = await _getTopRatedMoviesUseCase.call(page);
+    final result = await _getTopRatedMoviesUseCase.call(page, refresh);
     if (result.isSuccess) {
       emit(GetTopRatedMoviesSuccess(result.data!));
     } else {
@@ -51,13 +52,22 @@ class MoviesCubit extends Cubit<MoviesState> {
     }
   }
 
-  Future<void> getUpcomingMovies([int page = 1]) async {
+  Future<void> getUpcomingMovies({int page = 1, bool refresh = false}) async {
     emit(GetUpcomingMoviesLoading());
-    final result = await _getUpcomingMoviesUseCase.call(page);
+    final result = await _getUpcomingMoviesUseCase.call(page, refresh);
     if (result.isSuccess) {
       emit(GetUpcomingMoviesSuccess(result.data!));
     } else {
       emit(GetUpcomingMoviesFailure(result.error!));
     }
+  }
+
+  Future<void> refreshData() async {
+    await Future.wait([
+      getNowPlayingMovies(refresh: true),
+      getMostPopularMovies(refresh: true),
+      getTopRatedMovies(refresh: true),
+      getUpcomingMovies(refresh: true),
+    ]);
   }
 }

@@ -2,11 +2,11 @@ import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
 import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
 import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
 import 'package:cine_rank/features/login/presentation/widgets/login_web_view.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/see_all_movies/see_all_movies_screen.dart';
+import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
+import 'package:cine_rank/features/search_movies/presentation/screens/movies_search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/movies/data/models/movies_model.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 
@@ -31,12 +31,12 @@ class KAppRouter {
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         );
-      case KRoutes.seeAllMoviesScreen:
-        return MaterialPageRoute(
-          builder: (context) => SeeAllMoviesScreen(
-            movies: arguments as List<MovieData>,
-          ),
-        );
+      // case KRoutes.seeAllMoviesScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => SeeAllMoviesScreen(
+      //       movies: arguments as List<MovieData>,
+      //     ),
+      //   );
       // case KRoutes.movieDetailsScreen:
       //   return MaterialPageRoute(
       //     builder: (context) => BlocProvider(
@@ -59,13 +59,13 @@ class KAppRouter {
       //       castModel: arguments as CastModel,
       //     ),
       //   );
-      // case KRoutes.moviesSearchScreen:
-      //   return MaterialPageRoute(
-      //     builder: (context) => BlocProvider(
-      //       create: (context) => MoviesSearchCubit(getIt()),
-      //       child: const MoviesSearchScreen(),
-      //     ),
-      //   );
+      case KRoutes.moviesSearchScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => MoviesSearchCubit(getIt()),
+            child: const MoviesSearchScreen(),
+          ),
+        );
       default:
         return null;
     }

@@ -17,9 +17,7 @@ class MoviesListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     String genre = KApiDataHelper.getGenreName(movie.genreIds!);
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath!);
-    return InkWell(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
+    return GestureDetector(
       onTap: () {
         // context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
       },

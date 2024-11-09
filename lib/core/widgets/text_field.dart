@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../themes/colors.dart';
 import '../themes/text_styles.dart';
 
-class AppTextField extends StatelessWidget {
+class KTextField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
-  final String hintText;
+  final TextStyle? labelStyle;
+  final String? hintText;
+  final String? labelText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final Color? backGroundColor;
   final TextEditingController? controller;
   final void Function(String)? onChanged;
-  const AppTextField({
+
+  const KTextField({
     super.key,
     this.contentPadding,
     this.focusedBorder,
@@ -24,11 +26,12 @@ class AppTextField extends StatelessWidget {
     this.inputTextStyle,
     this.hintStyle,
     this.suffixIcon,
-    required this.hintText,
+    this.hintText,
     this.backGroundColor,
     this.controller,
     this.prefixIcon,
     this.onChanged,
+    this.labelText, this.labelStyle,
   });
 
   @override
@@ -37,34 +40,19 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         isDense: true,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(
-              vertical: 16.h,
-            ),
-        focusedBorder: focusedBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: KColors.soft,
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(24),
-            ),
-        enabledBorder: enabledBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: KColors.soft,
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(24),
-            ),
-        hintStyle: hintStyle ?? KTextStyles.font14GreySemiBold,
+        contentPadding: contentPadding,
+        focusedBorder: focusedBorder,
+        enabledBorder: enabledBorder,
+        hintStyle: hintStyle ?? KTextStyles.font12GreyMedium,
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         filled: true,
-        fillColor: backGroundColor ?? KColors.soft,
+        fillColor: backGroundColor,
+        labelText: labelText,
+        labelStyle: labelStyle ?? KTextStyles.font12GreyMedium,
       ),
-      style: KTextStyles.font14WhiteMedium,
+      style: inputTextStyle ?? KTextStyles.font12WhiteGreyMedium,
       cursorColor: KColors.grey,
       onChanged: onChanged,
     );

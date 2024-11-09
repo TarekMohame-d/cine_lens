@@ -3,12 +3,14 @@ import 'package:cine_rank/features/login/domain/repository/login_repo.dart';
 import 'package:cine_rank/features/login/domain/usecases/create_request_token_use_case.dart';
 import 'package:cine_rank/features/login/domain/usecases/create_session_use_case.dart';
 import 'package:cine_rank/features/login/domain/usecases/get_user_id_use_case.dart';
-import 'package:cine_rank/features/movies/data/repository/movies_search_repo.dart';
 import 'package:cine_rank/features/movies/domain/repository/movies_repo.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
+import 'package:cine_rank/features/search_movies/data/repository/search_movie_repo_impl.dart';
+import 'package:cine_rank/features/search_movies/domain/repository/search_movie_repo.dart';
+import 'package:cine_rank/features/search_movies/domain/usecases/search_movie_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -48,6 +50,7 @@ Future<void> setupGetIt() async {
       () => MoviesDetailsRepo(apiService: getIt()));
 
   // movies search
-  getIt.registerLazySingleton<MoviesSearchRepo>(
-      () => MoviesSearchRepo(apiService: getIt()));
+  getIt.registerLazySingleton<SearchMovieRepo>(() => SearchMovieRepoImpl());
+  getIt.registerLazySingleton<SearchMovieUseCase>(
+      () => SearchMovieUseCase(getIt()));
 }

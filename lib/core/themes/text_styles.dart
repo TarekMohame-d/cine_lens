@@ -29,7 +29,7 @@ class KTextStyles {
     color: KColors.grey,
     fontWeight: FontWeightHelper.medium,
   );
-
+  
   static TextStyle font12blueAccentMedium = TextStyle(
     fontSize: 12.0.sp,
     color: KColors.blueAccent,

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -10,40 +11,36 @@ import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/themes/text_styles.dart';
-import '../../../data/models/movies_model.dart';
 
 class SeeAllListViewItem extends StatelessWidget {
   const SeeAllListViewItem({super.key, required this.movie});
-  final MovieData movie;
+  final MovieEntity movie;
 
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(movie.releaseDate ?? '');
-    String genre = KApiDataHelper.getGenreName(
-        movie.genreIds.isNullOrEmpty() ? -1 : movie.genreIds![0]);
+    String genre = KApiDataHelper.getGenreName(movie.genreIds!);
     String imageUrl = movie.posterPath != null
         ? KApiDataHelper.getImageUrl(path: movie.posterPath!)
         : 'https://static-00.iconduck.com/assets.00/no-image-icon-2048x2048-2t5cx953.png';
-    return InkWell(
-      focusColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
+    return GestureDetector(
       onTap: () {
         context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
       },
       child: Container(
         height: 170.0.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           color: KColors.soft,
         ),
         margin: EdgeInsets.only(bottom: 16.0.h),
         child: Row(
           children: [
             CachedNetworkImage(
-              height: 170.0.h,
-              width: 116.0.w,
+              height: 170.h,
+              width: 115.w,
+              memCacheWidth: 170.w.toInt(),
+              maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
               imageUrl: imageUrl,
               placeholder: (context, url) => Shimmer.fromColors(
                 baseColor: KColors.grey,
@@ -77,7 +74,7 @@ class SeeAllListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title!,
+                    movie.originalTitle!,
                     style: KTextStyles.font16WhiteSemiBold,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

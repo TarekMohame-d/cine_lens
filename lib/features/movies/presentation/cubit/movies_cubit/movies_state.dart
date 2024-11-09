@@ -5,8 +5,6 @@ sealed class MoviesState {}
 
 final class MoviesInitial extends MoviesState {}
 
-final class MoviesSearch extends MoviesState {}
-
 final class GetNowPlayingMoviesLoading extends MoviesState {}
 
 final class GetNowPlayingMoviesSuccess extends MoviesState {
