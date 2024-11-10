@@ -1,4 +1,6 @@
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_rank/core/enums/movies_categories.dart';
+import 'package:cine_rank/core/helpers/extensions.dart';
+import 'package:cine_rank/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,10 +10,8 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
   const MoviesCategoryAndSeeAll({
     super.key,
     required this.category,
-    this.movies,
   });
-  final String category;
-  final List<MovieEntity>? movies;
+  final MoviesCategoriesEnum category;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
         children: [
           Text(
             textAlign: TextAlign.start,
-            category,
+            getCategoryName(category),
             style: KTextStyles.font16WhiteSemiBold,
           ),
           const Spacer(),
@@ -29,10 +29,8 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
-              // if (movies != null) {
-              //   context.pushNamed(KRoutes.seeAllMoviesScreen,
-              //       arguments: movies);
-              // }
+              context.pushNamed(KRoutes.seeAllMoviesScreen,
+                  arguments: category);
             },
             child: Text(
               textAlign: TextAlign.start,
@@ -43,5 +41,18 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getCategoryName(MoviesCategoriesEnum category) {
+    switch (category) {
+      case MoviesCategoriesEnum.nowPlaying:
+        return 'Now Playing';
+      case MoviesCategoriesEnum.mostPopular:
+        return 'Most Popular';
+      case MoviesCategoriesEnum.topRated:
+        return 'Top Rated';
+      case MoviesCategoriesEnum.upComing:
+        return 'Up Comming';
+    }
   }
 }

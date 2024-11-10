@@ -1,7 +1,10 @@
+import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
 import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
 import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
 import 'package:cine_rank/features/login/presentation/widgets/login_web_view.dart';
+import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
+import 'package:cine_rank/features/movies/presentation/screens/see_all_movies_screen.dart';
 import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
 import 'package:cine_rank/features/search_movies/presentation/screens/movies_search_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +34,15 @@ class KAppRouter {
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         );
-      // case KRoutes.seeAllMoviesScreen:
-      //   return MaterialPageRoute(
-      //     builder: (context) => SeeAllMoviesScreen(
-      //       movies: arguments as List<MovieData>,
-      //     ),
-      //   );
+      case KRoutes.seeAllMoviesScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<MoviesCubit>(),
+            child: SeeAllMoviesScreen(
+              category: arguments as MoviesCategoriesEnum,
+            ),
+          ),
+        );
       // case KRoutes.movieDetailsScreen:
       //   return MaterialPageRoute(
       //     builder: (context) => BlocProvider(

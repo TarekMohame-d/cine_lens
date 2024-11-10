@@ -8,6 +8,7 @@ import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movie
 import 'package:cine_rank/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
+import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
 import 'package:cine_rank/features/search_movies/data/repository/search_movie_repo_impl.dart';
 import 'package:cine_rank/features/search_movies/domain/repository/search_movie_repo.dart';
 import 'package:cine_rank/features/search_movies/domain/usecases/search_movie_use_case.dart';
@@ -53,4 +54,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<SearchMovieRepo>(() => SearchMovieRepoImpl());
   getIt.registerLazySingleton<SearchMovieUseCase>(
       () => SearchMovieUseCase(getIt()));
+
+  // movies cubit
+  getIt.registerFactory<MoviesCubit>(
+      () => MoviesCubit(getIt(), getIt(), getIt(), getIt()));
 }

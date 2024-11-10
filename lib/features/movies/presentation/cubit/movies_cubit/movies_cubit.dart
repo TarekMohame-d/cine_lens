@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/core/networking/api_error_model.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
@@ -21,53 +22,69 @@ class MoviesCubit extends Cubit<MoviesState> {
     this._getUpcomingMoviesUseCase,
   ) : super(MoviesInitial());
 
-  Future<void> getNowPlayingMovies({int page = 1, bool refresh = false}) async {
+  Future<List<MovieEntity>> getNowPlayingMovies([bool more = false]) async {
     emit(GetNowPlayingMoviesLoading());
-    final result = await _getNowPlayingMoviesUseCase.call(page, refresh);
+    final result = await _getNowPlayingMoviesUseCase.call(more);
     if (result.isSuccess) {
       emit(GetNowPlayingMoviesSuccess(result.data!));
     } else {
       emit(GetNowPlayingMoviesFailure(result.error!));
     }
+    return result.data ?? [];
   }
 
-  Future<void> getMostPopularMovies(
-      {int page = 1, bool refresh = false}) async {
+  Future<List<MovieEntity>> getMostPopularMovies([bool more = false]) async {
     emit(GetMostPopularMoviesLoading());
-    final result = await _getMostPopularMoviesUseCase.call(page, refresh);
+    final result = await _getMostPopularMoviesUseCase.call(more);
     if (result.isSuccess) {
       emit(GetMostPopularMoviesSuccess(result.data!));
+      return result.data!;
     } else {
       emit(GetMostPopularMoviesFailure(result.error!));
     }
+    return result.data ?? [];
   }
 
-  Future<void> getTopRatedMovies({int page = 1, bool refresh = false}) async {
+  Future<List<MovieEntity>> getTopRatedMovies([bool more = false]) async {
     emit(GetTopRatedMoviesLoading());
-    final result = await _getTopRatedMoviesUseCase.call(page, refresh);
+    final result = await _getTopRatedMoviesUseCase.call(more);
     if (result.isSuccess) {
       emit(GetTopRatedMoviesSuccess(result.data!));
     } else {
       emit(GetTopRatedMoviesFailure(result.error!));
     }
+    return result.data ?? [];
   }
 
-  Future<void> getUpcomingMovies({int page = 1, bool refresh = false}) async {
+  Future<List<MovieEntity>> getUpcomingMovies([bool more = false]) async {
     emit(GetUpcomingMoviesLoading());
-    final result = await _getUpcomingMoviesUseCase.call(page, refresh);
+    final result = await _getUpcomingMoviesUseCase.call(more);
     if (result.isSuccess) {
       emit(GetUpcomingMoviesSuccess(result.data!));
     } else {
       emit(GetUpcomingMoviesFailure(result.error!));
     }
+    return result.data ?? [];
   }
 
-  Future<void> refreshData() async {
-    await Future.wait([
-      getNowPlayingMovies(refresh: true),
-      getMostPopularMovies(refresh: true),
-      getTopRatedMovies(refresh: true),
-      getUpcomingMovies(refresh: true),
-    ]);
+  Future<List<MovieEntity>> getMoreMovies(
+      MoviesCategoriesEnum category, bool more) async {
+    List<MovieEntity> movies = [];
+    switch (category) {
+      case MoviesCategoriesEnum.nowPlaying:
+        movies.addAll(await getNowPlayingMovies(more));
+        break;
+      case MoviesCategoriesEnum.mostPopular:
+        movies.addAll(await getMostPopularMovies(more));
+        break;
+      case MoviesCategoriesEnum.topRated:
+        movies.addAll(await getTopRatedMovies(more));
+        break;
+      case MoviesCategoriesEnum.upComing:
+        movies.addAll(await getUpcomingMovies(more));
+        break;
+    }
+    emit(FetchMoreMovies(movies));
+    return movies;
   }
 }

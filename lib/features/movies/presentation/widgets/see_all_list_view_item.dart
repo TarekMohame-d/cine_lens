@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../core/helpers/api_data_helper.dart';
-import '../../../../../core/helpers/extensions.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/themes/colors.dart';
-import '../../../../../core/themes/text_styles.dart';
+import '../../../../core/helpers/api_data_helper.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/themes/colors.dart';
+import '../../../../core/themes/text_styles.dart';
 
 class SeeAllListViewItem extends StatelessWidget {
   const SeeAllListViewItem({super.key, required this.movie});

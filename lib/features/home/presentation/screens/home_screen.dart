@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => MoviesCubit(getIt(), getIt(), getIt(), getIt()),
+      create: (context) => getIt<MoviesCubit>(),
       child: const MoviesScreen(),
     ),
     Placeholder(),

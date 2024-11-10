@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
@@ -27,7 +28,7 @@ class UpCommingMoviesBlocBuilder extends StatelessWidget {
           case GetTopRatedMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: 'Up Comming',
+              category: MoviesCategoriesEnum.upComing,
             );
           default:
             return _setupLoading();
@@ -36,11 +37,11 @@ class UpCommingMoviesBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget _widgetOutline(Widget child) {
+  Widget _widgetOutline(Widget child, List<MovieEntity> movies) {
     return Column(
       children: [
-        const MoviesCategoryAndSeeAll(
-          category: 'Up Comming',
+        MoviesCategoryAndSeeAll(
+          category: MoviesCategoriesEnum.upComing,
         ),
         verticalSpace(12),
         child,
@@ -49,10 +50,10 @@ class UpCommingMoviesBlocBuilder extends StatelessWidget {
   }
 
   Widget _setupLoading() {
-    return _widgetOutline(const MoviesShimmerLoading());
+    return _widgetOutline(const MoviesShimmerLoading(), []);
   }
 
   Widget _setupSuccess(List<MovieEntity> movies) {
-    return _widgetOutline(MoviesListView(movies: movies));
+    return _widgetOutline(MoviesListView(movies: movies), movies);
   }
 }

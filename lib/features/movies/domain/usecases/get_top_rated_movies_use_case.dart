@@ -7,8 +7,7 @@ class GetTopRatedMoviesUseCase {
 
   GetTopRatedMoviesUseCase(this._moviesRepo);
 
-  Future<ApiResult<List<MovieEntity>>> call(int page,
-      [bool refresh = false]) async {
-    return await _moviesRepo.getTopRatedMovies(page, refresh);
+  Future<ApiResult<List<MovieEntity>>> call(bool more) async {
+    return await _moviesRepo.getTopRatedMovies(more);
   }
 }

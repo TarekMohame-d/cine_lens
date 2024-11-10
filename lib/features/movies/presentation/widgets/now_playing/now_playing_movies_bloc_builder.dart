@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
 import 'package:cine_rank/features/movies/presentation/widgets/movies_error_widget.dart';
@@ -30,7 +31,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
           case GetNowPlayingMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: 'Now Playing',
+              category: MoviesCategoriesEnum.nowPlaying,
             );
           default:
             return _setupLoading();
@@ -39,11 +40,11 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget _widgetOutline(Widget child) {
+  Widget _widgetOutline(Widget child, List<MovieEntity> movies) {
     return Column(
       children: [
-        const MoviesCategoryAndSeeAll(
-          category: 'Now Playing',
+        MoviesCategoryAndSeeAll(
+          category: MoviesCategoriesEnum.nowPlaying,
         ),
         verticalSpace(12),
         child,
@@ -52,10 +53,10 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
   }
 
   Widget _setupLoading() {
-    return _widgetOutline(const NowPlayingShimmerLoading());
+    return _widgetOutline(const NowPlayingShimmerLoading(), []);
   }
 
   Widget _setupSuccess(List<MovieEntity> movies) {
-    return _widgetOutline(CustomCarouselSlider(movies: movies));
+    return _widgetOutline(CustomCarouselSlider(movies: movies), movies);
   }
 }

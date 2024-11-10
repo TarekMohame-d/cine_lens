@@ -7,8 +7,7 @@ class GetNowPlayingMoviesUseCase {
 
   GetNowPlayingMoviesUseCase(this._moviesRepo);
 
-  Future<ApiResult<List<MovieEntity>>> call(int page,
-      [bool refresh = false]) async {
-    return await _moviesRepo.getNowPlayingMovies(page, refresh);
+  Future<ApiResult<List<MovieEntity>>> call(bool more) async {
+    return await _moviesRepo.getNowPlayingMovies(more);
   }
 }

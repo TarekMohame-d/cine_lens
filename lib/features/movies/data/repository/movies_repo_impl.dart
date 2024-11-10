@@ -22,6 +22,11 @@ class MoviesRepoImpl implements MoviesRepo {
   final List<MovieEntity> _upcomingMoviesList = [];
   final List<MovieEntity> _topRatedMoviesList = [];
 
+  int _nowPlayingPage = 1;
+  int _mostPopularPage = 1;
+  int _upcomingPage = 1;
+  int _topRatedPage = 1;
+
   MoviesRepoImpl() {
     _nowPlayingMoviesDataSource = NowPlayingMoviesDataSource();
     _mostPopularMoviesDataSource = MostPopularMoviesDataSource();
@@ -31,18 +36,21 @@ class MoviesRepoImpl implements MoviesRepo {
 
   Future<ApiResult<List<MovieEntity>>> _fetchMovies({
     required int page,
-    required bool refresh,
     required List<MovieEntity> movieList,
     required Future<Map<String, dynamic>> Function(int) dataSourceFetcher,
+    required VoidCallback updatePage,
+    required bool more,
   }) async {
     try {
-      if (movieList.isNotEmpty && !refresh) {
-        return ApiResult.success(movieList);
-      }
-      movieList.clear();
+      if (movieList.isNotEmpty && !more) return ApiResult.success(movieList);
       final response = await dataSourceFetcher(page);
       MoviesModel moviesModel = MoviesModel.fromJson(response);
-      movieList.addAll(moviesModel.movies!.map(MoviesMapper.mapToEntity));
+      if (moviesModel.totalPages! >= page) {
+        movieList.addAll(moviesModel.movies!
+            .map(MoviesMapper.mapToEntity)
+            .where((movie) => !movieList.contains(movie)));
+        updatePage();
+      }
       return ApiResult.success(movieList);
     } catch (e) {
       debugPrint('Error while fetching movies: ${e.toString()}');
@@ -51,46 +59,48 @@ class MoviesRepoImpl implements MoviesRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getNowPlayingMovies(int page,
-      [bool refresh = false]) {
+  Future<ApiResult<List<MovieEntity>>> getNowPlayingMovies(
+      [bool more = false]) {
     return _fetchMovies(
-      page: page,
-      refresh: refresh,
+      page: _nowPlayingPage,
       movieList: _nowPlayingMoviesList,
       dataSourceFetcher: _nowPlayingMoviesDataSource.getNowPlayingMovies,
+      updatePage: () => _nowPlayingPage++,
+      more: more,
     );
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getMostPopularMovies(int page,
-      [bool refresh = false]) {
+  Future<ApiResult<List<MovieEntity>>> getMostPopularMovies(
+      [bool more = false]) {
     return _fetchMovies(
-      page: page,
-      refresh: refresh,
+      page: _mostPopularPage,
       movieList: _mostPopularMoviesList,
       dataSourceFetcher: _mostPopularMoviesDataSource.getMostPopularMovies,
+      updatePage: () => _mostPopularPage++,
+      more: more,
     );
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getTopRatedMovies(int page,
-      [bool refresh = false]) {
+  Future<ApiResult<List<MovieEntity>>> getTopRatedMovies([bool more = false]) {
     return _fetchMovies(
-      page: page,
-      refresh: refresh,
+      page: _topRatedPage,
       movieList: _topRatedMoviesList,
       dataSourceFetcher: _topRatedMoviesDataSource.getTopRatedMovies,
+      updatePage: () => _topRatedPage++,
+      more: more,
     );
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getUpcomingMovies(int page,
-      [bool refresh = false]) {
+  Future<ApiResult<List<MovieEntity>>> getUpcomingMovies([bool more = false]) {
     return _fetchMovies(
-      page: page,
-      refresh: refresh,
+      page: _upcomingPage,
       movieList: _upcomingMoviesList,
       dataSourceFetcher: _upcomingMoviesDataSource.getUpcomingMovies,
+      updatePage: () => _upcomingPage++,
+      more: more,
     );
   }
 }

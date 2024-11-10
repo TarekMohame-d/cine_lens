@@ -1,3 +1,4 @@
+import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/colors.dart';
 import 'package:cine_rank/core/themes/text_styles.dart';
@@ -13,7 +14,7 @@ class MoviesErrorWidget extends StatelessWidget {
   });
 
   final String errorMessage;
-  final String category;
+  final MoviesCategoriesEnum category;
 
   @override
   Widget build(BuildContext context) {
