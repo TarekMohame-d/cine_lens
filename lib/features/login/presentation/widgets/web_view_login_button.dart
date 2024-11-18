@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/themes/colors.dart';
 import '../../../../core/themes/text_styles.dart';
-import '../../../../core/widgets/app_text_button.dart';
+import '../../../../core/widgets/text_button.dart';
 
 class WebViewLoginButton extends StatelessWidget {
   const WebViewLoginButton({super.key, required this.requestToken});
@@ -29,7 +29,7 @@ class WebViewLoginButton extends StatelessWidget {
             current is LoginGetUserIdFailure ||
             current is LoginCreateSessionFailure,
         listener: (context, state) => _handleLoginState(context, state),
-        child: AppTextButton(
+        child: KTextButton(
           onPressed: () => _onLoginButtonPressed(context),
           backgroundColor: KColors.blueAccent,
           borderRadius: 32,

@@ -1,14 +1,14 @@
 class MovieEntity {
-  bool? adult;
-  String? backdropPath;
-  int? id;
-  int? genreIds;
-  String? originalLanguage;
-  String? originalTitle;
-  double? popularity;
-  String? posterPath;
-  String? releaseDate;
-  double? voteAverage;
+  final bool? adult;
+  final String? backdropPath;
+  final int? id;
+  final int? genreIds;
+  final String? originalLanguage;
+  final String? originalTitle;
+  final double? popularity;
+  final String? posterPath;
+  final String? releaseDate;
+  final double? voteAverage;
 
   MovieEntity({
     this.adult,

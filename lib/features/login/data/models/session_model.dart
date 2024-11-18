@@ -5,14 +5,14 @@ part 'session_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class SessionModel {
-  bool? success;
-  bool? failure;
+  final bool? success;
+  final bool? failure;
   @JsonKey(name: 'session_id')
-  String? sessionId;
+  final String? sessionId;
   @JsonKey(name: 'status_code')
-  int? statusCode;
+  final int? statusCode;
   @JsonKey(name: 'status_message')
-  String? statusMessage;
+  final String? statusMessage;
 
   SessionModel({
     this.success,

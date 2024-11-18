@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cine_rank/core/helpers/extensions.dart';
+import 'package:cine_rank/core/routing/routes.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +27,7 @@ class CarouselSliderItem extends StatelessWidget {
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath!);
     return GestureDetector(
       onTap: () {
-        // context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
+        context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
       },
       child: Stack(
         children: [

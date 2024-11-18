@@ -1,7 +1,7 @@
 import 'package:cine_rank/core/di/dependency_injection.dart';
 import 'package:cine_rank/core/themes/colors.dart';
 import 'package:cine_rank/features/home/presentation/widgets/custom_bottom_nav_bar_item.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
+import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:cine_rank/features/movies/presentation/screens/movies_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

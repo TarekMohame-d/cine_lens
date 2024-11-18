@@ -3,7 +3,10 @@ import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
 import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
 import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
 import 'package:cine_rank/features/login/presentation/widgets/login_web_view.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
+import 'package:cine_rank/features/movie_details/presentation/cubit/movies_details_cubit.dart';
+import 'package:cine_rank/features/movie_details/presentation/screens/movie_details_screen.dart';
+import 'package:cine_rank/features/movie_details/presentation/screens/movie_web_screen.dart';
+import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:cine_rank/features/movies/presentation/screens/see_all_movies_screen.dart';
 import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
 import 'package:cine_rank/features/search_movies/presentation/screens/movies_search_screen.dart';
@@ -23,7 +26,7 @@ class KAppRouter {
         return MaterialPageRoute(
           builder: (context) => const LoginScreen(),
         );
-      case KRoutes.webViewScreen:
+      case KRoutes.loginWebView:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => LoginCubit(getIt(), getIt(), getIt()),
@@ -43,22 +46,22 @@ class KAppRouter {
             ),
           ),
         );
-      // case KRoutes.movieDetailsScreen:
-      //   return MaterialPageRoute(
-      //     builder: (context) => BlocProvider(
-      //       create: (context) => MoviesDetailsCubit(getIt())
-      //         ..getMovieDetailsAndCast(movieId: arguments),
-      //       child: MovieDetailsScreen(
-      //         movieId: arguments as int,
-      //       ),
-      //     ),
-      //   );
-      // case KRoutes.movieDetailsWebView:
-      //   return MaterialPageRoute(
-      //     builder: (context) => MovieWebView(
-      //       webViewUrl: arguments as String,
-      //     ),
-      //   );
+      case KRoutes.movieDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                MoviesDetailsCubit(getIt(), getIt(), getIt(), getIt()),
+            child: MovieDetailsScreen(
+              movieId: arguments as int,
+            ),
+          ),
+        );
+      case KRoutes.movieWebScreen:
+        return MaterialPageRoute(
+          builder: (context) => MovieWebScreen(
+            webViewUrl: arguments as String,
+          ),
+        );
       // case KRoutes.movieDetailsCastAndCrewSeeAll:
       //   return MaterialPageRoute(
       //     builder: (context) => AllCastAndCrewScreen(

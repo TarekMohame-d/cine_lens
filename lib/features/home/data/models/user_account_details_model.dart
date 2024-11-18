@@ -5,17 +5,17 @@ part 'user_account_details_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class UserAccountDetailsModel {
-  Avatar? avatar;
-  int? id;
+  final Avatar? avatar;
+  final int? id;
   @JsonKey(name: 'iso_639_1')
-  String? iso6391;
+  final String? iso6391;
   @JsonKey(name: 'iso_3166_1')
-  String? iso31661;
-  String? name;
+  final String? iso31661;
+  final String? name;
   @JsonKey(name: 'include_adult')
-  bool? includeAdult;
+  final bool? includeAdult;
   @JsonKey(name: 'username')
-  String? userName;
+  final String? userName;
 
   UserAccountDetailsModel({
     this.avatar,
@@ -33,8 +33,8 @@ class UserAccountDetailsModel {
 
 @JsonSerializable(createToJson: false)
 class Avatar {
-  Gravatar? gravatar;
-  Tmdb? tmdb;
+  final Gravatar? gravatar;
+  final Tmdb? tmdb;
 
   Avatar({this.gravatar, this.tmdb});
 
@@ -43,7 +43,7 @@ class Avatar {
 
 @JsonSerializable(createToJson: false)
 class Gravatar {
-  String? hash;
+  final String? hash;
 
   Gravatar({this.hash});
 
@@ -54,7 +54,7 @@ class Gravatar {
 @JsonSerializable(createToJson: false)
 class Tmdb {
   @JsonKey(name: 'avatar_path')
-  String? avatarPath;
+  final String? avatarPath;
 
   Tmdb({this.avatarPath});
 

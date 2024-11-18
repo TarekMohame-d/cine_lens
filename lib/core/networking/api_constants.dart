@@ -10,4 +10,8 @@ class KApiConstants {
   static const String topRatedMoviesEndpoint = '/movie/top_rated';
   static const String upcomingMoviesEndpoint = '/movie/upcoming';
   static const String searchMoviesEndpoint = '/search/movie';
+  static const String movieDetailsEndpoint = '/movie/';
+  static const String movieVideosEndpoint = '/movie/';
+  static const String movieWatchProvidersEndpoint = '/movie/';
+  static const String movieCastAndCrewEndpoint = '/movie/';
 }

@@ -1,6 +1,6 @@
 import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit/movies_cubit.dart';
+import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:cine_rank/features/movies/presentation/widgets/see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

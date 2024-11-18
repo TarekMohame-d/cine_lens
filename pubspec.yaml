@@ -41,12 +41,12 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_native_splash: ^2.4.2
   flutter_screenutil: ^5.9.3
-  flutter_svg: ^2.0.12
+  flutter_svg: ^2.0.14
   get_it: ^8.0.2
   intl: ^0.19.0
   json_annotation: ^4.9.0
 
-  shared_preferences: ^2.3.2
+  shared_preferences: ^2.3.3
   shimmer: ^3.0.0
   webview_flutter: ^4.10.0
   carousel_slider: ^5.0.0

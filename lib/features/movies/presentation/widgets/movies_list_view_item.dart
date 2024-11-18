@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
+import 'package:cine_rank/core/routing/routes.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +21,7 @@ class MoviesListViewItem extends StatelessWidget {
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath!);
     return GestureDetector(
       onTap: () {
-        // context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
+        context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
       },
       child: Container(
         margin: EdgeInsets.only(right: 12.0.w),
@@ -84,13 +86,14 @@ class MoviesListViewItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: KTextStyles.font14WhiteSemiBold,
                     ),
-                    verticalSpace(8),
+                    Spacer(),
                     Text(
                       genre,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: KTextStyles.font10GreyMedium,
                     ),
+                    verticalSpace(8),
                   ],
                 ),
               ),
