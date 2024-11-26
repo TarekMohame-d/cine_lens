@@ -1,5 +1,5 @@
 {
-    "codeium.enableCodeLens": false,
-    "codeium.enableCommandSideHintEducation": false,
-    "codeium.enableExplainProblem": false
+    "cSpell.words": [
+        "Flatrate"
+    ]
 }

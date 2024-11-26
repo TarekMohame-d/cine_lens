@@ -1,8 +1,8 @@
-class ApiDataHelper {
-  ApiDataHelper._();
+class KApiDataHelper {
+  KApiDataHelper._();
 
-  static String baseUrl = 'http://image.tmdb.org/t/p/';
-  static String secureBaseUrl = 'https://image.tmdb.org/t/p/';
+  static String imagesBaseUrl = 'http://image.tmdb.org/t/p/';
+  static String imagesSecureBaseUrl = 'https://image.tmdb.org/t/p/';
 
   static Map<int, String> genres = {
     28: "Action",
@@ -63,8 +63,8 @@ class ApiDataHelper {
   };
 
   /// images size = [w92, w154, w185, w300, w342, w500, w780, original]
-  static String getImageUrl({required String path, String size = 'original'}) {
-    return '$secureBaseUrl$size$path';
+  static String getImageUrl({required String? path, String size = 'original'}) {
+    return path != null ? '$imagesSecureBaseUrl$size$path' : '';
   }
 
   /// return movie genre name

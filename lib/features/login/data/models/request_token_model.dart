@@ -3,13 +3,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'request_token_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class RequestTokenModel {
-  bool? success;
+  final bool? success;
   @JsonKey(name: 'expires_at')
-  String? expiresAt;
+  final String? expiresAt;
   @JsonKey(name: 'request_token')
-  String? requestToken;
+  final String? requestToken;
 
   RequestTokenModel({
     this.success,
@@ -19,6 +19,4 @@ class RequestTokenModel {
 
   factory RequestTokenModel.fromJson(Map<String, dynamic> json) =>
       _$RequestTokenModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RequestTokenModelToJson(this);
 }

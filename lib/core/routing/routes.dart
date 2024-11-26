@@ -1,7 +1,7 @@
-class Routes {
+class KRoutes {
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String loginScreen = '/loginScreen';
-  static const String webViewScreen = '/webViewScreen';
+  static const String loginWebView = '/webViewScreen';
   static const String homeScreen = '/homeScreen';
   static const String moviesScreen = '/moviesScreen';
   static const String seriesScreen = '/seriesScreen';
@@ -12,7 +12,7 @@ class Routes {
   static const String movieDetailsScreen = '/movieDetailsScreen';
   static const String movieDetailsCastAndCrewSeeAll =
       '/movieDetailsCastAndCrewSeeAll';
-  static const String movieDetailsWebView = '/movieDetailsWebView';
+  static const String movieWebScreen = '/movieWebScreen';
 
   static const String moviesSearchScreen = '/moviesSearchScreen';
 }

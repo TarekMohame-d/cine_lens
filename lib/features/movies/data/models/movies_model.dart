@@ -2,16 +2,16 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'movies_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class MoviesModel {
-  Dates? dates;
-  int? page;
+  final Dates? dates;
+  final int? page;
   @JsonKey(name: 'results')
-  List<Movie>? movies;
+  final List<MovieData>? movies;
   @JsonKey(name: 'total_pages')
-  int? totalPages;
+  final int? totalPages;
   @JsonKey(name: 'total_results')
-  int? totalResults;
+  final int? totalResults;
 
   MoviesModel({
     this.dates,
@@ -23,74 +23,60 @@ class MoviesModel {
 
   factory MoviesModel.fromJson(Map<String, dynamic> json) =>
       _$MoviesModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MoviesModelToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class Dates {
-  String? maximum;
-  String? minimum;
+  final String? maximum;
+  final String? minimum;
 
   Dates({this.maximum, this.minimum});
 
   factory Dates.fromJson(Map<String, dynamic> json) => _$DatesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DatesToJson(this);
 }
 
-@JsonSerializable()
-class Movie {
-  bool? adult;
+@JsonSerializable(createToJson: false)
+class MovieData {
+  final bool? adult;
   @JsonKey(name: 'backdrop_path')
-  String? backdropPath;
+  final String? backdropPath;
   @JsonKey(name: 'genre_ids')
-  List<int>? genreIds;
-  int? id;
+  final List<int>? genreIds;
+  final int? id;
   @JsonKey(name: 'original_language')
-  String? originalLanguage;
+  final String? originalLanguage;
   @JsonKey(name: 'original_title')
-  String? originalTitle;
-  String? overview;
-  double? popularity;
+  final String? originalTitle;
+  final String? overview;
+  final double? popularity;
   @JsonKey(name: 'poster_path')
-  String? posterPath;
+  final String? posterPath;
   @JsonKey(name: 'release_date')
-  String? releaseDate;
-  String? title;
-  bool? video;
+  final String? releaseDate;
+  final String? title;
+  final bool? video;
   @JsonKey(name: 'vote_average')
-  double? voteAverage;
+  final double? voteAverage;
   @JsonKey(name: 'vote_count')
-  int? voteCount;
+  final int? voteCount;
 
-  Movie(
-      {this.adult,
-      this.backdropPath,
-      this.genreIds,
-      this.id,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.releaseDate,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount});
+  MovieData({
+    this.adult,
+    this.backdropPath,
+    this.genreIds,
+    this.id,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+  });
 
-  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MovieToJson(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Movie && other.id == id && other.title == title;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ title.hashCode;
+  factory MovieData.fromJson(Map<String, dynamic> json) =>
+      _$MovieDataFromJson(json);
 }
