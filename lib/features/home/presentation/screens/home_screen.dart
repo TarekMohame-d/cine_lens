@@ -39,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: screens[currentIndex],
       ),
       bottomNavigationBar: Container(
-        height: 56.h,
         decoration: BoxDecoration(
           color: KColors.dark,
           borderRadius: BorderRadius.only(
@@ -61,11 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
             (index) {
               return InkWell(
                 onTap: () {
-                  setState(
-                    () {
-                      currentIndex = index;
-                    },
-                  );
+                  setState(() {
+                    currentIndex = index;
+                  });
                 },
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,

@@ -45,7 +45,6 @@ class LoginWebView extends StatelessWidget {
               ),
             );
           }
-
           return const SizedBox.shrink();
         },
       ),
@@ -66,7 +65,7 @@ class LoginWebView extends StatelessWidget {
         Row(
           children: [
             _buildNavigationButton(
-              icon: Icons.arrow_back_ios,
+              icon: Icons.arrow_back_ios_new_outlined,
               onPressed: () async {
                 if (await controller.canGoBack()) {
                   await controller.goBack();
@@ -76,7 +75,7 @@ class LoginWebView extends StatelessWidget {
               },
             ),
             _buildNavigationButton(
-              icon: Icons.arrow_forward_ios,
+              icon: Icons.arrow_forward_ios_outlined,
               onPressed: () async {
                 if (await controller.canGoForward()) {
                   await controller.goForward();
@@ -86,7 +85,7 @@ class LoginWebView extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: const Icon(Icons.replay),
+              icon: const Icon(Icons.refresh_rounded),
               onPressed: () => controller.reload(),
             ),
           ],
@@ -108,13 +107,10 @@ class LoginWebView extends StatelessWidget {
   void _showSnackbar(ScaffoldMessengerState messenger, String message) {
     messenger.showSnackBar(
       SnackBar(
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(seconds: 2),
         content: Text(
           message,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: KTextStyles.font14WhiteSemiBold,
         ),
       ),
     );
