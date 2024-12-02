@@ -36,6 +36,12 @@ class KTextStyles {
     fontWeight: FontWeightHelper.medium,
   );
 
+  static TextStyle font12blueAccentSemiBold = TextStyle(
+    fontSize: 12.0.sp,
+    color: KColors.blueAccent,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+
   static TextStyle font14WhiteMedium = TextStyle(
     fontSize: 14.0.sp,
     color: Colors.white,

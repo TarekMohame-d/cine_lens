@@ -6,17 +6,17 @@ class SharedPrefHelper {
   SharedPrefHelper._();
 
   /// Removes a value from SharedPreferences with given [key].
-  static removeData(String key) async {
+  static Future<bool> removeData(String key) async {
     debugPrint('SharedPrefHelper: data with key: $key has been removed');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.remove(key);
+    return await sharedPreferences.remove(key);
   }
 
   /// Removes all keys and values in the SharedPreferences
-  static clearAllData() async {
+  static Future<bool> clearAllData() async {
     debugPrint('SharedPrefHelper: all data has been cleared');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.clear();
+    return await sharedPreferences.clear();
   }
 
   /// Saves a [value] with a [key] in the SharedPreferences.
@@ -42,30 +42,30 @@ class SharedPrefHelper {
   }
 
   /// Gets a bool value from SharedPreferences with given [key].
-  static getBool(String key) async {
+  static Future<bool?> getBool(String key) async {
     debugPrint('SharedPrefHelper: getBool with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(key) ?? false;
+    return sharedPreferences.getBool(key);
   }
 
   /// Gets a double value from SharedPreferences with given [key].
-  static getDouble(String key) async {
+  static Future<double?> getDouble(String key) async {
     debugPrint('SharedPrefHelper: getDouble with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getDouble(key) ?? 0.0;
+    return sharedPreferences.getDouble(key);
   }
 
   /// Gets an int value from SharedPreferences with given [key].
-  static getInt(String key) async {
+  static Future<int?> getInt(String key) async {
     debugPrint('SharedPrefHelper: getInt with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getInt(key) ?? 0;
+    return sharedPreferences.getInt(key);
   }
 
   /// Gets an String value from SharedPreferences with given [key].
-  static getString(String key) async {
+  static Future<String?> getString(String key) async {
     debugPrint('SharedPrefHelper: getString with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString(key) ?? '';
+    return sharedPreferences.getString(key);
   }
 }

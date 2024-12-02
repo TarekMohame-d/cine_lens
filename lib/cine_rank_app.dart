@@ -7,8 +7,7 @@ import 'core/routing/routes.dart';
 import 'core/themes/themes.dart';
 
 class CineRankApp extends StatelessWidget {
-  final KAppRouter appRouter;
-  const CineRankApp({super.key, required this.appRouter});
+  const CineRankApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class CineRankApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         darkTheme: KThemes.darkTheme,
-        onGenerateRoute: appRouter.generateRoute,
+        onGenerateRoute: KAppRouter().generateRoute,
         initialRoute: isLoggedIn ? KRoutes.homeScreen : KRoutes.loginScreen,
       ),
     );

@@ -8,7 +8,6 @@ import 'core/di/dependency_injection.dart';
 import 'core/helpers/bloc_observer.dart';
 import 'core/helpers/constants.dart';
 import 'core/helpers/shared_pref_helper.dart';
-import 'core/routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,12 +15,10 @@ void main() async {
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   KThemes.setSystemUiOverlayStyle();
-  isLoggedIn = await SharedPrefHelper.getInt(SharedPrefKeys.userId) != 0;
+  isLoggedIn = await SharedPrefHelper.getInt(SharedPrefKeys.userId) != null;
   Bloc.observer = MyBlocObserver();
   runApp(
-    CineRankApp(
-      appRouter: KAppRouter(),
-    ),
+    CineRankApp(),
   );
 }
 

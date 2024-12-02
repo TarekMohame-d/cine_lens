@@ -6,16 +6,13 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:cine_rank/cine_rank_app.dart';
-import 'package:cine_rank/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(CineRankApp(
-      appRouter: KAppRouter(),
-    ));
+    await tester.pumpWidget(CineRankApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -15,8 +15,8 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Spacer(),
             Image(
               image: const AssetImage(KConstants.appLogo),
               width: 180.w,
@@ -50,16 +50,15 @@ class LoginScreen extends StatelessWidget {
                   },
                   blendMode: BlendMode.srcIn,
                   child: SvgPicture.asset(
-                    KConstants.tmdb,
+                    KConstants.tmdbLogo,
                     width: 30.w,
                     height: 30.h,
                   ),
                 ),
               ],
             ),
-            const Spacer(),
+            verticalSpace(72),
             const LoginButton(),
-            const Spacer(),
           ],
         ),
       ),
