@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/helpers/spacing.dart';
-
 class SeeAllMoviesScreen extends StatelessWidget {
   const SeeAllMoviesScreen({super.key, required this.category});
   final MoviesCategoriesEnum category;
@@ -33,7 +31,6 @@ class SeeAllMoviesScreen extends StatelessWidget {
               if (state is FetchMoreMovies) {
                 return Column(
                   children: [
-                    verticalSpace(12.0),
                     Expanded(
                       child: SeeAllListView(
                         category: category,

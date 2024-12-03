@@ -41,14 +41,16 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
   }
 
   Widget _widgetOutline(Widget child, List<MovieEntity> movies) {
-    return Column(
-      children: [
-        MoviesCategoryAndSeeAll(
-          category: MoviesCategoriesEnum.nowPlaying,
-        ),
-        verticalSpace(12),
-        child,
-      ],
+    return RepaintBoundary(
+      child: Column(
+        children: [
+          MoviesCategoryAndSeeAll(
+            category: MoviesCategoriesEnum.nowPlaying,
+          ),
+          verticalSpace(12),
+          child,
+        ],
+      ),
     );
   }
 
