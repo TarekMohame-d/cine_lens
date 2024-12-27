@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cine_rank/core/helpers/api_data_helper.dart';
+import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/themes/colors.dart';
+import 'package:cine_rank/core/widgets/conditional_builder.dart';
 import 'package:cine_rank/features/movie_details/data/models/movie_cast_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,64 +26,68 @@ class CastGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         String? imageUrl =
             KApiDataHelper.getImageUrl(path: cast[index].profilePath);
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 2,
-              child: imageUrl.isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      memCacheWidth: 200.0.w.toInt(),
-                      maxWidthDiskCache:
-                          (MediaQuery.sizeOf(context).width / 2).toInt(),
-                      placeholder: (context, url) {
-                        return Shimmer.fromColors(
-                          baseColor: KColors.grey,
-                          highlightColor: KColors.white,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12.0.r),
-                                topRight: Radius.circular(12.0.r),
-                              ),
-                              color: KColors.white,
-                            ),
-                          ),
-                        );
-                      },
-                      imageBuilder: (context, imageProvider) => Container(
+              child: ConditionalBuilder(
+                fallback: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: KColors.grey.withValues(alpha: 0.5),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.0.r),
+                      topRight: Radius.circular(12.0.r),
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.image_not_supported_rounded,
+                      size: 54.r,
+                    ),
+                  ),
+                ),
+                widget: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  memCacheWidth: 200.0.w.toInt(),
+                  maxWidthDiskCache:
+                      (MediaQuery.sizeOf(context).width / 2).toInt(),
+                  placeholder: (context, url) {
+                    return Shimmer.fromColors(
+                      baseColor: KColors.grey,
+                      highlightColor: KColors.white,
+                      child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(12.0.r),
                             topRight: Radius.circular(12.0.r),
                           ),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.fill,
-                          ),
+                          color: KColors.white,
                         ),
                       ),
-                      errorWidget: (context, url, error) =>
-                          Icon(Icons.image_not_supported_rounded),
-                    )
-                  : Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12.0.r),
-                          topRight: Radius.circular(12.0.r),
-                        ),
+                    );
+                  },
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12.0.r),
+                        topRight: Radius.circular(12.0.r),
                       ),
-                      child: Center(
-                        child: Icon(
-                          Icons.image_not_supported_rounded,
-                          size: 54.r,
-                        ),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.fill,
                       ),
                     ),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.image_not_supported_rounded),
+                ),
+                condition: !imageUrl.isNullOrEmpty(),
+              ),
             ),
             Expanded(
               child: Container(

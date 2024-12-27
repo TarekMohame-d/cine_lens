@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/routing/routes.dart';
+import 'package:cine_rank/core/widgets/conditional_builder.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,37 +33,53 @@ class CarouselSliderItem extends StatelessWidget {
       },
       child: Stack(
         children: [
-          CachedNetworkImage(
-            imageUrl: imageUrl,
-            memCacheWidth: 220.w.toInt(),
-            maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
-            placeholder: (context, url) {
-              return Shimmer.fromColors(
-                baseColor: KColors.grey,
-                highlightColor: Colors.white,
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(16.r),
-                    color: Colors.white,
-                  ),
-                ),
-              );
-            },
-            imageBuilder: (context, imageProvider) => Container(
+          ConditionalBuilder(
+            fallback: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(16.r),
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.fill,
+                color: Colors.transparent,
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.image_not_supported_rounded,
+                  size: 56.r,
                 ),
               ),
             ),
-            errorWidget: (context, url, error) {
-              return Center(
-                  child: const Icon(Icons.image_not_supported_rounded));
-            },
+            widget: CachedNetworkImage(
+              imageUrl: imageUrl,
+              memCacheWidth: 220.w.toInt(),
+              maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
+              placeholder: (context, url) {
+                return Shimmer.fromColors(
+                  baseColor: KColors.grey,
+                  highlightColor: Colors.white,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(16.r),
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              },
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(16.r),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              errorWidget: (context, url, error) {
+                return Center(
+                    child: const Icon(Icons.image_not_supported_rounded));
+              },
+            ),
+            condition: !imageUrl.isNullOrEmpty(),
           ),
           Align(
             alignment: Alignment.bottomCenter,

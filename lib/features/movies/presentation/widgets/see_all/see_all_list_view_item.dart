@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cine_rank/core/widgets/conditional_builder.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,42 +28,60 @@ class SeeAllListViewItem extends StatelessWidget {
       child: Container(
         height: 170.0.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           color: KColors.soft,
         ),
         margin: EdgeInsets.only(bottom: 16.0.h),
         child: Row(
           children: [
-            CachedNetworkImage(
-              width: 120.w,
-              memCacheWidth: 120.w.toInt(),
-              maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
-              imageUrl: imageUrl,
-              placeholder: (context, url) => Shimmer.fromColors(
-                baseColor: KColors.grey,
-                highlightColor: Colors.white,
-                child: Container(
+            ConditionalBuilder(
+              fallback: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: Colors.transparent,
+                ),
+                width: 120.w,
+                height: 170.0.h,
+                child: Center(
+                  child: Icon(
+                    Icons.image_not_supported_rounded,
+                    size: 56.r,
+                  ),
+                ),
+              ),
+              widget: CachedNetworkImage(
+                width: 120.w,
+                memCacheWidth: 120.w.toInt(),
+                maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
+                imageUrl: imageUrl,
+                placeholder: (context, url) => Shimmer.fromColors(
+                  baseColor: KColors.grey,
+                  highlightColor: Colors.white,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
+                errorWidget: (context, url, error) {
+                  return Center(
+                      child: const Icon(Icons.image_not_supported_rounded));
+                },
               ),
-              imageBuilder: (context, imageProvider) => Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              errorWidget: (context, url, error) {
-                return Center(
-                    child: const Icon(Icons.image_not_supported_rounded));
-              },
+              condition: !imageUrl.isNullOrEmpty(),
             ),
             horizontalSpace(16),
             Expanded(
@@ -128,8 +147,8 @@ class SeeAllListViewItem extends StatelessWidget {
   }
 
   String changeDateFormate(String? date) {
-    if (date == null) return 'N/A';
-    final DateTime dateTime = DateTime.parse(date);
+    if (date.isNullOrEmpty()) return 'N/A';
+    final DateTime dateTime = DateTime.parse(date!);
     final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
     return formattedDate;
   }

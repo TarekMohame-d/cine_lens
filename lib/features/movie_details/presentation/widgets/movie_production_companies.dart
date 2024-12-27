@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cine_rank/core/helpers/api_data_helper.dart';
+import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/colors.dart';
+import 'package:cine_rank/core/widgets/conditional_builder.dart';
 import 'package:cine_rank/features/movie_details/data/models/movie_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,68 +40,74 @@ class MovieProductionCompanies extends StatelessWidget {
               itemBuilder: (context, index) {
                 String imageUrl = KApiDataHelper.getImageUrl(
                     path: productionCompanies[index].logoPath);
+
                 return Padding(
                   padding: EdgeInsets.only(right: 12.0.w),
                   child: Row(
                     children: [
-                      imageUrl.isNotEmpty
-                          ? CachedNetworkImage(
-                              imageUrl: imageUrl,
-                              width: 52.0.w,
-                              height: 52.0.w,
-                              memCacheWidth: 52.0.w.toInt(),
-                              maxWidthDiskCache:
-                                  MediaQuery.sizeOf(context).width.toInt(),
-                              placeholder: (context, url) {
-                                return Shimmer.fromColors(
-                                  baseColor: KColors.grey,
-                                  highlightColor: Colors.white,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12.r),
-                                    ),
-                                  ),
-                                );
-                              },
-                              imageBuilder: (context, imageProvider) =>
-                                  Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  color: KColors.white,
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) => Container(
+                      ConditionalBuilder(
+                        fallback: Container(
+                          width: 52.0.w,
+                          height: 52.0.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: KColors.grey.withValues(alpha: 0.5),
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.image_not_supported_rounded,
+                            ),
+                          ),
+                        ),
+                        widget: CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          width: 52.0.w,
+                          height: 52.0.w,
+                          memCacheWidth: 52.0.w.toInt(),
+                          maxWidthDiskCache:
+                              MediaQuery.sizeOf(context).width.toInt(),
+                          placeholder: (context, url) {
+                            return Shimmer.fromColors(
+                              baseColor: KColors.grey,
+                              highlightColor: Colors.white,
+                              child: Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.rectangle,
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(12.r),
                                 ),
-                                child: Icon(
-                                  Icons.image_not_supported_rounded,
-                                  color: KColors.black,
-                                ),
                               ),
-                            )
-                          : Container(
-                              width: 52.0.w,
-                              height: 52.0.w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.image_not_supported_rounded,
-                                ),
+                            );
+                          },
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: KColors.whiteGrey,
+                              borderRadius: BorderRadius.circular(12.r),
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            width: 52.0.w,
+                            height: 52.0.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: KColors.grey.withValues(alpha: 0.5),
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.image_not_supported_rounded,
+                              ),
+                            ),
+                          ),
+                        ),
+                        condition: !imageUrl.isNullOrEmpty(),
+                      ),
                       horizontalSpace(4),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,

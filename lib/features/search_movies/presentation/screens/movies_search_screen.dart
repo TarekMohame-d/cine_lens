@@ -19,7 +19,7 @@ class _MoviesSearchScreenState extends State<MoviesSearchScreen> {
 
   @override
   void initState() {
-    _debouncer = Debouncer(milliseconds: 500);
+    _debouncer = Debouncer(milliseconds: 700);
     super.initState();
   }
 
@@ -42,7 +42,7 @@ class _MoviesSearchScreenState extends State<MoviesSearchScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
           child: Column(
             children: [
               CustomAppBar(

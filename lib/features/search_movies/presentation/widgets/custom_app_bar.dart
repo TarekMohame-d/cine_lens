@@ -1,8 +1,8 @@
+import 'package:cine_rank/core/themes/colors.dart';
+import 'package:cine_rank/core/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions.dart';
-import '../../../../core/themes/colors.dart';
-import '../../../../core/widgets/text_field.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.onChanged});
