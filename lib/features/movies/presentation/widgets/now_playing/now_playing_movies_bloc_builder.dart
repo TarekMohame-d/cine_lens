@@ -46,6 +46,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
         children: [
           MoviesCategoryAndSeeAll(
             category: MoviesCategoriesEnum.nowPlaying,
+            movies: movies,
           ),
           verticalSpace(12),
           child,

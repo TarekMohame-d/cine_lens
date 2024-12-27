@@ -15,10 +15,10 @@ class KColors {
   static const Color red = Color(0xFFFF7256);
 
   // Text Color
-  static const Color black = Color(0xFF171725);
+  static const Color black = Colors.black;
   static const Color darkGrey = Color(0xFF696974);
-  static const Color grey = Color(0xFF92929D);
+  static const Color grey = Colors.grey;
   static const Color whiteGrey = Color(0xFFF1F1F5);
-  static const Color white = Color(0xFFFFFFFF);
+  static const Color white = Colors.white;
   static const Color lineDark = Color(0xFFEAEAEA);
 }

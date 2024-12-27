@@ -10,17 +10,21 @@ class CastListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80.0.h,
-      child: ListView.builder(
-        itemCount: castList.length > 10 ? 10 : castList.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return CastListViewItem(
-            cast: castList[index],
-          );
-        },
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 80.0.h,
+          child: ListView.builder(
+            itemCount: castList.length > 10 ? 10 : castList.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return CastListViewItem(
+                cast: castList[index],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

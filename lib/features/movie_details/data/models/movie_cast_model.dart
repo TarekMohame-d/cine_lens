@@ -1,20 +1,21 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'movie_cast_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class CastModel {
+class CastAndCrewModel {
   final int? id;
   final List<Cast>? cast;
   final List<Crew>? crew;
 
-  CastModel({
+  CastAndCrewModel({
     this.id,
     this.cast,
     this.crew,
   });
 
-  factory CastModel.fromJson(Map<String, dynamic> json) =>
-      _$CastModelFromJson(json);
+  factory CastAndCrewModel.fromJson(Map<String, dynamic> json) =>
+      _$CastAndCrewModelFromJson(json);
 }
 
 @JsonSerializable(createToJson: false)

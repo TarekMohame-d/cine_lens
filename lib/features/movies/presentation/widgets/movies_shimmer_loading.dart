@@ -10,8 +10,7 @@ class MoviesShimmerLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 12.0.w),
+    return SizedBox(
       height: 260.h,
       child: ListView.builder(
         itemCount: 10,
@@ -19,7 +18,7 @@ class MoviesShimmerLoading extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.only(right: 12.0.w),
-            width: 150.w,
+            width: 160.w,
             child: Column(
               children: [
                 Expanded(
@@ -30,8 +29,8 @@ class MoviesShimmerLoading extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          topRight: Radius.circular(12),
+                          topLeft: Radius.circular(12.r),
+                          topRight: Radius.circular(12.r),
                         ),
                         color: Colors.white,
                       ),
@@ -41,15 +40,12 @@ class MoviesShimmerLoading extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    padding: EdgeInsets.only(
-                      left: 8.0.w,
-                      top: 8.0.h,
-                      bottom: 8.0.h,
-                    ),
-                    decoration: const BoxDecoration(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 8.0.w, vertical: 8.0.h),
+                    decoration:  BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
+                        bottomLeft: Radius.circular(12.r),
+                        bottomRight: Radius.circular(12.r),
                       ),
                       color: KColors.soft,
                     ),
@@ -65,7 +61,7 @@ class MoviesShimmerLoading extends StatelessWidget {
                             width: 100.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(3),
+                              borderRadius: BorderRadius.circular(3.r),
                               color: KColors.grey,
                             ),
                           ),
@@ -79,7 +75,7 @@ class MoviesShimmerLoading extends StatelessWidget {
                             width: 60.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(3),
+                              borderRadius: BorderRadius.circular(3.r),
                               color: KColors.grey,
                             ),
                           ),

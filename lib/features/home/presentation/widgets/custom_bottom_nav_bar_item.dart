@@ -1,6 +1,6 @@
+import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,7 +55,10 @@ class CustomBottomNavBarItem extends StatelessWidget {
               label,
               maxLines: 1,
               textAlign: TextAlign.center,
-              style: KTextStyles.font12blueAccentSemiBold,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    color: KColors.blueAccent,
+                    fontWeight: KFontWeightHelper.semiBold,
+                  ),
             ),
           ),
         ],

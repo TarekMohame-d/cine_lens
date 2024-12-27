@@ -3,7 +3,7 @@ import 'package:cine_rank/features/movies/data/models/movies_model.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 
 class MoviesMapper {
-  static MovieEntity mapToEntity(MovieData data) {
+  static MovieEntity toEntity(MovieData data) {
     return MovieEntity(
       adult: data.adult,
       id: data.id,

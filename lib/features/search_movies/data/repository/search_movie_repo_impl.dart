@@ -20,7 +20,7 @@ class SearchMovieRepoImpl implements SearchMovieRepo {
       final response = await _searchMoviesDataSource.getSearchMovies(query);
       MoviesModel moviesModel = MoviesModel.fromJson(response);
       for (var movie in moviesModel.movies!) {
-        searchMoviesList.add(MoviesMapper.mapToEntity(movie));
+        searchMoviesList.add(MoviesMapper.toEntity(movie));
       }
       return ApiResult.success(searchMoviesList);
     } catch (e) {

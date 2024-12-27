@@ -23,7 +23,7 @@ class CustomAnimatedSmoothIndicator extends StatelessWidget {
       activeIndex: activeIndex,
       count: count,
       effect: ExpandingDotsEffect(
-        dotColor: KColors.blueAccent.withOpacity(0.32),
+        dotColor: KColors.blueAccent.withValues(alpha: 0.32),
         activeDotColor: KColors.blueAccent,
         dotHeight: 10.h,
         dotWidth: 10.w,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/themes/text_styles.dart';
-
 class MoviesDetailsOverview extends StatelessWidget {
   const MoviesDetailsOverview({super.key, required this.overview});
   final String overview;
@@ -17,11 +15,11 @@ class MoviesDetailsOverview extends StatelessWidget {
         children: [
           Text(
             'Overview',
-            style: KTextStyles.font16WhiteSemiBold.copyWith(height: 1.5.h),
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(height: 2),
           ),
           Text(
             overview,
-            style: KTextStyles.font14WhiteMedium,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       ),

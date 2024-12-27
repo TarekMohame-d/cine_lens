@@ -24,8 +24,8 @@ class MovieDetailsScreen extends StatelessWidget {
                   movieDetails: state.movieDetails,
                 );
               case GetMovieDetailsFailure _:
-                return const Center(
-                  child: Text('error'),
+                return Center(
+                  child: Text(state.apiErrorModel.statusMessage!),
                 );
               default:
                 return MovieDetailsShimmerLoading();

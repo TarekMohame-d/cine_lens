@@ -6,5 +6,5 @@ abstract class LoginRepo {
   Future<ApiResult<RequestTokenModel>> createRequestToken();
 
   Future<ApiResult<SessionModel>> createSession(Map<String, dynamic> body);
-  Future<ApiResult<int>> getUserId(String sessionId);
+  Future<ApiResult<String>> getUserId(String sessionId);
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -26,7 +27,7 @@ class DioFactory {
     dio?.options.headers = {
       'accept': 'application/json',
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDlmOGVmNDljMTQ4MzU5NDg3NGYxOTgwNmY2YWEwOCIsIm5iZiI6MTcyMTExODEwNS42Njk0NTIsInN1YiI6IjY1Y2RjMGU3NTFlNmFiMDE0YTFlZTdlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ckWbo6EY3exyykqVL-K-ZFk1th82v7eqLCtqufSHvEs',
+          dotenv.env['API_KEY'],
     };
   }
 

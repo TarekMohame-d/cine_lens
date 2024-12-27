@@ -4,32 +4,26 @@ import 'package:cine_rank/core/networking/api_result.dart';
 import 'package:cine_rank/features/movie_details/data/data_sources/movie_cast_data_source.dart';
 import 'package:cine_rank/features/movie_details/data/data_sources/movie_details_data_source.dart';
 import 'package:cine_rank/features/movie_details/data/data_sources/movie_videos_data_source.dart';
-import 'package:cine_rank/features/movie_details/data/data_sources/movie_watch_providers_data_source.dart';
 import 'package:cine_rank/features/movie_details/data/mapper/movie_cast_mapper.dart';
 import 'package:cine_rank/features/movie_details/data/mapper/movie_details_mapper.dart';
 import 'package:cine_rank/features/movie_details/data/mapper/movie_videos_mapper.dart';
-import 'package:cine_rank/features/movie_details/data/mapper/movie_watch_providers_mapper.dart';
 import 'package:cine_rank/features/movie_details/data/models/movie_cast_model.dart';
 import 'package:cine_rank/features/movie_details/data/models/movie_details_model.dart';
 import 'package:cine_rank/features/movie_details/data/models/movie_videos_model.dart';
-import 'package:cine_rank/features/movie_details/data/models/movie_watch_providers_model.dart';
 import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
 import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
 import 'package:cine_rank/features/movie_details/domain/entities/movie_videos_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_watch_providers_entity.dart';
 import 'package:cine_rank/features/movie_details/domain/repository/movie_details_repo.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsRepoImpl implements MovieDetailsRepo {
   late MovieDetailsDataSource _getMovieDetailsDataSource;
   late MovieVideosDataSource _getMovieVideosDataSource;
-  late MovieWatchProvidersDataSource _getMovieWatchProvidersDataSource;
   late MovieCastDataSource _getMovieCastDataSource;
 
   MovieDetailsEntity? movieDetailsEntity;
   List<MovieVideosEntity> videos = [];
-  MovieWatchProvidersEntity? movieWatchProvidersEntity;
-  MovieCastEntity? movieCastEntity;
+  MovieCastAndCrewEntity? movieCastEntity;
   int? movieId;
   int? movieVideoId;
   int? movieWatchProvidersId;
@@ -38,7 +32,6 @@ class MovieDetailsRepoImpl implements MovieDetailsRepo {
   MovieDetailsRepoImpl() {
     _getMovieDetailsDataSource = MovieDetailsDataSource();
     _getMovieVideosDataSource = MovieVideosDataSource();
-    _getMovieWatchProvidersDataSource = MovieWatchProvidersDataSource();
     _getMovieCastDataSource = MovieCastDataSource();
   }
   @override
@@ -82,31 +75,8 @@ class MovieDetailsRepoImpl implements MovieDetailsRepo {
   }
 
   @override
-  Future<ApiResult<MovieWatchProvidersEntity>> getMovieWatchProviders(
+  Future<ApiResult<MovieCastAndCrewEntity>> getMovieCastAndCrew(
       int movieId) async {
-    try {
-      if (movieWatchProvidersId.isNullOrZero()) movieWatchProvidersId = movieId;
-      if (movieWatchProvidersId == movieId &&
-          movieWatchProvidersEntity != null) {
-        return ApiResult.success(movieWatchProvidersEntity);
-      }
-      final response = await _getMovieWatchProvidersDataSource
-          .getMovieWatchProviders(movieId);
-      MovieWatchProvidersModel watchModel =
-          MovieWatchProvidersModel.fromJson(response);
-      movieWatchProvidersEntity =
-          MovieWatchProvidersMapper.toEntity(watchModel);
-      movieWatchProvidersId = movieId;
-      return ApiResult.success(movieWatchProvidersEntity);
-    } catch (e) {
-      debugPrint(
-          'Error while fetching movies watch providers: ${e.toString()}');
-      return ApiResult.failure(ApiErrorHandler.handle(e));
-    }
-  }
-
-  @override
-  Future<ApiResult<MovieCastEntity>> getMovieCastAndCrew(int movieId) async {
     try {
       if (movieCastId.isNullOrZero()) movieCastId = movieId;
       if (movieCastId == movieId && movieCastEntity != null) {
@@ -114,7 +84,7 @@ class MovieDetailsRepoImpl implements MovieDetailsRepo {
       }
       final response =
           await _getMovieCastDataSource.getMovieCastAndCrew(movieId);
-      CastModel castModel = CastModel.fromJson(response);
+      CastAndCrewModel castModel = CastAndCrewModel.fromJson(response);
       movieCastEntity = MovieCastMapper.toEntity(castModel);
       movieCastId = movieId;
       return ApiResult.success(movieCastEntity);

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/routing/routes.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/helpers/api_data_helper.dart';
 import '../../../../core/themes/colors.dart';
-import '../../../../core/themes/text_styles.dart';
 
 class MoviesListViewItem extends StatelessWidget {
   const MoviesListViewItem({super.key, required this.movie});
@@ -25,24 +23,27 @@ class MoviesListViewItem extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.only(right: 12.0.w),
-        width: 150.w,
+        width: 160.w,
         child: Column(
           children: [
             Expanded(
               flex: 2,
               child: CachedNetworkImage(
                 imageUrl: imageUrl,
-                memCacheWidth: 170.w.toInt(),
+                memCacheWidth: 160.w.toInt(),
                 maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
                 placeholder: (context, url) {
                   return Shimmer.fromColors(
                     baseColor: KColors.grey,
-                    highlightColor: Colors.white,
+                    highlightColor: KColors.white,
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12.0.r),
+                          topRight: Radius.circular(12.0.r),
+                        ),
+                        color: KColors.white,
                       ),
                     ),
                   );
@@ -50,9 +51,9 @@ class MoviesListViewItem extends StatelessWidget {
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12.0),
-                      topRight: Radius.circular(12.0),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.0.r),
+                      topRight: Radius.circular(12.0.r),
                     ),
                     image: DecorationImage(
                       image: imageProvider,
@@ -60,19 +61,19 @@ class MoviesListViewItem extends StatelessWidget {
                     ),
                   ),
                 ),
+                errorWidget: (context, url, error) {
+                  return Center(
+                      child: const Icon(Icons.image_not_supported_rounded));
+                },
               ),
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(
-                  left: 8.0.w,
-                  top: 8.0.h,
-                  bottom: 8.0.h,
-                ),
-                decoration: const BoxDecoration(
+                padding: EdgeInsets.only(left: 8.0.w, top: 8.0.h, bottom: 8.h),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
+                    bottomLeft: Radius.circular(12.r),
+                    bottomRight: Radius.circular(12.r),
                   ),
                   color: KColors.soft,
                 ),
@@ -81,19 +82,20 @@ class MoviesListViewItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.originalTitle!,
+                      movie.originalTitle ?? 'N/A',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: KTextStyles.font14WhiteSemiBold,
+                      style: Theme.of(context).textTheme.labelMedium,
                     ),
                     Spacer(),
                     Text(
                       genre,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: KTextStyles.font10GreyMedium,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                            color: KColors.grey,
+                          ),
                     ),
-                    verticalSpace(8),
                   ],
                 ),
               ),

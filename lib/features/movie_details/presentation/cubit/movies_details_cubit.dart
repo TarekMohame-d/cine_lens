@@ -4,7 +4,6 @@ import 'package:cine_rank/features/movie_details/domain/entities/movie_details_e
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_watch_providers_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,13 +13,11 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
   MoviesDetailsCubit(
     this._getMoviesDetailsUseCase,
     this._getMovieVideosUseCase,
-    this._getMovieWatchProvidersUseCase,
     this._getMovieCastUseCase,
   ) : super(MoviesDetailsInitial());
 
   final GetMovieDetailsUseCase _getMoviesDetailsUseCase;
   final GetMovieVideoUseCase _getMovieVideosUseCase;
-  final GetMovieWatchProvidersUseCase _getMovieWatchProvidersUseCase;
   final GetMovieCastUseCase _getMovieCastUseCase;
 
   Future<void> getMovieDetails(int movieId) async {
@@ -32,23 +29,25 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
     }
   }
 
-  // Future<bool> getMovieCastAndCrew({required int movieId}) async {
-  //   final result = await moviesRepo.getMovieCastAndCrew(movieId: movieId);
-  //   if (result.isSuccess) {
-  //     cast = result.data;
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  Future<void> getMovieVideos(int movieId) async {
+  Future<String> getMovieVideos(int movieId) async {
     emit(GetMovieVideosLoading());
     final result = await _getMovieVideosUseCase.call(movieId);
     if (result.isSuccess) {
       emit(GetMovieVideosSuccess(result.data!));
+      return result.data!;
     } else {
       emit(GetMovieVideosFailure(result.error!));
+    }
+    return '';
+  }
+
+  Future<void> getMovieCastAndCrew(int movieId) async {
+    emit(GetMovieCastAndCrewLoading());
+    final result = await _getMovieCastUseCase.call(movieId);
+    if (result.isSuccess) {
+      emit(GetMovieCastAndCrewSuccess(result.data!));
+    } else {
+      emit(GetMovieCastAndCrewFailure(result.error!));
     }
   }
 
@@ -61,19 +60,4 @@ class MoviesDetailsCubit extends Cubit<MoviesDetailsState> {
   //     return false;
   //   }
   // }
-
-  Future<String> getMovieWatchProviders(int movieId) async {
-    final result = await _getMovieWatchProvidersUseCase.call(movieId);
-    return result.data!;
-  }
-
-  Future<void> getMovieCast(int movieId) async {
-    emit(GetMovieCastLoading());
-    final result = await _getMovieCastUseCase.call(movieId);
-    if (result.isSuccess) {
-      emit(GetMovieCastSuccess(result.data!));
-    } else {
-      emit(GetMovieCastFailure(result.error!));
-    }
-  }
 }

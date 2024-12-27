@@ -13,12 +13,15 @@ class CineRankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      child: MaterialApp(
+      minTextAdapt: true,
+      builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         darkTheme: KThemes.darkTheme,
         onGenerateRoute: KAppRouter().generateRoute,
-        initialRoute: isLoggedIn ? KRoutes.homeScreen : KRoutes.loginScreen,
+        initialRoute: isLoggedIn || isGuest != null
+            ? KRoutes.homeScreen
+            : KRoutes.loginScreen,
       ),
     );
   }

@@ -7,7 +7,7 @@ class GetMovieCastUseCase {
 
   GetMovieCastUseCase(this._movieDetailsRepo);
 
-  Future<ApiResult<MovieCastEntity>> call(int movieId) async {
+  Future<ApiResult<MovieCastAndCrewEntity>> call(int movieId) async {
     return await _movieDetailsRepo.getMovieCastAndCrew(movieId);
   }
 }

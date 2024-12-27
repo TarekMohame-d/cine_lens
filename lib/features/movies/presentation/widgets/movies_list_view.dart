@@ -9,8 +9,7 @@ class MoviesListView extends StatelessWidget {
   final List<MovieEntity> movies;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 12.0.w),
+    return SizedBox(
       height: 260.h,
       child: ListView.builder(
         itemCount: movies.length > 10 ? 10 : movies.length,

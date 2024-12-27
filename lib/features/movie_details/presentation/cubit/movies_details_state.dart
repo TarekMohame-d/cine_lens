@@ -33,16 +33,16 @@ final class GetMovieVideosFailure extends MoviesDetailsState {
   GetMovieVideosFailure(this.apiErrorModel);
 }
 
-final class GetMovieCastLoading extends MoviesDetailsState {}
+final class GetMovieCastAndCrewLoading extends MoviesDetailsState {}
 
-final class GetMovieCastSuccess extends MoviesDetailsState {
-  final MovieCastEntity cast;
+final class GetMovieCastAndCrewSuccess extends MoviesDetailsState {
+  final MovieCastAndCrewEntity castAndCrew;
 
-  GetMovieCastSuccess(this.cast);
+  GetMovieCastAndCrewSuccess(this.castAndCrew);
 }
 
-final class GetMovieCastFailure extends MoviesDetailsState {
+final class GetMovieCastAndCrewFailure extends MoviesDetailsState {
   final ApiErrorModel apiErrorModel;
 
-  GetMovieCastFailure(this.apiErrorModel);
+  GetMovieCastAndCrewFailure(this.apiErrorModel);
 }

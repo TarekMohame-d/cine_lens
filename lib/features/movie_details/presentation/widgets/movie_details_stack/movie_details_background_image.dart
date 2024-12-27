@@ -38,6 +38,9 @@ class MovieDetailsBackgroundImage extends StatelessWidget {
           ),
         ),
       ),
+      errorWidget: (context, url, error) {
+        return Center(child: const Icon(Icons.image_not_supported_rounded));
+      },
     );
   }
 }

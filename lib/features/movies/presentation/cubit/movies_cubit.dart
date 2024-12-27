@@ -67,8 +67,9 @@ class MoviesCubit extends Cubit<MoviesState> {
     return result.data ?? [];
   }
 
-  Future<void> getMoreMovies(
+  Future<List<MovieEntity>> getMoreMovies(
       MoviesCategoriesEnum category, bool more) async {
+    emit(FetchMoreMoviesLoading());
     List<MovieEntity> movies = [];
     switch (category) {
       case MoviesCategoriesEnum.nowPlaying:
@@ -84,6 +85,7 @@ class MoviesCubit extends Cubit<MoviesState> {
         movies.addAll(await getUpcomingMovies(more));
         break;
     }
-    emit(FetchMoreMovies(movies));
+    emit(FetchMoreMovies());
+    return movies;
   }
 }

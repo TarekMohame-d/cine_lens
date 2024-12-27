@@ -1,3 +1,5 @@
+import 'package:cine_rank/core/themes/colors.dart';
+import 'package:cine_rank/core/themes/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class KSnackBarTheme {
@@ -10,6 +12,9 @@ class KSnackBarTheme {
     ),
     elevation: 5,
     dismissDirection: DismissDirection.down,
+    contentTextStyle: KTextTheme.darkTextTheme.bodyMedium?.copyWith(
+      color: KColors.white,
+    ),
     behavior: SnackBarBehavior.floating,
   );
 
@@ -19,6 +24,9 @@ class KSnackBarTheme {
       borderRadius: BorderRadius.circular(6),
     ),
     elevation: 5,
+    contentTextStyle: KTextTheme.lightTextTheme.bodyMedium?.copyWith(
+      color: KColors.black,
+    ),
     behavior: SnackBarBehavior.floating,
   );
 }

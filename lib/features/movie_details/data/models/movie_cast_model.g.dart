@@ -6,7 +6,8 @@ part of 'movie_cast_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CastModel _$CastModelFromJson(Map<String, dynamic> json) => CastModel(
+CastAndCrewModel _$CastAndCrewModelFromJson(Map<String, dynamic> json) =>
+    CastAndCrewModel(
       id: (json['id'] as num?)?.toInt(),
       cast: (json['cast'] as List<dynamic>?)
           ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))

@@ -47,8 +47,9 @@ class MoviesRepoImpl implements MoviesRepo {
       MoviesModel moviesModel = MoviesModel.fromJson(response);
       if (moviesModel.totalPages! >= page) {
         movieList.addAll(moviesModel.movies!
-            .map(MoviesMapper.mapToEntity)
-            .where((movie) => !movieList.contains(movie)));
+            .map((movie) => MoviesMapper.toEntity(movie))
+            .where((movie) => !movieList
+                .any((existingMovie) => existingMovie.id == movie.id)));
         updatePage();
       }
       return ApiResult.success(movieList);

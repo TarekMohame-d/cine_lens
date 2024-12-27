@@ -9,7 +9,6 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/helpers/api_data_helper.dart';
 import '../../../../../core/themes/colors.dart';
-import '../../../../../core/themes/text_styles.dart';
 
 class CarouselSliderItem extends StatelessWidget {
   const CarouselSliderItem({super.key, required this.movie});
@@ -23,7 +22,9 @@ class CarouselSliderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String date = changeDateFormate(movie.releaseDate!);
+    String date = movie.releaseDate == null
+        ? 'N/A'
+        : changeDateFormate(movie.releaseDate!);
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath!);
     return GestureDetector(
       onTap: () {
@@ -42,7 +43,7 @@ class CarouselSliderItem extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(16.0),
+                    borderRadius: BorderRadius.circular(16.r),
                     color: Colors.white,
                   ),
                 ),
@@ -51,25 +52,28 @@ class CarouselSliderItem extends StatelessWidget {
             imageBuilder: (context, imageProvider) => Container(
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(16.r),
                 image: DecorationImage(
                   image: imageProvider,
                   fit: BoxFit.fill,
                 ),
               ),
             ),
+            errorWidget: (context, url, error) {
+              return Center(
+                  child: const Icon(Icons.image_not_supported_rounded));
+            },
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 50.0.h,
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16.r),
+                  bottomRight: Radius.circular(16.r),
                 ),
-                color: KColors.soft.withOpacity(0.7),
+                color: KColors.soft.withValues(alpha: 0.7),
               ),
               child: Padding(
                 padding: EdgeInsets.only(
@@ -82,12 +86,14 @@ class CarouselSliderItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.originalTitle!,
-                      style: KTextStyles.font16WhiteSemiBold,
+                      movie.originalTitle ?? 'N/A',
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     Text(
                       'On $date',
-                      style: KTextStyles.font12WhiteGreyMedium,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                            color: KColors.grey,
+                          ),
                     ),
                   ],
                 ),
