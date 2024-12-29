@@ -4,14 +4,14 @@ import 'package:cine_rank/features/movie_details/domain/entities/movie_videos_en
 class MovieVideosMapper {
   static MovieVideosEntity toEntity(VideoData videoData) {
     return MovieVideosEntity(
-      id: videoData.id,
-      key: videoData.key,
-      name: videoData.name,
-      site: videoData.site,
-      size: videoData.size,
-      type: videoData.type,
-      official: videoData.official,
-      publishedAt: videoData.publishedAt,
+      id: videoData.id ?? '',
+      key: videoData.key ?? '',
+      name: videoData.name ?? 'N/A',
+      site: videoData.site ?? 'N/A',
+      size: videoData.size ?? 0,
+      type: videoData.type ?? 'N/A',
+      official: videoData.official ?? false,
+      publishedAt: videoData.publishedAt ?? 'N/A',
     );
   }
 }

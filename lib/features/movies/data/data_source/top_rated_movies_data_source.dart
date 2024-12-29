@@ -6,11 +6,16 @@ class TopRatedMoviesDataSource {
   Future<Map<String, dynamic>> getTopRatedMovies(int page) async {
     Dio dio = getIt<Dio>();
     final response = await dio.get(
-      '${KApiConstants.apiBaseUrl}${KApiConstants.topRatedMoviesEndpoint}',
+      '${KApiConstants.apiBaseUrl}${KApiConstants.discoverMoviesEndpoint}',
       queryParameters: {
         'language': 'en-US',
         'page': page,
-        'sort_by': 'popularity.desc',
+        'sort_by': 'vote_average.desc',
+        'vote_average.gte': 8,
+        'vote_average.lte': 9.8,
+        'vote_count.gte': 10000,
+        'include_video': 'false',
+        'include_adult': 'false',
       },
     );
     return response.data;

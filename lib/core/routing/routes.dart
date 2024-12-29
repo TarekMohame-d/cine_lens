@@ -10,9 +10,8 @@ class KRoutes {
 
   static const String seeAllMoviesScreen = '/seeAllMoviesScreen';
   static const String movieDetailsScreen = '/movieDetailsScreen';
-  static const String movieDetailsCastAndCrewSeeAll =
-      '/movieDetailsCastAndCrewSeeAll';
-  static const String movieWebScreen = '/movieWebScreen';
+  static const String movieVideoScreen = '/movieVideoScreen';
+  static const String movieCastAndCrewScreen = '/movieCastAndCrewScreen';
 
   static const String moviesSearchScreen = '/moviesSearchScreen';
 }

@@ -6,7 +6,7 @@ class GetUserIdUseCase {
 
   GetUserIdUseCase(this._loginRepo);
 
-  Future<ApiResult<int>> call(String sessionId) async {
+  Future<ApiResult<String>> call(String sessionId) async {
     return await _loginRepo.getUserId(sessionId);
   }
 }

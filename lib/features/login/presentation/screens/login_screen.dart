@@ -1,6 +1,7 @@
 import 'package:cine_rank/core/helpers/constants.dart';
+import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/text_styles.dart';
+import 'package:cine_rank/core/themes/colors.dart';
 import 'package:cine_rank/features/login/presentation/widgets/login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,53 +14,48 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: const AssetImage(KConstants.appLogo),
-              width: 180.w,
-              height: 180.h,
-            ),
-            verticalSpace(8),
-            Image(
-              image: const AssetImage(KConstants.appBranding),
-              width: 130.w,
-            ),
-            verticalSpace(24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Sign in with TMDB',
-                  style: KTextStyles.font14GreySemiBold,
-                ),
-                horizontalSpace(16),
-                ShaderMask(
-                  shaderCallback: (Rect bounds) {
-                    return LinearGradient(
-                      colors: [
-                        Color(0xff0d253f),
-                        Color(0xff01b4e4),
-                        Color(0xff90cea1),
-                      ],
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                    ).createShader(bounds);
-                  },
-                  blendMode: BlendMode.srcIn,
-                  child: SvgPicture.asset(
-                    KConstants.tmdbLogo,
-                    width: 30.w,
-                    height: 30.h,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sign in with',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontWeight: KFontWeightHelper.semiBold,
+                          color: KColors.grey,
+                        ),
                   ),
-                ),
-              ],
-            ),
-            verticalSpace(72),
-            const LoginButton(),
-          ],
+                  horizontalSpace(16),
+                  ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return LinearGradient(
+                        colors: [
+                          Color(0xff0d253f),
+                          Color(0xff01b4e4),
+                          Color(0xff90cea1),
+                        ],
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                      ).createShader(bounds);
+                    },
+                    blendMode: BlendMode.srcIn,
+                    child: SvgPicture.asset(
+                      KConstants.tmdbLogo,
+                      width: 60.w,
+                      height: 60.h,
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpace(72),
+              const LoginButton(),
+            ],
+          ),
         ),
       ),
     );

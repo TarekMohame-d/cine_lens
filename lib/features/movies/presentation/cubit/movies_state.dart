@@ -61,8 +61,6 @@ final class GetUpcomingMoviesFailure extends MoviesState {
   GetUpcomingMoviesFailure(this.errorModel);
 }
 
-final class FetchMoreMovies extends MoviesState {
-  final List<MovieEntity> movies;
+final class FetchMoreMoviesLoading extends MoviesState {}
 
-  FetchMoreMovies(this.movies);
-}
+final class FetchMoreMovies extends MoviesState {}

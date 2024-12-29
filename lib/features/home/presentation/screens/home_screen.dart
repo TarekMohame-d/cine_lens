@@ -36,9 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        bottom: false,
         child: screens[currentIndex],
       ),
       bottomNavigationBar: Container(
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewPadding.bottom,
+        ),
         decoration: BoxDecoration(
           color: KColors.dark,
           borderRadius: BorderRadius.only(
@@ -47,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
               blurRadius: 5,
             ),
           ],

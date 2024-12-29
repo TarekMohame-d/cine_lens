@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../themes/colors.dart';
-import '../themes/text_styles.dart';
 
 class KTextField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
@@ -31,7 +30,8 @@ class KTextField extends StatelessWidget {
     this.controller,
     this.prefixIcon,
     this.onChanged,
-    this.labelText, this.labelStyle,
+    this.labelText,
+    this.labelStyle,
   });
 
   @override
@@ -43,16 +43,16 @@ class KTextField extends StatelessWidget {
         contentPadding: contentPadding,
         focusedBorder: focusedBorder,
         enabledBorder: enabledBorder,
-        hintStyle: hintStyle ?? KTextStyles.font12GreyMedium,
+        hintStyle: hintStyle,
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         filled: true,
         fillColor: backGroundColor,
         labelText: labelText,
-        labelStyle: labelStyle ?? KTextStyles.font12GreyMedium,
+        labelStyle: labelStyle,
       ),
-      style: inputTextStyle ?? KTextStyles.font12WhiteGreyMedium,
+      style: inputTextStyle,
       cursorColor: KColors.grey,
       onChanged: onChanged,
     );

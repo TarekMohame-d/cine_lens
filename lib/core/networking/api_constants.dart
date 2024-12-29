@@ -5,10 +5,9 @@ class KApiConstants {
   static const String requestTokenEndpoint = '/authentication/token/new';
   static const String createSessionEndpoint = '/authentication/session/new';
   static const String accountEndpoint = '/account';
-  static const String nowPlayingMoviesEndpoint = '/movie/now_playing';
-  static const String mostPopularMoviesEndpoint = '/movie/popular';
-  static const String topRatedMoviesEndpoint = '/movie/top_rated';
-  static const String upcomingMoviesEndpoint = '/movie/upcoming';
+
+  static const String discoverMoviesEndpoint = '/discover/movie';
+
   static const String searchMoviesEndpoint = '/search/movie';
   static const String movieDetailsEndpoint = '/movie/';
   static const String movieVideosEndpoint = '/movie/';

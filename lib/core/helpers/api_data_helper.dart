@@ -1,3 +1,5 @@
+import 'package:cine_rank/core/helpers/extensions.dart';
+
 class KApiDataHelper {
   KApiDataHelper._();
 
@@ -63,12 +65,12 @@ class KApiDataHelper {
   };
 
   /// images size = [w92, w154, w185, w300, w342, w500, w780, original]
-  static String getImageUrl({required String? path, String size = 'original'}) {
-    return path != null ? '$imagesSecureBaseUrl$size$path' : '';
+  static String getImageUrl({required String? path, String size = 'w300'}) {
+    return !path.isNullOrEmpty() ? '$imagesSecureBaseUrl$size$path' : '';
   }
 
   /// return movie genre name
-  static String getGenreName(int id) {
+  static String getGenreName(int? id) {
     return genres[id] ?? 'Unknown';
   }
 

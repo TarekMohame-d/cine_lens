@@ -2,10 +2,13 @@ import 'package:cine_rank/core/enums/movies_categories.dart';
 import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
 import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
 import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
-import 'package:cine_rank/features/login/presentation/widgets/login_web_view.dart';
+import 'package:cine_rank/features/login/presentation/screens/login_web_view.dart';
+import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
 import 'package:cine_rank/features/movie_details/presentation/cubit/movies_details_cubit.dart';
+import 'package:cine_rank/features/movie_details/presentation/screens/cast_and_crew_screen.dart';
 import 'package:cine_rank/features/movie_details/presentation/screens/movie_details_screen.dart';
-import 'package:cine_rank/features/movie_details/presentation/screens/movie_web_screen.dart';
+import 'package:cine_rank/features/movie_details/presentation/screens/video_player_screen.dart';
+import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
 import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:cine_rank/features/movies/presentation/screens/see_all_movies_screen.dart';
 import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
@@ -38,36 +41,45 @@ class KAppRouter {
           builder: (context) => const HomeScreen(),
         );
       case KRoutes.seeAllMoviesScreen:
+        final (MoviesCategoriesEnum, List<MovieEntity>) args =
+            arguments as (MoviesCategoriesEnum, List<MovieEntity>);
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<MoviesCubit>(),
             child: SeeAllMoviesScreen(
-              category: arguments as MoviesCategoriesEnum,
+              category: args.$1,
+              movies: args.$2,
             ),
           ),
         );
       case KRoutes.movieDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) =>
-                MoviesDetailsCubit(getIt(), getIt(), getIt(), getIt()),
+            create: (context) => MoviesDetailsCubit(getIt(), getIt(), getIt()),
             child: MovieDetailsScreen(
               movieId: arguments as int,
             ),
           ),
         );
-      case KRoutes.movieWebScreen:
+      case KRoutes.movieVideoScreen:
         return MaterialPageRoute(
-          builder: (context) => MovieWebScreen(
-            webViewUrl: arguments as String,
+          builder: (context) => BlocProvider(
+            create: (context) => MoviesDetailsCubit(
+              getIt(),
+              getIt(),
+              getIt(),
+            ),
+            child: VideoPlayerScreen(
+              movieId: arguments as int,
+            ),
           ),
         );
-      // case KRoutes.movieDetailsCastAndCrewSeeAll:
-      //   return MaterialPageRoute(
-      //     builder: (context) => AllCastAndCrewScreen(
-      //       castModel: arguments as CastModel,
-      //     ),
-      //   );
+      case KRoutes.movieCastAndCrewScreen:
+        return MaterialPageRoute(
+          builder: (context) => CastAndCrewScreen(
+            castAndCrewEntity: arguments as MovieCastAndCrewEntity,
+          ),
+        );
       case KRoutes.moviesSearchScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(

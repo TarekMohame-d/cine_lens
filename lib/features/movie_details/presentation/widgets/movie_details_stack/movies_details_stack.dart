@@ -22,18 +22,18 @@ class MoviesDetailsStack extends StatelessWidget {
       child: Stack(
         children: [
           MovieDetailsBackgroundImage(
-            imageUrl: movieDetails.posterPath!,
+            imageUrl: movieDetails.posterPath,
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: MovieDetailsMovieImage(
-              imageUrl: movieDetails.posterPath!,
+              imageUrl: movieDetails.posterPath,
             ),
           ),
           Align(
             alignment: Alignment.topCenter,
             child: MovieDetailsAppBar(
-              movieTitle: movieDetails.title!,
+              movieTitle: movieDetails.title,
             ),
           ),
           Align(
@@ -45,8 +45,8 @@ class MoviesDetailsStack extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: MovieDetailsButtonsRow(
-              movieId: movieDetails.id!,
-              movieLink: movieDetails.homepage!,
+              movieId: movieDetails.id,
+              movieLink: movieDetails.homepage,
             ),
           ),
         ],

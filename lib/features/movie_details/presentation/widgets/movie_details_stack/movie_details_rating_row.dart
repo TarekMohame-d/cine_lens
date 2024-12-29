@@ -1,6 +1,6 @@
+import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/themes/text_styles.dart';
 import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,12 @@ class MovieDetailsRatingRow extends StatelessWidget {
   final MovieDetailsEntity movieDetails;
 
   String extractYearFromDateString(String dateString) {
-    DateTime dateTime = DateTime.parse(dateString);
-    return dateTime.year.toString();
+    try {
+      DateTime dateTime = DateTime.parse(dateString);
+      return dateTime.year.toString();
+    } catch (e) {
+      return 'N/A';
+    }
   }
 
   @override
@@ -30,13 +34,22 @@ class MovieDetailsRatingRow extends StatelessWidget {
               ),
               horizontalSpace(2),
               Text(
-                extractYearFromDateString(movieDetails.releaseDate!),
-                style: KTextStyles.font14GreySemiBold,
+                extractYearFromDateString(movieDetails.releaseDate),
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: KColors.grey,
+                      fontWeight: KFontWeightHelper.semiBold,
+                    ),
               ),
             ],
           ),
           horizontalSpace(12),
-          Text('|', style: KTextStyles.font14GreySemiBold),
+          Text(
+            '|',
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: KColors.grey,
+                  fontWeight: KFontWeightHelper.semiBold,
+                ),
+          ),
           horizontalSpace(12),
           Row(
             children: [
@@ -46,13 +59,22 @@ class MovieDetailsRatingRow extends StatelessWidget {
               ),
               horizontalSpace(2),
               Text(
-                movieDetails.voteAverage!.toStringAsFixed(1),
-                style: KTextStyles.font14GreySemiBold,
+                movieDetails.voteAverage.toStringAsFixed(1),
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: KColors.grey,
+                      fontWeight: KFontWeightHelper.semiBold,
+                    ),
               ),
             ],
           ),
           horizontalSpace(12),
-          Text('|', style: KTextStyles.font14GreySemiBold),
+          Text(
+            '|',
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: KColors.grey,
+                  fontWeight: KFontWeightHelper.semiBold,
+                ),
+          ),
           horizontalSpace(12),
           Row(
             children: [
@@ -62,8 +84,11 @@ class MovieDetailsRatingRow extends StatelessWidget {
               ),
               horizontalSpace(2),
               Text(
-                movieDetails.genres!.first.name!,
-                style: KTextStyles.font14GreySemiBold,
+                movieDetails.genres.first.name ?? 'N/A',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: KColors.grey,
+                      fontWeight: KFontWeightHelper.semiBold,
+                    ),
               ),
             ],
           ),

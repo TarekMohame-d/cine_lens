@@ -1,6 +1,6 @@
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_bloc_builder.dart';
+import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_and_crew_bloc_builder.dart';
 import 'package:cine_rank/features/movie_details/presentation/widgets/movie_production_companies.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +18,12 @@ class MovieDetailsSuccess extends StatelessWidget {
         children: [
           MoviesDetailsStack(movieDetails: movieDetails),
           verticalSpace(12),
-          MoviesDetailsOverview(overview: movieDetails.overview!),
+          MoviesDetailsOverview(overview: movieDetails.overview),
           verticalSpace(12),
-          CastBlocBuilder(movieId: movieDetails.id!),
+          CastAndCrewBlocBuilder(movieId: movieDetails.id),
           verticalSpace(12),
           MovieProductionCompanies(
-              productionCompanies: movieDetails.productionCompanies!),
+              productionCompanies: movieDetails.productionCompanies),
         ],
       ),
     );

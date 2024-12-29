@@ -69,7 +69,7 @@ class _NowPlayingShimmerLoadingState extends State<NowPlayingShimmerLoading> {
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),
-                      color: KColors.soft.withOpacity(0.7),
+                      color: KColors.soft.withValues(alpha: 0.7),
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(

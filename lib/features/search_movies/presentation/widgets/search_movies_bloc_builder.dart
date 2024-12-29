@@ -1,7 +1,7 @@
+import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/themes/text_styles.dart';
 import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/see_all_list_view_item.dart';
+import 'package:cine_rank/features/movies/presentation/widgets/see_all/see_all_list_view_item.dart';
 import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,7 @@ class SearchMoviesBlocBuilder extends StatelessWidget {
           case MoviesSearchSuccess _:
             return setupSuccess(state.searchMovies);
           case MoviesSearchFailure _:
-            return setupError(state.errorModel.statusMessage ?? 'Unknown error',
+            return setupError(state.errorModel.statusMessage!,
                 MediaQuery.of(context).size.width);
           default:
             return SizedBox.shrink();
@@ -46,9 +46,20 @@ class SearchMoviesBlocBuilder extends StatelessWidget {
       return Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0.w),
-          child: Text(
-            'No movies found',
-            style: KTextStyles.font16WhiteSemiBold,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.search_off_rounded, size: 130.r, color: KColors.grey),
+              Text(
+                'We couldn\'t find\nany movie with this name.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: KColors.grey,
+                  fontSize: 16.sp,
+                  fontWeight: KFontWeightHelper.semiBold,
+                ),
+              ),
+            ],
           ),
         ),
       );
@@ -73,17 +84,21 @@ class SearchMoviesBlocBuilder extends StatelessWidget {
           height: 230.0.h,
           width: screenWidth,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             color: KColors.soft,
           ),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0.r),
               child: Text(
                 errorMessage,
                 maxLines: 5,
                 overflow: TextOverflow.ellipsis,
-                style: KTextStyles.font16WhiteSemiBold,
+                style: TextStyle(
+                  color: KColors.grey,
+                  fontSize: 16.sp,
+                  fontWeight: KFontWeightHelper.semiBold,
+                ),
               ),
             ),
           ),

@@ -7,7 +7,6 @@ import 'package:cine_rank/features/movie_details/data/repository/movie_details_r
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
 import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_watch_providers_use_case.dart';
 import 'package:cine_rank/features/movies/domain/repository/movies_repo.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
 import 'package:cine_rank/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
@@ -22,14 +21,12 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/movie_details/domain/repository/movie_details_repo.dart';
 import '../../features/movies/data/repository/movies_repo_impl.dart';
-import '../networking/api_services.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio and ApiService
   getIt.registerLazySingleton<Dio>(() => DioFactory.getDio());
-  getIt.registerLazySingleton<ApiService>(() => ApiService(dio: getIt<Dio>()));
 
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepoImpl(getIt()));
@@ -66,8 +63,6 @@ Future<void> setupGetIt() async {
       () => GetMovieDetailsUseCase(getIt()));
   getIt.registerLazySingleton<GetMovieVideoUseCase>(
       () => GetMovieVideoUseCase(getIt()));
-  getIt.registerLazySingleton<GetMovieWatchProvidersUseCase>(
-      () => GetMovieWatchProvidersUseCase(getIt()));
   getIt.registerLazySingleton<GetMovieCastUseCase>(
       () => GetMovieCastUseCase(getIt()));
 }

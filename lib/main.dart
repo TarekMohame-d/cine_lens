@@ -1,6 +1,8 @@
+import 'package:cine_rank/core/helpers/secure_storage_helper.dart';
 import 'package:cine_rank/core/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'cine_rank_app.dart';
@@ -15,13 +17,17 @@ void main() async {
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   KThemes.setSystemUiOverlayStyle();
-  isLoggedIn = await SharedPrefHelper.getInt(SharedPrefKeys.userId) != null;
+  isLoggedIn =
+      await SecureStorageHelper.getData(SecureStorageKeys.userId) != null;
+  isGuest = await SharedPrefHelper.getBool(SharedPrefKeys.isGuest);
   Bloc.observer = MyBlocObserver();
+
+  await dotenv.load(fileName: ".env");
+
   runApp(
     CineRankApp(),
   );
 }
-
 
 // Future<void> getUserAccount() async {
 //   try {

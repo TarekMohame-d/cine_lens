@@ -13,8 +13,10 @@ class GetMovieVideoUseCase {
         await _movieDetailsRepo.getMovieVideos(movieId);
     if (result.isSuccess) {
       for (var video in result.data!) {
-        if (video.type == 'Trailer') {
-          return ApiResult.success(video.key!);
+        if (video.type == 'Trailer' &&
+            video.official == true &&
+            video.key.isNotEmpty) {
+          return ApiResult.success(video.key);
         }
       }
     }

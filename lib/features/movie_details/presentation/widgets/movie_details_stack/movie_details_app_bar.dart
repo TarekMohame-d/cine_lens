@@ -1,5 +1,4 @@
 import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +28,7 @@ class MovieDetailsAppBar extends StatelessWidget {
               movieTitle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: KTextStyles.font16WhiteSemiBold,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           IconButton(

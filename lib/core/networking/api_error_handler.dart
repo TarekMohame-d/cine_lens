@@ -36,7 +36,7 @@ class ApiErrorHandler {
 
   static ApiErrorModel _handleError(dynamic data) {
     final statusCode = data['status_code'] ?? -1;
-    final statusMessage = data['status_message'] ?? 'Unknown Dio error occurred';
+    final statusMessage = data['status_message'] ?? 'Bad response';
 
     return ApiErrorModel(statusCode: statusCode, statusMessage: statusMessage);
   }

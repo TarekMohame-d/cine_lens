@@ -1,11 +1,16 @@
-// import 'package:easy_gpa/core/theme/colors.dart';
-// import 'package:flutter/material.dart';
+import 'package:cine_rank/core/themes/colors.dart';
+import 'package:flutter/material.dart';
 
-// class KAppBarTheme {
-//   KAppBarTheme._();
+class KAppBarTheme {
+  KAppBarTheme._();
 
-//   static const appBarTheme = AppBarTheme(
-//     scrolledUnderElevation: 0,
-//     color: KColors.scaffoldLightColor,
-//   );
-// }
+  static final appBarDarkTheme = AppBarTheme(
+    scrolledUnderElevation: 0,
+    color: KColors.scaffoldBackgroundColor,
+  );
+
+  static final appBarLightTheme = AppBarTheme(
+    scrolledUnderElevation: 0,
+    color: KColors.scaffoldBackgroundColor,
+  );
+}

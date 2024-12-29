@@ -21,11 +21,7 @@ final class LoginGetRequestTokenFailure extends LoginState {
 
 final class LoginCreateSessionLoading extends LoginState {}
 
-final class LoginCreateSessionSuccess extends LoginState {
-  final SessionModel? sessionModel;
-
-  LoginCreateSessionSuccess(this.sessionModel);
-}
+final class LoginCreateSessionSuccess extends LoginState {}
 
 final class LoginCreateSessionFailure extends LoginState {
   final ApiErrorModel? apiErrorModel;
@@ -35,11 +31,7 @@ final class LoginCreateSessionFailure extends LoginState {
 
 final class LoginGetUserIdLoading extends LoginState {}
 
-final class LoginGetUserIdSuccess extends LoginState {
-  final int? userId;
-
-  LoginGetUserIdSuccess(this.userId);
-}
+final class LoginGetUserIdSuccess extends LoginState {}
 
 final class LoginGetUserIdFailure extends LoginState {
   final ApiErrorModel? apiErrorModel;
