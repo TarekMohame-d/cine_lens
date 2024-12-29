@@ -16,17 +16,19 @@ class CarouselSliderItem extends StatelessWidget {
   final MovieEntity movie;
 
   String changeDateFormate(String date) {
-    final DateTime dateTime = DateTime.parse(date);
-    final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
-    return formattedDate;
+    try {
+      final DateTime dateTime = DateTime.parse(date);
+      final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
+      return formattedDate;
+    } catch (e) {
+      return 'N/A';
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    String date = movie.releaseDate == null
-        ? 'N/A'
-        : changeDateFormate(movie.releaseDate!);
-    String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath!);
+    String date = changeDateFormate(movie.releaseDate);
+    String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath);
     return GestureDetector(
       onTap: () {
         context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
@@ -103,7 +105,7 @@ class CarouselSliderItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.originalTitle ?? 'N/A',
+                      movie.originalTitle,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                     Text(

@@ -44,7 +44,7 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
             textAlign: TextAlign.start,
             'See all',
             style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  color: KColors.grey,
+                  color: KColors.blueAccent,
                 ),
           ),
         ),

@@ -31,124 +31,133 @@ class CrewGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final crewMembers = _getCrewData(crew).values.toList();
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10.w,
-        mainAxisSpacing: 10.h,
-        childAspectRatio: 3 / 5,
+    return ConditionalBuilder(
+      fallback: Center(
+        child: Text(
+          'No crew available',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
       ),
-      itemCount: crewMembers.length,
-      itemBuilder: (context, index) {
-        String? imageUrl =
-            KApiDataHelper.getImageUrl(path: crewMembers[index].$2);
+      widget: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10.w,
+          mainAxisSpacing: 10.h,
+          childAspectRatio: 3 / 5,
+        ),
+        itemCount: crewMembers.length,
+        itemBuilder: (context, index) {
+          String? imageUrl =
+              KApiDataHelper.getImageUrl(path: crewMembers[index].$2);
 
-        List<String> department = crewMembers[index].$3.toList();
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 2,
-              child: ConditionalBuilder(
-                fallback: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: KColors.grey.withValues(alpha: 0.5),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12.0.r),
-                      topRight: Radius.circular(12.0.r),
-                    ),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.image_not_supported_rounded,
-                      size: 54.r,
-                    ),
-                  ),
-                ),
-                widget: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  memCacheWidth: 200.0.w.toInt(),
-                  maxWidthDiskCache:
-                      (MediaQuery.sizeOf(context).width / 2).toInt(),
-                  placeholder: (context, url) {
-                    return Shimmer.fromColors(
-                      baseColor: KColors.grey,
-                      highlightColor: KColors.white,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12.0.r),
-                            topRight: Radius.circular(12.0.r),
-                          ),
-                          color: KColors.white,
-                        ),
-                      ),
-                    );
-                  },
-                  imageBuilder: (context, imageProvider) => Container(
+          List<String> department = crewMembers[index].$3.toList();
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 2,
+                child: ConditionalBuilder(
+                  fallback: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
+                      color: KColors.grey.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12.0.r),
                         topRight: Radius.circular(12.0.r),
                       ),
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.fill,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.image_not_supported_rounded,
+                        size: 54.r,
                       ),
                     ),
                   ),
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.image_not_supported_rounded),
-                ),
-                condition: !imageUrl.isNullOrEmpty(),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(left: 8.0.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12.r),
-                    bottomRight: Radius.circular(12.r),
-                  ),
-                  color: KColors.soft,
-                ),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      crewMembers[index].$1,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    Wrap(
-                      children: List.generate(
-                        department.length,
-                        (i) {
-                          return Text(
-                            department[i] +
-                                (i == department.length - 1 ? '' : ' / '),
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall!
-                                .copyWith(
-                                  color: KColors.grey,
-                                ),
-                          );
-                        },
+                  widget: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    memCacheWidth: 200.0.w.toInt(),
+                    maxWidthDiskCache:
+                        (MediaQuery.sizeOf(context).width / 2).toInt(),
+                    placeholder: (context, url) {
+                      return Shimmer.fromColors(
+                        baseColor: KColors.grey,
+                        highlightColor: KColors.white,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12.0.r),
+                              topRight: Radius.circular(12.0.r),
+                            ),
+                            color: KColors.white,
+                          ),
+                        ),
+                      );
+                    },
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12.0.r),
+                          topRight: Radius.circular(12.0.r),
+                        ),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                  ],
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.image_not_supported_rounded),
+                  ),
+                  condition: !imageUrl.isNullOrEmpty(),
                 ),
               ),
-            ),
-          ],
-        );
-      },
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(left: 8.0.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(12.r),
+                      bottomRight: Radius.circular(12.r),
+                    ),
+                    color: KColors.soft,
+                  ),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        crewMembers[index].$1,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      Wrap(
+                        children: List.generate(
+                          department.length,
+                          (i) {
+                            return Text(
+                              department[i] +
+                                  (i == department.length - 1 ? '' : ' / '),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall!
+                                  .copyWith(
+                                    color: KColors.grey,
+                                  ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+      condition: crew.isNotEmpty,
     );
   }
 }

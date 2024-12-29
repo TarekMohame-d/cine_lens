@@ -48,10 +48,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void dispose() {
     _controller.dispose();
+    _restoreSystemUiSettings();
+    super.dispose();
+  }
+
+  void _restoreSystemUiSettings() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     SystemChrome.setPreferredOrientations(
       <DeviceOrientation>[DeviceOrientation.portraitUp],
     );
-    super.dispose();
   }
 
   @override
@@ -69,7 +74,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          padding: EdgeInsets.only(
+            left: 12.w,
+            right: 12.w,
+            bottom: MediaQuery.of(context).viewPadding.bottom,
+          ),
           child: Center(
             child: BlocBuilder<MoviesDetailsCubit, MoviesDetailsState>(
               buildWhen: (previous, current) =>

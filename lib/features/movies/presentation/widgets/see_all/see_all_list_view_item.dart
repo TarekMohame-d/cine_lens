@@ -90,7 +90,7 @@ class SeeAllListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.originalTitle ?? 'N/A',
+                    movie.originalTitle,
                     style: Theme.of(context).textTheme.labelLarge,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -118,7 +118,7 @@ class SeeAllListViewItem extends StatelessWidget {
                       ),
                       horizontalSpace(4),
                       Text(
-                        '${movie.voteAverage!.toStringAsFixed(1)} / 10',
+                        '${movie.voteAverage.toStringAsFixed(1)} / 10',
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                     ],
@@ -146,10 +146,13 @@ class SeeAllListViewItem extends StatelessWidget {
     );
   }
 
-  String changeDateFormate(String? date) {
-    if (date.isNullOrEmpty()) return 'N/A';
-    final DateTime dateTime = DateTime.parse(date!);
-    final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
-    return formattedDate;
+  String changeDateFormate(String date) {
+    try {
+      final DateTime dateTime = DateTime.parse(date);
+      final String formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
+      return formattedDate;
+    } catch (e) {
+      return 'N/A';
+    }
   }
 }

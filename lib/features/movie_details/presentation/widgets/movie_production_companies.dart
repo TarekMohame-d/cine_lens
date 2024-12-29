@@ -34,64 +34,26 @@ class MovieProductionCompanies extends StatelessWidget {
           ),
           SizedBox(
             height: 80.0.h,
-            child: ListView.builder(
-              itemCount: productionCompanies.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                String imageUrl = KApiDataHelper.getImageUrl(
-                    path: productionCompanies[index].logoPath);
+            child: ConditionalBuilder(
+              fallback: Center(
+                child: Text(
+                  'No production companies available',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ),
+              widget: ListView.builder(
+                itemCount: productionCompanies.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  String imageUrl = KApiDataHelper.getImageUrl(
+                      path: productionCompanies[index].logoPath);
 
-                return Padding(
-                  padding: EdgeInsets.only(right: 12.0.w),
-                  child: Row(
-                    children: [
-                      ConditionalBuilder(
-                        fallback: Container(
-                          width: 52.0.w,
-                          height: 52.0.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: KColors.grey.withValues(alpha: 0.5),
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.image_not_supported_rounded,
-                            ),
-                          ),
-                        ),
-                        widget: CachedNetworkImage(
-                          imageUrl: imageUrl,
-                          width: 52.0.w,
-                          height: 52.0.w,
-                          memCacheWidth: 52.0.w.toInt(),
-                          maxWidthDiskCache:
-                              MediaQuery.sizeOf(context).width.toInt(),
-                          placeholder: (context, url) {
-                            return Shimmer.fromColors(
-                              baseColor: KColors.grey,
-                              highlightColor: Colors.white,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(12.r),
-                                ),
-                              ),
-                            );
-                          },
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              color: KColors.whiteGrey,
-                              borderRadius: BorderRadius.circular(12.r),
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                          ),
-                          errorWidget: (context, url, error) => Container(
+                  return Padding(
+                    padding: EdgeInsets.only(right: 12.0.w),
+                    child: Row(
+                      children: [
+                        ConditionalBuilder(
+                          fallback: Container(
                             width: 52.0.w,
                             height: 52.0.w,
                             decoration: BoxDecoration(
@@ -105,37 +67,84 @@ class MovieProductionCompanies extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                        condition: !imageUrl.isNullOrEmpty(),
-                      ),
-                      horizontalSpace(4),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            productionCompanies[index].name ?? 'N/A',
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                          Text(
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            productionCompanies[index].originCountry ?? 'N/A',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall!
-                                .copyWith(
-                                  color: KColors.grey,
+                          widget: CachedNetworkImage(
+                            imageUrl: imageUrl,
+                            width: 52.0.w,
+                            height: 52.0.w,
+                            memCacheWidth: 52.0.w.toInt(),
+                            maxWidthDiskCache:
+                                MediaQuery.sizeOf(context).width.toInt(),
+                            placeholder: (context, url) {
+                              return Shimmer.fromColors(
+                                baseColor: KColors.grey,
+                                highlightColor: Colors.white,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
                                 ),
+                              );
+                            },
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: KColors.whiteGrey,
+                                borderRadius: BorderRadius.circular(12.r),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                            ),
+                            errorWidget: (context, url, error) => Container(
+                              width: 52.0.w,
+                              height: 52.0.w,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: KColors.grey.withValues(alpha: 0.5),
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.image_not_supported_rounded,
+                                ),
+                              ),
+                            ),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
+                          condition: !imageUrl.isNullOrEmpty(),
+                        ),
+                        horizontalSpace(4),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              productionCompanies[index].name ?? 'N/A',
+                              style: Theme.of(context).textTheme.labelMedium,
+                            ),
+                            Text(
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              productionCompanies[index].originCountry ?? 'N/A',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall!
+                                  .copyWith(
+                                    color: KColors.grey,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              condition: productionCompanies.isNotEmpty,
             ),
           ),
         ],

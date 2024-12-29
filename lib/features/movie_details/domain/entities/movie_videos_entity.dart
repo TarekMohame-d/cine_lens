@@ -1,12 +1,12 @@
 class MovieVideosEntity {
-  final String? name;
-  final String? key;
-  final String? site;
-  final int? size;
-  final String? type;
-  final bool? official;
-  final String? publishedAt;
-  final String? id;
+  final String name;
+  final String key;
+  final String site;
+  final int size;
+  final String type;
+  final bool official;
+  final String publishedAt;
+  final String id;
 
   MovieVideosEntity({
     required this.name,

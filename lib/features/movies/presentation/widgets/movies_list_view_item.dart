@@ -16,7 +16,7 @@ class MoviesListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String genre = KApiDataHelper.getGenreName(movie.genreIds!);
+    String genre = KApiDataHelper.getGenreName(movie.genreIds);
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath);
     return GestureDetector(
       onTap: () {
@@ -100,7 +100,7 @@ class MoviesListViewItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.originalTitle ?? 'N/A',
+                      movie.originalTitle,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.labelMedium,

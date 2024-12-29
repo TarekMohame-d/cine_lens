@@ -1,4 +1,3 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
 import 'package:cine_rank/core/helpers/font_weight_helper.dart';
 import 'package:cine_rank/core/helpers/spacing.dart';
 import 'package:cine_rank/core/themes/colors.dart';
@@ -11,10 +10,13 @@ class MovieDetailsRatingRow extends StatelessWidget {
 
   final MovieDetailsEntity movieDetails;
 
-  String extractYearFromDateString(String? dateString) {
-    if (dateString.isNullOrEmpty()) return 'N/A';
-    DateTime dateTime = DateTime.parse(dateString!);
-    return dateTime.year.toString();
+  String extractYearFromDateString(String dateString) {
+    try {
+      DateTime dateTime = DateTime.parse(dateString);
+      return dateTime.year.toString();
+    } catch (e) {
+      return 'N/A';
+    }
   }
 
   @override
@@ -57,7 +59,7 @@ class MovieDetailsRatingRow extends StatelessWidget {
               ),
               horizontalSpace(2),
               Text(
-                movieDetails.voteAverage!.toStringAsFixed(1),
+                movieDetails.voteAverage.toStringAsFixed(1),
                 style: Theme.of(context).textTheme.labelMedium!.copyWith(
                       color: KColors.grey,
                       fontWeight: KFontWeightHelper.semiBold,
@@ -82,7 +84,7 @@ class MovieDetailsRatingRow extends StatelessWidget {
               ),
               horizontalSpace(2),
               Text(
-                movieDetails.genres!.first.name!,
+                movieDetails.genres.first.name ?? 'N/A',
                 style: Theme.of(context).textTheme.labelMedium!.copyWith(
                       color: KColors.grey,
                       fontWeight: KFontWeightHelper.semiBold,

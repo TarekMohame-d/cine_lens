@@ -4,8 +4,8 @@ import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_enti
 class MovieCastMapper {
   static MovieCastAndCrewEntity toEntity(CastAndCrewModel model) {
     return MovieCastAndCrewEntity(
-      cast: model.cast,
-      crew: model.crew,
+      cast: model.cast ?? [],
+      crew: model.crew ?? [],
     );
   }
 }

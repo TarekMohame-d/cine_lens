@@ -52,11 +52,11 @@ class CastAndCrewScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(right: 3.0.w),
-                        child: CastGridView(cast: castAndCrewEntity.cast!),
+                        child: CastGridView(cast: castAndCrewEntity.cast),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 3.0.w),
-                        child: CrewGridView(crew: castAndCrewEntity.crew!),
+                        child: CrewGridView(crew: castAndCrewEntity.crew),
                       ),
                     ],
                   ),

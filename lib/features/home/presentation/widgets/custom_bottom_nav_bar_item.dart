@@ -25,6 +25,7 @@ class CustomBottomNavBarItem extends StatelessWidget {
       width: width / length,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedContainer(
             duration: Duration(milliseconds: 1500),

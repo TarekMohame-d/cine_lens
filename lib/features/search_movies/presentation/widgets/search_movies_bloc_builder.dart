@@ -46,13 +46,20 @@ class SearchMoviesBlocBuilder extends StatelessWidget {
       return Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0.w),
-          child: Text(
-            'No movies found',
-            style: TextStyle(
-              color: KColors.grey,
-              fontSize: 16.sp,
-              fontWeight: KFontWeightHelper.semiBold,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.search_off_rounded, size: 130.r, color: KColors.grey),
+              Text(
+                'We couldn\'t find\nany movie with this name.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: KColors.grey,
+                  fontSize: 16.sp,
+                  fontWeight: KFontWeightHelper.semiBold,
+                ),
+              ),
+            ],
           ),
         ),
       );

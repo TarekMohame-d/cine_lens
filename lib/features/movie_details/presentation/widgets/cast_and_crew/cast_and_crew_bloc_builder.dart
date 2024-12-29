@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CastBlocBuilder extends StatelessWidget {
-  const CastBlocBuilder({super.key, required this.movieId});
+class CastAndCrewBlocBuilder extends StatelessWidget {
+  const CastAndCrewBlocBuilder({super.key, required this.movieId});
   final int movieId;
 
   @override
@@ -59,7 +59,7 @@ class CastBlocBuilder extends StatelessWidget {
                     ],
                   ),
                   verticalSpace(8),
-                  CastListView(castList: state.castAndCrew.cast!),
+                  CastListView(castList: state.castAndCrew.cast),
                 ],
               );
             case GetMovieCastAndCrewFailure _:
