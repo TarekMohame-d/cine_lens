@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/widgets/conditional_builder.dart';
-import 'package:cine_rank/features/movie_details/data/models/movie_cast_model.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_list_view_item.dart';
+import 'package:cine_lens/core/widgets/conditional_builder.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_cast_model.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/cast_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

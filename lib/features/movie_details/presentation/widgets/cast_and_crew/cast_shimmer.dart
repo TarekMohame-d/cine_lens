@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/colors.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
@@ -25,7 +25,7 @@ class CastShimmer extends StatelessWidget {
             Text(
               'See all',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: KColors.grey,
+                    color: KColors.blueAccent,
                   ),
             ),
           ],

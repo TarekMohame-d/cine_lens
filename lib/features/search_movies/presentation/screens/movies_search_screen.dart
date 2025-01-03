@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/helpers/debouncer.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
-import 'package:cine_rank/features/search_movies/presentation/widgets/custom_app_bar.dart';
-import 'package:cine_rank/features/search_movies/presentation/widgets/search_movies_bloc_builder.dart';
+import 'package:cine_lens/core/helpers/debouncer.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/features/search_movies/presentation/cubit/movies_search_cubit.dart';
+import 'package:cine_lens/features/search_movies/presentation/widgets/custom_app_bar.dart';
+import 'package:cine_lens/features/search_movies/presentation/widgets/search_movies_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

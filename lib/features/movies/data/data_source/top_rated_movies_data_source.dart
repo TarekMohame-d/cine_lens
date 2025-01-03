@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/di/dependency_injection.dart';
-import 'package:cine_rank/core/networking/api_constants.dart';
+import 'package:cine_lens/core/di/dependency_injection.dart';
+import 'package:cine_lens/core/networking/api_constants.dart';
 import 'package:dio/dio.dart';
 
 class TopRatedMoviesDataSource {
@@ -12,9 +12,7 @@ class TopRatedMoviesDataSource {
         'page': page,
         'sort_by': 'vote_average.desc',
         'vote_average.gte': 8,
-        'vote_average.lte': 9.8,
-        'vote_count.gte': 10000,
-        'include_video': 'false',
+        'vote_count.gte': 5000,
         'include_adult': 'false',
       },
     );

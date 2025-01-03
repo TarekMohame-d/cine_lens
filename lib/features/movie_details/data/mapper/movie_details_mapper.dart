@@ -1,5 +1,5 @@
-import 'package:cine_rank/features/movie_details/data/models/movie_details_model.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_details_model.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
 
 class MovieDetailsMapper {
   static MovieDetailsEntity toEntity(MovieDetailsModel model) =>

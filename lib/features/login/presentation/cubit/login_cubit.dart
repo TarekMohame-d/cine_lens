@@ -1,10 +1,10 @@
-import 'package:cine_rank/core/helpers/constants.dart';
-import 'package:cine_rank/core/helpers/secure_storage_helper.dart';
-import 'package:cine_rank/core/networking/api_error_model.dart';
-import 'package:cine_rank/features/login/data/models/request_token_model.dart';
-import 'package:cine_rank/features/login/domain/usecases/create_request_token_use_case.dart';
-import 'package:cine_rank/features/login/domain/usecases/create_session_use_case.dart';
-import 'package:cine_rank/features/login/domain/usecases/get_user_id_use_case.dart';
+import 'package:cine_lens/core/helpers/constants.dart';
+import 'package:cine_lens/core/helpers/secure_storage_helper.dart';
+import 'package:cine_lens/core/networking/api_error_model.dart';
+import 'package:cine_lens/features/login/data/models/request_token_model.dart';
+import 'package:cine_lens/features/login/domain/usecases/create_request_token_use_case.dart';
+import 'package:cine_lens/features/login/domain/usecases/create_session_use_case.dart';
+import 'package:cine_lens/features/login/domain/usecases/get_user_id_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

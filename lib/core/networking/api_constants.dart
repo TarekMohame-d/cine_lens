@@ -9,8 +9,7 @@ class KApiConstants {
   static const String discoverMoviesEndpoint = '/discover/movie';
 
   static const String searchMoviesEndpoint = '/search/movie';
-  static const String movieDetailsEndpoint = '/movie/';
-  static const String movieVideosEndpoint = '/movie/';
-  static const String movieWatchProvidersEndpoint = '/movie/';
-  static const String movieCastAndCrewEndpoint = '/movie/';
+
+  static const String discoverSeriesEndpoint = '/discover/tv';
+  
 }

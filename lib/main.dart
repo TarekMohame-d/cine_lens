@@ -1,11 +1,11 @@
-import 'package:cine_rank/core/helpers/secure_storage_helper.dart';
-import 'package:cine_rank/core/themes/themes.dart';
+import 'package:cine_lens/core/helpers/secure_storage_helper.dart';
+import 'package:cine_lens/core/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'cine_rank_app.dart';
+import 'cine_lens_app.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/helpers/bloc_observer.dart';
 import 'core/helpers/constants.dart';
@@ -25,7 +25,7 @@ void main() async {
   await dotenv.load(fileName: ".env");
 
   runApp(
-    CineRankApp(),
+    CineLensApp(),
   );
 }
 

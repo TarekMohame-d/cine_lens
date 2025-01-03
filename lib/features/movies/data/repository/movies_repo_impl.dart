@@ -1,14 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:cine_rank/core/networking/api_error_handler.dart';
-import 'package:cine_rank/core/networking/api_result.dart';
-import 'package:cine_rank/features/movies/data/data_source/most_popular_movies_data_source.dart';
-import 'package:cine_rank/features/movies/data/data_source/now_playing_movies_data_source.dart';
-import 'package:cine_rank/features/movies/data/data_source/top_rated_movies_data_source.dart';
-import 'package:cine_rank/features/movies/data/data_source/upcoming_movies_data_source.dart';
-import 'package:cine_rank/features/movies/data/mappers/movies_mapper.dart';
-import 'package:cine_rank/features/movies/data/models/movies_model.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/domain/repository/movies_repo.dart';
+import 'package:cine_lens/core/networking/api_error_handler.dart';
+import 'package:cine_lens/core/networking/api_result.dart';
+import 'package:cine_lens/features/movies/data/data_source/most_popular_movies_data_source.dart';
+import 'package:cine_lens/features/movies/data/data_source/now_playing_movies_data_source.dart';
+import 'package:cine_lens/features/movies/data/data_source/top_rated_movies_data_source.dart';
+import 'package:cine_lens/features/movies/data/data_source/upcoming_movies_data_source.dart';
+import 'package:cine_lens/features/movies/data/mappers/movies_mapper.dart';
+import 'package:cine_lens/features/movies/data/models/movies_model.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/domain/repository/movies_repo.dart';
 import 'package:flutter/material.dart';
 
 class MoviesRepoImpl implements MoviesRepo {
@@ -61,7 +61,7 @@ class MoviesRepoImpl implements MoviesRepo {
 
   @override
   Future<ApiResult<List<MovieEntity>>> getNowPlayingMovies(
-      [bool more = false]) {
+      bool more) {
     return _fetchMovies(
       page: _nowPlayingPage,
       movieList: _nowPlayingMoviesList,
@@ -73,7 +73,7 @@ class MoviesRepoImpl implements MoviesRepo {
 
   @override
   Future<ApiResult<List<MovieEntity>>> getMostPopularMovies(
-      [bool more = false]) {
+      bool more) {
     return _fetchMovies(
       page: _mostPopularPage,
       movieList: _mostPopularMoviesList,
@@ -84,7 +84,7 @@ class MoviesRepoImpl implements MoviesRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getTopRatedMovies([bool more = false]) {
+  Future<ApiResult<List<MovieEntity>>> getTopRatedMovies(bool more) {
     return _fetchMovies(
       page: _topRatedPage,
       movieList: _topRatedMoviesList,
@@ -95,7 +95,7 @@ class MoviesRepoImpl implements MoviesRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieEntity>>> getUpcomingMovies([bool more = false]) {
+  Future<ApiResult<List<MovieEntity>>> getUpcomingMovies(bool more) {
     return _fetchMovies(
       page: _upcomingPage,
       movieList: _upcomingMoviesList,

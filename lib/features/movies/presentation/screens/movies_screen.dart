@@ -1,11 +1,11 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/bloc_builder/most_popular_movies_bloc_builder.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/bloc_builder/top_rated_movies_bloc_builder.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/bloc_builder/up_comming_movies_bloc_builder.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/now_playing/now_playing_movies_bloc_builder.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/bloc_builder/most_popular_movies_bloc_builder.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/bloc_builder/top_rated_movies_bloc_builder.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/bloc_builder/up_comming_movies_bloc_builder.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/now_playing/now_playing_movies_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

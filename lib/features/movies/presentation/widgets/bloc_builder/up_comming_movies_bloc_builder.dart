@@ -1,11 +1,11 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_category_and_see_all.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_error_widget.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_list_view.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_shimmer_loading.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_category_and_see_all.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_error_widget.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_list_view.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

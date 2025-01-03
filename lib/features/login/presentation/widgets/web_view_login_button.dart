@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/widgets/custom_snack_bar.dart';
-import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/widgets/custom_snack_bar.dart';
+import 'package:cine_lens/features/login/presentation/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

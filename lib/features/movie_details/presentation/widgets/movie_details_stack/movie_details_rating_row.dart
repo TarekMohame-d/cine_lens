@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

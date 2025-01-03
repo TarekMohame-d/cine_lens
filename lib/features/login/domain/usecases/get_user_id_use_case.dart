@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/networking/api_result.dart';
-import 'package:cine_rank/features/login/domain/repository/login_repo.dart';
+import 'package:cine_lens/core/networking/api_result.dart';
+import 'package:cine_lens/features/login/domain/repository/login_repo.dart';
 
 class GetUserIdUseCase {
   final LoginRepo _loginRepo;

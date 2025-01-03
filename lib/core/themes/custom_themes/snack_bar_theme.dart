@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/themes/custom_themes/text_theme.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/core/themes/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class KSnackBarTheme {

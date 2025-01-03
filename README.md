@@ -1,4 +1,4 @@
-# cine_rank
+# cine_lens
 
 A new Flutter project.
 

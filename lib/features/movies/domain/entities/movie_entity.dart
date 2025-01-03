@@ -1,9 +1,10 @@
 class MovieEntity {
   final String backdropPath;
   final int id;
-  final int genreIds;
+  final int genreId;
   final String originalLanguage;
   final String originalTitle;
+  final String title;
   final double popularity;
   final String posterPath;
   final String releaseDate;
@@ -18,6 +19,7 @@ class MovieEntity {
     required this.posterPath,
     required this.releaseDate,
     required this.voteAverage,
-    required this.genreIds,
+    required this.genreId,
+    required this.title,
   });
 }

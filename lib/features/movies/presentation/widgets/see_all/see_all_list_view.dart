@@ -1,10 +1,8 @@
-import 'dart:developer';
-
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,10 +29,7 @@ class _SeeAllListViewState extends State<SeeAllListView> {
     _scrollController.addListener(() async {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent) {
-        await context
-            .read<MoviesCubit>()
-            .getMoreMovies(widget.category, true)
-            .then(
+        await context.read<MoviesCubit>().getMoreMovies(widget.category).then(
           (value) {
             widget.movies.clear();
             widget.movies.addAll(value);
@@ -57,7 +52,6 @@ class _SeeAllListViewState extends State<SeeAllListView> {
           current is FetchMoreMoviesLoading || current is FetchMoreMovies,
       listener: (context, state) {
         if (state is FetchMoreMoviesLoading) {
-          log(widget.movies.length.toString());
           showDialog(
             context: context,
             barrierDismissible: false,

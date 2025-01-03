@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/see_all/see_all_list_view_item.dart';
-import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/see_all/see_all_list_view_item.dart';
+import 'package:cine_lens/features/search_movies/presentation/cubit/movies_search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

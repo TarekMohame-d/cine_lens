@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/see_all/see_all_list_view.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/see_all/see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

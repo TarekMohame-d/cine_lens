@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/networking/api_result.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/repository/movie_details_repo.dart';
+import 'package:cine_lens/core/networking/api_result.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/repository/movie_details_repo.dart';
 
 class GetMovieDetailsUseCase {
   final MovieDetailsRepo _movieDetailsRepo;

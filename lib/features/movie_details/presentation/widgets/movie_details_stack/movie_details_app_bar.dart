@@ -1,4 +1,4 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,10 +1,10 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/networking/api_error_model.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/networking/api_error_model.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,21 +68,21 @@ class MoviesCubit extends Cubit<MoviesState> {
   }
 
   Future<List<MovieEntity>> getMoreMovies(
-      MoviesCategoriesEnum category, bool more) async {
+      MoviesCategoriesEnum category) async {
     emit(FetchMoreMoviesLoading());
     List<MovieEntity> movies = [];
     switch (category) {
       case MoviesCategoriesEnum.nowPlaying:
-        movies.addAll(await getNowPlayingMovies(more));
+        movies.addAll(await getNowPlayingMovies(true));
         break;
       case MoviesCategoriesEnum.mostPopular:
-        movies.addAll(await getMostPopularMovies(more));
+        movies.addAll(await getMostPopularMovies(true));
         break;
       case MoviesCategoriesEnum.topRated:
-        movies.addAll(await getTopRatedMovies(more));
+        movies.addAll(await getTopRatedMovies(true));
         break;
       case MoviesCategoriesEnum.upComing:
-        movies.addAll(await getUpcomingMovies(more));
+        movies.addAll(await getUpcomingMovies(true));
         break;
     }
     emit(FetchMoreMovies());
