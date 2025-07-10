@@ -1,9 +1,9 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,12 +11,10 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
   const MoviesCategoryAndSeeAll({
     super.key,
     required this.category,
-    this.isSeeAllWorking = true,
     required this.movies,
   });
-  final MoviesCategoriesEnum category;
+  final MoviesCategories category;
   final List<MovieEntity> movies;
-  final bool isSeeAllWorking;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,7 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
         InkWell(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
-          onTap: isSeeAllWorking
+          onTap: movies.isNotEmpty
               ? () {
                   context.pushNamed(KRoutes.seeAllMoviesScreen,
                       arguments: (category, movies));
@@ -52,15 +50,15 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
     );
   }
 
-  String getCategoryName(MoviesCategoriesEnum category) {
+  String getCategoryName(MoviesCategories category) {
     switch (category) {
-      case MoviesCategoriesEnum.nowPlaying:
+      case MoviesCategories.nowPlaying:
         return 'Now Playing';
-      case MoviesCategoriesEnum.mostPopular:
+      case MoviesCategories.mostPopular:
         return 'Most Popular';
-      case MoviesCategoriesEnum.topRated:
+      case MoviesCategories.topRated:
         return 'Top Rated';
-      case MoviesCategoriesEnum.upComing:
+      case MoviesCategories.upComing:
         return 'Up Comming';
     }
   }

@@ -6,8 +6,8 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/themes/themes.dart';
 
-class CineRankApp extends StatelessWidget {
-  const CineRankApp({super.key});
+class CineLensApp extends StatelessWidget {
+  const CineLensApp({super.key});
 
   @override
   Widget build(BuildContext context) {

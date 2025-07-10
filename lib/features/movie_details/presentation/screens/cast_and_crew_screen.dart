@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_grid_view.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/crew_grid_view.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_cast_entity.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/cast_grid_view.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/crew_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

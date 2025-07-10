@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/home/data/models/user_account_details_model.dart';
+import 'package:cine_lens/features/home/data/models/user_account_details_model.dart';
 
 class UserAccountDetailsEntity {
   final Avatar? avatar;

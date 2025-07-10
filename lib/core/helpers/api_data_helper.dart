@@ -1,4 +1,4 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
 
 class KApiDataHelper {
   KApiDataHelper._();

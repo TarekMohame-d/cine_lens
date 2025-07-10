@@ -14,4 +14,6 @@ class KRoutes {
   static const String movieCastAndCrewScreen = '/movieCastAndCrewScreen';
 
   static const String moviesSearchScreen = '/moviesSearchScreen';
+
+  static const String seeAllSeriesScreen = '/seeAllSeriesScreen';
 }

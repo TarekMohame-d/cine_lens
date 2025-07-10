@@ -1,14 +1,14 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/see_all/see_all_list_view.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/see_all/movies_see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeeAllMoviesScreen extends StatelessWidget {
   const SeeAllMoviesScreen(
       {super.key, required this.category, required this.movies});
-  final MoviesCategoriesEnum category;
+  final MoviesCategories category;
   final List<MovieEntity> movies;
 
   @override
@@ -25,15 +25,9 @@ class SeeAllMoviesScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 8.0.h),
-          child: Column(
-            children: [
-              Expanded(
-                child: SeeAllListView(
-                  category: category,
-                  movies: movies,
-                ),
-              ),
-            ],
+          child: MoviesSeeAllListView(
+            category: category,
+            movies: movies,
           ),
         ),
       ),

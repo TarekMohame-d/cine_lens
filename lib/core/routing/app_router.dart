@@ -1,18 +1,22 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/features/home/presentation/screens/home_screen.dart';
-import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
-import 'package:cine_rank/features/login/presentation/screens/login_screen.dart';
-import 'package:cine_rank/features/login/presentation/screens/login_web_view.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
-import 'package:cine_rank/features/movie_details/presentation/cubit/movies_details_cubit.dart';
-import 'package:cine_rank/features/movie_details/presentation/screens/cast_and_crew_screen.dart';
-import 'package:cine_rank/features/movie_details/presentation/screens/movie_details_screen.dart';
-import 'package:cine_rank/features/movie_details/presentation/screens/video_player_screen.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
-import 'package:cine_rank/features/movies/presentation/screens/see_all_movies_screen.dart';
-import 'package:cine_rank/features/search_movies/presentation/cubit/movies_search_cubit.dart';
-import 'package:cine_rank/features/search_movies/presentation/screens/movies_search_screen.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/enums/series_categories.dart';
+import 'package:cine_lens/features/home/presentation/screens/home_screen.dart';
+import 'package:cine_lens/features/login/presentation/cubit/login_cubit.dart';
+import 'package:cine_lens/features/login/presentation/screens/login_screen.dart';
+import 'package:cine_lens/features/login/presentation/screens/login_web_view.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_cast_entity.dart';
+import 'package:cine_lens/features/movie_details/presentation/cubit/movies_details_cubit.dart';
+import 'package:cine_lens/features/movie_details/presentation/screens/cast_and_crew_screen.dart';
+import 'package:cine_lens/features/movie_details/presentation/screens/movie_details_screen.dart';
+import 'package:cine_lens/features/movie_details/presentation/screens/video_player_screen.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/features/movies/presentation/screens/see_all_movies_screen.dart';
+import 'package:cine_lens/features/search_movies/presentation/cubit/movies_search_cubit.dart';
+import 'package:cine_lens/features/search_movies/presentation/screens/movies_search_screen.dart';
+import 'package:cine_lens/features/series/domain/entities/series_entity.dart';
+import 'package:cine_lens/features/series/presentation/cubit/series_cubit.dart';
+import 'package:cine_lens/features/series/presentation/screens/series_see_all_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,8 +45,8 @@ class KAppRouter {
           builder: (context) => const HomeScreen(),
         );
       case KRoutes.seeAllMoviesScreen:
-        final (MoviesCategoriesEnum, List<MovieEntity>) args =
-            arguments as (MoviesCategoriesEnum, List<MovieEntity>);
+        final (MoviesCategories, List<MovieEntity>) args =
+            arguments as (MoviesCategories, List<MovieEntity>);
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<MoviesCubit>(),
@@ -85,6 +89,18 @@ class KAppRouter {
           builder: (context) => BlocProvider(
             create: (context) => MoviesSearchCubit(getIt()),
             child: const MoviesSearchScreen(),
+          ),
+        );
+      case KRoutes.seeAllSeriesScreen:
+        final (SeriesCategories, List<SeriesEntity>) args =
+            arguments as (SeriesCategories, List<SeriesEntity>);
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<SeriesCubit>(),
+            child: SeriesSeeAllScreen(
+              category: args.$1,
+              series: args.$2,
+            ),
           ),
         );
       default:

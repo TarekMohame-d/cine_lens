@@ -1,14 +1,13 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_category_and_see_all.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_error_widget.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_list_view.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_shimmer_loading.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_category_and_see_all.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_error_widget.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_list_view.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../../core/helpers/spacing.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MostPopularMoviesBlocBuilder extends StatelessWidget {
   const MostPopularMoviesBlocBuilder({
@@ -31,7 +30,7 @@ class MostPopularMoviesBlocBuilder extends StatelessWidget {
           case GetMostPopularMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: MoviesCategoriesEnum.mostPopular,
+              category: MoviesCategories.mostPopular,
             );
           default:
             return _setupLoading();
@@ -42,12 +41,12 @@ class MostPopularMoviesBlocBuilder extends StatelessWidget {
 
   Widget _widgetOutline(Widget child, List<MovieEntity> movies) {
     return Column(
+      spacing: 12.h,
       children: [
         MoviesCategoryAndSeeAll(
-          category: MoviesCategoriesEnum.mostPopular,
+          category: MoviesCategories.mostPopular,
           movies: movies,
         ),
-        verticalSpace(12),
         child,
       ],
     );

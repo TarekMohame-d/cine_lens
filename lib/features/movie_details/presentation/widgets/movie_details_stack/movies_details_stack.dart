@@ -1,9 +1,9 @@
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_details_stack/movie_details_app_bar.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_details_stack/movie_details_background_image.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_details_stack/movie_details_buttons_row.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_details_stack/movie_details_movie_image.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_details_stack/movie_details_rating_row.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_details_stack/movie_details_app_bar.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_details_stack/movie_details_background_image.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_details_stack/movie_details_buttons_row.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_details_stack/movie_details_movie_image.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_details_stack/movie_details_rating_row.dart';
 import 'package:flutter/material.dart';
 
 class MoviesDetailsStack extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/movie_details/data/models/movie_details_model.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_details_model.dart';
 
 class MovieDetailsEntity {
   final String backdropPath;

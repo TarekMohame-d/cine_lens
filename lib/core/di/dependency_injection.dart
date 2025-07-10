@@ -1,21 +1,28 @@
-import 'package:cine_rank/features/login/data/repository/login_repo_impl.dart';
-import 'package:cine_rank/features/login/domain/repository/login_repo.dart';
-import 'package:cine_rank/features/login/domain/usecases/create_request_token_use_case.dart';
-import 'package:cine_rank/features/login/domain/usecases/create_session_use_case.dart';
-import 'package:cine_rank/features/login/domain/usecases/get_user_id_use_case.dart';
-import 'package:cine_rank/features/movie_details/data/repository/movie_details_repo_impl.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
-import 'package:cine_rank/features/movies/domain/repository/movies_repo.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
-import 'package:cine_rank/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
-import 'package:cine_rank/features/search_movies/data/repository/search_movie_repo_impl.dart';
-import 'package:cine_rank/features/search_movies/domain/repository/search_movie_repo.dart';
-import 'package:cine_rank/features/search_movies/domain/usecases/search_movie_use_case.dart';
+import 'package:cine_lens/features/login/data/repository/login_repo_impl.dart';
+import 'package:cine_lens/features/login/domain/repository/login_repo.dart';
+import 'package:cine_lens/features/login/domain/usecases/create_request_token_use_case.dart';
+import 'package:cine_lens/features/login/domain/usecases/create_session_use_case.dart';
+import 'package:cine_lens/features/login/domain/usecases/get_user_id_use_case.dart';
+import 'package:cine_lens/features/movie_details/data/repository/movie_details_repo_impl.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
+import 'package:cine_lens/features/movies/domain/repository/movies_repo.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_most_popular_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_now_playing_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_top_rated_movies_use_case.dart';
+import 'package:cine_lens/features/movies/domain/usecases/get_upcoming_movies_use_case.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/features/search_movies/data/repository/search_movie_repo_impl.dart';
+import 'package:cine_lens/features/search_movies/domain/repository/search_movie_repo.dart';
+import 'package:cine_lens/features/search_movies/domain/usecases/search_movie_use_case.dart';
+import 'package:cine_lens/features/series/data/repository/series_repo_impl.dart';
+import 'package:cine_lens/features/series/domain/repository/series_repo.dart';
+import 'package:cine_lens/features/series/domain/usecases/get_airing_today_series_use_case.dart';
+import 'package:cine_lens/features/series/domain/usecases/get_most_popular_series_use_case.dart';
+import 'package:cine_lens/features/series/domain/usecases/get_on_the_air_series_use_case.dart';
+import 'package:cine_lens/features/series/domain/usecases/get_top_rated_series_use_case.dart';
+import 'package:cine_lens/features/series/presentation/cubit/series_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -65,4 +72,20 @@ Future<void> setupGetIt() async {
       () => GetMovieVideoUseCase(getIt()));
   getIt.registerLazySingleton<GetMovieCastUseCase>(
       () => GetMovieCastUseCase(getIt()));
+
+  // series
+  getIt.registerLazySingleton<SeriesRepo>(() => SeriesRepoImpl());
+
+  getIt.registerLazySingleton<GetOnTheAirSeriesUseCase>(
+      () => GetOnTheAirSeriesUseCase(getIt()));
+  getIt.registerLazySingleton<GetTopRatedSeriesUseCase>(
+      () => GetTopRatedSeriesUseCase(getIt()));
+  getIt.registerLazySingleton<GetMostPopularSeriesUseCase>(
+      () => GetMostPopularSeriesUseCase(getIt()));
+  getIt.registerLazySingleton<GetAiringTodaySeriesUseCase>(
+      () => GetAiringTodaySeriesUseCase(getIt()));
+
+  // series cubit
+  getIt.registerFactory<SeriesCubit>(
+      () => SeriesCubit(getIt(), getIt(), getIt(), getIt()));
 }

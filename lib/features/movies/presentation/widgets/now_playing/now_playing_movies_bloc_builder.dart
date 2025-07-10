@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/enums/movies_categories.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/movies/presentation/cubit/movies_cubit.dart';
-import 'package:cine_rank/features/movies/presentation/widgets/movies_error_widget.dart';
+import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
+import 'package:cine_lens/features/movies/presentation/widgets/movies_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,7 +31,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
           case GetNowPlayingMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: MoviesCategoriesEnum.nowPlaying,
+              category: MoviesCategories.nowPlaying,
             );
           default:
             return _setupLoading();
@@ -45,7 +45,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
       child: Column(
         children: [
           MoviesCategoryAndSeeAll(
-            category: MoviesCategoriesEnum.nowPlaying,
+            category: MoviesCategories.nowPlaying,
             movies: movies,
           ),
           verticalSpace(12),

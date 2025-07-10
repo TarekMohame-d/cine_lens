@@ -1,5 +1,5 @@
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/widgets/text_field.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/core/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/extensions.dart';

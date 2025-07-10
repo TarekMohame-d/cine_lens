@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/helpers/api_data_helper.dart';
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/widgets/conditional_builder.dart';
+import 'package:cine_lens/core/helpers/api_data_helper.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/core/widgets/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 

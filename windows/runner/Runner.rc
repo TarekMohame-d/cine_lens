@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.tarek_cinerank" "\0"
-            VALUE "FileDescription", "cine_rank" "\0"
+            VALUE "FileDescription", "cine_lens" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cine_rank" "\0"
+            VALUE "InternalName", "cine_lens" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.tarek_cinerank. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cine_rank.exe" "\0"
-            VALUE "ProductName", "cine_rank" "\0"
+            VALUE "OriginalFilename", "cine_lens.exe" "\0"
+            VALUE "ProductName", "cine_lens" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

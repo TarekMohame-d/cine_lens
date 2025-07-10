@@ -1,4 +1,4 @@
-enum MoviesCategoriesEnum {
+enum MoviesCategories {
   nowPlaying,
   mostPopular,
   topRated,

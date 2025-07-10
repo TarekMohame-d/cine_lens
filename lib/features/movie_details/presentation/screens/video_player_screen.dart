@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movie_details/presentation/cubit/movies_details_cubit.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movie_details/presentation/cubit/movies_details_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,21 +1,14 @@
-import 'package:cine_rank/core/di/dependency_injection.dart';
-import 'package:cine_rank/core/networking/api_constants.dart';
+import 'package:cine_lens/core/di/dependency_injection.dart';
+import 'package:cine_lens/core/networking/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
 class UpcomingMoviesDataSource {
   Future<Map<String, dynamic>> getUpcomingMovies(int page) async {
-    DateTime halfMonthBefore = DateTime(
-      DateTime.now().year,
-      DateTime.now().month,
-      DateTime.now().day - 15,
-    );
+    final now = DateTime.now();
+    final halfMonthBefore = now.subtract(const Duration(days: 15));
 
-    DateTime oneMonthAfter = DateTime(
-      DateTime.now().year,
-      DateTime.now().month + 1,
-      DateTime.now().day,
-    );
+    final oneMonthAfter = now.add(const Duration(days: 30));
 
     Dio dio = getIt<Dio>();
 
@@ -24,7 +17,6 @@ class UpcomingMoviesDataSource {
       queryParameters: {
         'language': 'en-US',
         'page': page,
-        'year': oneMonthAfter.year.toString(),
         'primary_release_date.gte':
             DateFormat('yyyy-MM-dd').format(halfMonthBefore),
         'primary_release_date.lte':

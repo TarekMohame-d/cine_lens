@@ -1,11 +1,11 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/features/movie_details/presentation/cubit/movies_details_cubit.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_list_view.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_shimmer.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/features/movie_details/presentation/cubit/movies_details_cubit.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/cast_list_view.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/cast_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,7 +52,7 @@ class CastAndCrewBlocBuilder extends StatelessWidget {
                           'See all',
                           style:
                               Theme.of(context).textTheme.labelMedium!.copyWith(
-                                    color: KColors.grey,
+                                    color: KColors.blueAccent,
                                   ),
                         ),
                       ),

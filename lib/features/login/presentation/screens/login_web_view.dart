@@ -1,4 +1,4 @@
-import 'package:cine_rank/features/login/presentation/cubit/login_cubit.dart';
+import 'package:cine_lens/features/login/presentation/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';

@@ -1,4 +1,4 @@
-name: cine_rank
+name: cine_lens
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -41,13 +41,13 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_native_splash: ^2.4.3
   flutter_screenutil: ^5.9.3
-  flutter_svg: ^2.0.16
+  flutter_svg: ^2.0.17
   get_it: ^8.0.3
   intl: ^0.20.1
   json_annotation: ^4.9.0
 
-  shared_preferences: ^2.3.4
-  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.5
+  flutter_secure_storage: ^9.2.4
   flutter_dotenv: ^5.2.1
   shimmer: ^3.0.0
   webview_flutter: ^4.10.0

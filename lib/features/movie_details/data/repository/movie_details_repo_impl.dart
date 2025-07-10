@@ -1,19 +1,19 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/networking/api_error_handler.dart';
-import 'package:cine_rank/core/networking/api_result.dart';
-import 'package:cine_rank/features/movie_details/data/data_sources/movie_cast_data_source.dart';
-import 'package:cine_rank/features/movie_details/data/data_sources/movie_details_data_source.dart';
-import 'package:cine_rank/features/movie_details/data/data_sources/movie_videos_data_source.dart';
-import 'package:cine_rank/features/movie_details/data/mapper/movie_cast_mapper.dart';
-import 'package:cine_rank/features/movie_details/data/mapper/movie_details_mapper.dart';
-import 'package:cine_rank/features/movie_details/data/mapper/movie_videos_mapper.dart';
-import 'package:cine_rank/features/movie_details/data/models/movie_cast_model.dart';
-import 'package:cine_rank/features/movie_details/data/models/movie_details_model.dart';
-import 'package:cine_rank/features/movie_details/data/models/movie_videos_model.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_videos_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/repository/movie_details_repo.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/networking/api_error_handler.dart';
+import 'package:cine_lens/core/networking/api_result.dart';
+import 'package:cine_lens/features/movie_details/data/data_sources/movie_cast_data_source.dart';
+import 'package:cine_lens/features/movie_details/data/data_sources/movie_details_data_source.dart';
+import 'package:cine_lens/features/movie_details/data/data_sources/movie_videos_data_source.dart';
+import 'package:cine_lens/features/movie_details/data/mapper/movie_cast_mapper.dart';
+import 'package:cine_lens/features/movie_details/data/mapper/movie_details_mapper.dart';
+import 'package:cine_lens/features/movie_details/data/mapper/movie_videos_mapper.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_cast_model.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_details_model.dart';
+import 'package:cine_lens/features/movie_details/data/models/movie_videos_model.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_cast_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_videos_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/repository/movie_details_repo.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsRepoImpl implements MovieDetailsRepo {

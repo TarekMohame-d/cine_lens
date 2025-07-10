@@ -1,10 +1,10 @@
-import 'package:cine_rank/core/helpers/extensions.dart';
-import 'package:cine_rank/core/helpers/font_weight_helper.dart';
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/core/routing/routes.dart';
-import 'package:cine_rank/core/themes/colors.dart';
-import 'package:cine_rank/core/widgets/custom_snack_bar.dart';
-import 'package:cine_rank/core/widgets/text_button.dart';
+import 'package:cine_lens/core/helpers/extensions.dart';
+import 'package:cine_lens/core/helpers/font_weight_helper.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/themes/colors.dart';
+import 'package:cine_lens/core/widgets/custom_snack_bar.dart';
+import 'package:cine_lens/core/widgets/text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';

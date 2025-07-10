@@ -1,8 +1,8 @@
-import 'package:cine_rank/core/themes/custom_themes/app_bar_theme.dart';
-import 'package:cine_rank/core/themes/custom_themes/input_decoration_theme.dart';
-import 'package:cine_rank/core/themes/custom_themes/snack_bar_theme.dart';
-import 'package:cine_rank/core/themes/custom_themes/text_button_theme.dart';
-import 'package:cine_rank/core/themes/custom_themes/text_theme.dart';
+import 'package:cine_lens/core/themes/custom_themes/app_bar_theme.dart';
+import 'package:cine_lens/core/themes/custom_themes/input_decoration_theme.dart';
+import 'package:cine_lens/core/themes/custom_themes/snack_bar_theme.dart';
+import 'package:cine_lens/core/themes/custom_themes/text_button_theme.dart';
+import 'package:cine_lens/core/themes/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

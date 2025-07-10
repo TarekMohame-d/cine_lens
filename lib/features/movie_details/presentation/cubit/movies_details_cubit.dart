@@ -1,9 +1,9 @@
-import 'package:cine_rank/core/networking/api_error_model.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_cast_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
-import 'package:cine_rank/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
+import 'package:cine_lens/core/networking/api_error_model.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_cast_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_cast_use_case.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_details_use_case.dart';
+import 'package:cine_lens/features/movie_details/domain/usecases/get_movie_video_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

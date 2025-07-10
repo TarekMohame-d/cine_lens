@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cine_rank/core/widgets/conditional_builder.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/core/widgets/conditional_builder.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -12,14 +12,14 @@ import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/themes/colors.dart';
 
-class SeeAllListViewItem extends StatelessWidget {
-  const SeeAllListViewItem({super.key, required this.movie});
+class MoviesSeeAllListViewItem extends StatelessWidget {
+  const MoviesSeeAllListViewItem({super.key, required this.movie});
   final MovieEntity movie;
 
   @override
   Widget build(BuildContext context) {
     String date = changeDateFormate(movie.releaseDate);
-    String genre = KApiDataHelper.getGenreName(movie.genreIds);
+    String genre = KApiDataHelper.getGenreName(movie.genreId);
     String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath);
     return GestureDetector(
       onTap: () {
@@ -38,7 +38,10 @@ class SeeAllListViewItem extends StatelessWidget {
               fallback: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8.r),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8.r),
+                    bottomLeft: Radius.circular(8.r),
+                  ),
                   color: Colors.transparent,
                 ),
                 width: 120.w,
@@ -61,7 +64,10 @@ class SeeAllListViewItem extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8.r),
+                        bottomLeft: Radius.circular(8.r),
+                      ),
                       color: Colors.white,
                     ),
                   ),
@@ -69,7 +75,10 @@ class SeeAllListViewItem extends StatelessWidget {
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.r),
+                      bottomLeft: Radius.circular(8.r),
+                    ),
                     image: DecorationImage(
                       image: imageProvider,
                       fit: BoxFit.fill,

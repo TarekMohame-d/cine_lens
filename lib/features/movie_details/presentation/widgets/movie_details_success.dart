@@ -1,7 +1,7 @@
-import 'package:cine_rank/core/helpers/spacing.dart';
-import 'package:cine_rank/features/movie_details/domain/entities/movie_details_entity.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/cast_and_crew/cast_and_crew_bloc_builder.dart';
-import 'package:cine_rank/features/movie_details/presentation/widgets/movie_production_companies.dart';
+import 'package:cine_lens/core/helpers/spacing.dart';
+import 'package:cine_lens/features/movie_details/domain/entities/movie_details_entity.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/cast_and_crew/cast_and_crew_bloc_builder.dart';
+import 'package:cine_lens/features/movie_details/presentation/widgets/movie_production_companies.dart';
 import 'package:flutter/material.dart';
 
 import 'movie_details_stack/movies_details_stack.dart';

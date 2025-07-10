@@ -1,4 +1,4 @@
-import 'package:cine_rank/core/networking/api_error_model.dart';
+import 'package:cine_lens/core/networking/api_error_model.dart';
 
 class ApiResult<T> {
   final T? data;

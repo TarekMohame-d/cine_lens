@@ -1,6 +1,6 @@
-import 'package:cine_rank/core/networking/api_error_model.dart';
-import 'package:cine_rank/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_rank/features/search_movies/domain/usecases/search_movie_use_case.dart';
+import 'package:cine_lens/core/networking/api_error_model.dart';
+import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/search_movies/domain/usecases/search_movie_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
