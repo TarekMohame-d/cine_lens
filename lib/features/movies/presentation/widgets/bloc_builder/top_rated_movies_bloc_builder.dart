@@ -28,7 +28,7 @@ class TopRatedMoviesBlocBuilder extends StatelessWidget {
           case GetTopRatedMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: MoviesCategoriesEnum.topRated,
+              category: MoviesCategories.topRated,
             );
           default:
             return _setupLoading();
@@ -41,7 +41,7 @@ class TopRatedMoviesBlocBuilder extends StatelessWidget {
     return Column(
       children: [
         MoviesCategoryAndSeeAll(
-          category: MoviesCategoriesEnum.topRated,
+          category: MoviesCategories.topRated,
           movies: movies,
         ),
         verticalSpace(12),

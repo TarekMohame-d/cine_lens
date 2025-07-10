@@ -3,6 +3,8 @@ import 'package:cine_lens/core/themes/colors.dart';
 import 'package:cine_lens/features/home/presentation/widgets/custom_bottom_nav_bar_item.dart';
 import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:cine_lens/features/movies/presentation/screens/movies_screen.dart';
+import 'package:cine_lens/features/series/presentation/cubit/series_cubit.dart';
+import 'package:cine_lens/features/series/presentation/screens/series_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
       create: (context) => getIt<MoviesCubit>(),
       child: const MoviesScreen(),
     ),
-    Placeholder(),
+    BlocProvider(
+      create: (context) => getIt<SeriesCubit>(),
+      child: SeriesScreen(),
+    ),
     Placeholder(),
     Placeholder(),
   ];

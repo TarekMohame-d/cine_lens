@@ -31,7 +31,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
           case GetNowPlayingMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: MoviesCategoriesEnum.nowPlaying,
+              category: MoviesCategories.nowPlaying,
             );
           default:
             return _setupLoading();
@@ -45,7 +45,7 @@ class NowPlayingMoviesBlocBuilder extends StatelessWidget {
       child: Column(
         children: [
           MoviesCategoryAndSeeAll(
-            category: MoviesCategoriesEnum.nowPlaying,
+            category: MoviesCategories.nowPlaying,
             movies: movies,
           ),
           verticalSpace(12),

@@ -28,7 +28,7 @@ class UpCommingMoviesBlocBuilder extends StatelessWidget {
           case GetUpcomingMoviesFailure _:
             return MoviesErrorWidget(
               errorMessage: state.errorModel.statusMessage!,
-              category: MoviesCategoriesEnum.upComing,
+              category: MoviesCategories.upComing,
             );
           default:
             return _setupLoading();
@@ -41,7 +41,7 @@ class UpCommingMoviesBlocBuilder extends StatelessWidget {
     return Column(
       children: [
         MoviesCategoryAndSeeAll(
-          category: MoviesCategoriesEnum.upComing,
+          category: MoviesCategories.upComing,
           movies: movies,
         ),
         verticalSpace(12),

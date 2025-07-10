@@ -11,8 +11,8 @@ class TopRatedSeriesDataSource {
         'language': 'en-US',
         'page': page,
         'sort_by': 'vote_average.desc',
-        'vote_average.gte': 8,
-        'vote_count.gte': 5000,
+        'vote_average.gte': 7,
+        'vote_count.gte': 3000,
         'include_adult': 'false',
       },
     );

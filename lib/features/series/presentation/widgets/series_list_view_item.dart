@@ -1,30 +1,30 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cine_lens/core/helpers/api_data_helper.dart';
 import 'package:cine_lens/core/helpers/extensions.dart';
 import 'package:cine_lens/core/routing/routes.dart';
+import 'package:cine_lens/core/themes/colors.dart';
 import 'package:cine_lens/core/widgets/conditional_builder.dart';
-import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/series/domain/entities/series_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/helpers/api_data_helper.dart';
-import '../../../../core/themes/colors.dart';
+class SeriesListViewItem extends StatelessWidget {
+  const SeriesListViewItem({super.key, required this.series});
 
-class MoviesListViewItem extends StatelessWidget {
-  const MoviesListViewItem({super.key, required this.movie});
-  final MovieEntity movie;
+  final SeriesEntity series;
 
   @override
   Widget build(BuildContext context) {
-    String genre = KApiDataHelper.getGenreName(movie.genreId);
-    String imageUrl = KApiDataHelper.getImageUrl(path: movie.posterPath);
+    String genre = KApiDataHelper.getGenreName(series.genreId);
+    String imageUrl = KApiDataHelper.getImageUrl(path: series.posterPath);
     return GestureDetector(
       onTap: () {
-        context.pushNamed(KRoutes.movieDetailsScreen, arguments: movie.id);
+        // context.pushNamed(KRoutes.movieDetailsScreen, arguments: series.id);
       },
       child: Container(
         margin: EdgeInsets.only(right: 12.0.w),
-        width: 160.w,
+        width: 300.w,
         child: Column(
           children: [
             Expanded(
@@ -36,8 +36,7 @@ class MoviesListViewItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8.r),
                     color: KColors.soft,
                   ),
-                  width: 120.w,
-                  height: 170.0.h,
+                  width: 300.w,
                   child: Center(
                     child: Icon(
                       Icons.image_not_supported_rounded,
@@ -47,7 +46,7 @@ class MoviesListViewItem extends StatelessWidget {
                 ),
                 widget: CachedNetworkImage(
                   imageUrl: imageUrl,
-                  memCacheWidth: 160.w.toInt(),
+                  memCacheWidth: 300.w.toInt(),
                   maxWidthDiskCache: MediaQuery.sizeOf(context).width.toInt(),
                   placeholder: (context, url) {
                     return Shimmer.fromColors(
@@ -101,7 +100,7 @@ class MoviesListViewItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.originalTitle,
+                      series.name,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.labelMedium,

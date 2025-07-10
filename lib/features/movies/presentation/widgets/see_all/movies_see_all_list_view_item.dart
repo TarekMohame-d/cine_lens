@@ -12,8 +12,8 @@ import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/themes/colors.dart';
 
-class SeeAllListViewItem extends StatelessWidget {
-  const SeeAllListViewItem({super.key, required this.movie});
+class MoviesSeeAllListViewItem extends StatelessWidget {
+  const MoviesSeeAllListViewItem({super.key, required this.movie});
   final MovieEntity movie;
 
   @override
@@ -38,7 +38,10 @@ class SeeAllListViewItem extends StatelessWidget {
               fallback: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8.r),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8.r),
+                    bottomLeft: Radius.circular(8.r),
+                  ),
                   color: Colors.transparent,
                 ),
                 width: 120.w,
@@ -61,7 +64,10 @@ class SeeAllListViewItem extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8.r),
+                        bottomLeft: Radius.circular(8.r),
+                      ),
                       color: Colors.white,
                     ),
                   ),
@@ -69,7 +75,10 @@ class SeeAllListViewItem extends StatelessWidget {
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.r),
+                      bottomLeft: Radius.circular(8.r),
+                    ),
                     image: DecorationImage(
                       image: imageProvider,
                       fit: BoxFit.fill,

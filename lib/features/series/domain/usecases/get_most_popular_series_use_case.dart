@@ -8,6 +8,6 @@ class GetMostPopularSeriesUseCase {
   GetMostPopularSeriesUseCase(this._seriesRepo);
 
   Future<ApiResult<List<SeriesEntity>>> call(bool more) async {
-    return await _seriesRepo.getMostPopular(more);
+    return await _seriesRepo.getMostPopularSeries(more);
   }
 }

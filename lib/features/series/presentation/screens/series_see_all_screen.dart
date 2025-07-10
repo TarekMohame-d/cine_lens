@@ -1,15 +1,16 @@
-import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/enums/series_categories.dart';
 import 'package:cine_lens/core/helpers/extensions.dart';
-import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
-import 'package:cine_lens/features/movies/presentation/widgets/see_all/movies_see_all_list_view.dart';
+import 'package:cine_lens/features/series/domain/entities/series_entity.dart';
+import 'package:cine_lens/features/series/presentation/widgets/see_all/series_see_all_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SeeAllMoviesScreen extends StatelessWidget {
-  const SeeAllMoviesScreen(
-      {super.key, required this.category, required this.movies});
-  final MoviesCategories category;
-  final List<MovieEntity> movies;
+class SeriesSeeAllScreen extends StatelessWidget {
+  const SeriesSeeAllScreen(
+      {super.key, required this.series, required this.category});
+
+  final SeriesCategories category;
+  final List<SeriesEntity> series;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,7 @@ class SeeAllMoviesScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 8.0.h),
-          child: MoviesSeeAllListView(
-            category: category,
-            movies: movies,
-          ),
+          child: SeriesSeeAllListView(series: series, category: category),
         ),
       ),
     );

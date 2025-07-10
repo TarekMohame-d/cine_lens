@@ -8,5 +8,5 @@ abstract class SeriesRepo {
 
   Future<ApiResult<List<SeriesEntity>>> getTopRatedSeries(bool more);
 
-  Future<ApiResult<List<SeriesEntity>>> getMostPopular(bool more);
+  Future<ApiResult<List<SeriesEntity>>> getMostPopularSeries(bool more);
 }

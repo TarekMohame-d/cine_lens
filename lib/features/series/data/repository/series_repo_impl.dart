@@ -51,7 +51,7 @@ class SeriesRepoImpl implements SeriesRepo {
                 .any((existingMovie) => existingMovie.id == movie.id)));
         updatePage();
       }
-      return ApiResult.success(_airingTodaySeriesList);
+      return ApiResult.success(seriesList);
     } catch (e) {
       debugPrint('Error while fetching movies: ${e.toString()}');
       return ApiResult.failure(ApiErrorHandler.handle(e));
@@ -92,7 +92,7 @@ class SeriesRepoImpl implements SeriesRepo {
   }
 
   @override
-  Future<ApiResult<List<SeriesEntity>>> getMostPopular(bool more) {
+  Future<ApiResult<List<SeriesEntity>>> getMostPopularSeries(bool more) {
     return _fetchSeries(
       page: _mostPopularPage,
       seriesList: _mostPopularSeriesList,

@@ -1,20 +1,21 @@
-import 'package:cine_lens/core/enums/movies_categories.dart';
+import 'package:cine_lens/core/enums/series_categories.dart';
 import 'package:cine_lens/core/helpers/extensions.dart';
 import 'package:cine_lens/core/helpers/font_weight_helper.dart';
 import 'package:cine_lens/core/routing/routes.dart';
 import 'package:cine_lens/core/themes/colors.dart';
-import 'package:cine_lens/features/movies/domain/entities/movie_entity.dart';
+import 'package:cine_lens/features/series/domain/entities/series_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MoviesCategoryAndSeeAll extends StatelessWidget {
-  const MoviesCategoryAndSeeAll({
+class SeriesCategoryAndSeeAll extends StatelessWidget {
+  const SeriesCategoryAndSeeAll({
     super.key,
+    required this.series,
     required this.category,
-    required this.movies,
   });
-  final MoviesCategories category;
-  final List<MovieEntity> movies;
+
+  final List<SeriesEntity> series;
+  final SeriesCategories category;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +33,10 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
         InkWell(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
-          onTap: movies.isNotEmpty
+          onTap: series.isNotEmpty
               ? () {
-                  context.pushNamed(KRoutes.seeAllMoviesScreen,
-                      arguments: (category, movies));
+                  context.pushNamed(KRoutes.seeAllSeriesScreen,
+                      arguments: (category, series));
                 }
               : null,
           child: Text(
@@ -50,16 +51,16 @@ class MoviesCategoryAndSeeAll extends StatelessWidget {
     );
   }
 
-  String getCategoryName(MoviesCategories category) {
+  String getCategoryName(SeriesCategories category) {
     switch (category) {
-      case MoviesCategories.nowPlaying:
-        return 'Now Playing';
-      case MoviesCategories.mostPopular:
+      case SeriesCategories.airingToday:
+        return 'Airing Today';
+      case SeriesCategories.mostPopular:
         return 'Most Popular';
-      case MoviesCategories.topRated:
+      case SeriesCategories.topRated:
         return 'Top Rated';
-      case MoviesCategories.upComing:
-        return 'Up Comming';
+      case SeriesCategories.onTheAir:
+        return 'On The Air';
     }
   }
 }

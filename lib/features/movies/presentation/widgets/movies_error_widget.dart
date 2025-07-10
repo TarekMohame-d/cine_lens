@@ -13,7 +13,7 @@ class MoviesErrorWidget extends StatelessWidget {
   });
 
   final String errorMessage;
-  final MoviesCategoriesEnum category;
+  final MoviesCategories category;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class MoviesErrorWidget extends StatelessWidget {
       children: [
         MoviesCategoryAndSeeAll(
           category: category,
-          isSeeAllWorking: false,
           movies: [],
         ),
         verticalSpace(12),

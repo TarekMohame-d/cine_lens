@@ -6,19 +6,19 @@ import 'package:cine_lens/features/movies/presentation/cubit/movies_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'see_all_list_view_item.dart';
+import 'movies_see_all_list_view_item.dart';
 
-class SeeAllListView extends StatefulWidget {
-  const SeeAllListView(
+class MoviesSeeAllListView extends StatefulWidget {
+  const MoviesSeeAllListView(
       {super.key, required this.category, required this.movies});
-  final MoviesCategoriesEnum category;
+  final MoviesCategories category;
   final List<MovieEntity> movies;
 
   @override
-  State<SeeAllListView> createState() => _SeeAllListViewState();
+  State<MoviesSeeAllListView> createState() => _MoviesSeeAllListViewState();
 }
 
-class _SeeAllListViewState extends State<SeeAllListView> {
+class _MoviesSeeAllListViewState extends State<MoviesSeeAllListView> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -71,7 +71,7 @@ class _SeeAllListViewState extends State<SeeAllListView> {
           controller: _scrollController,
           itemCount: widget.movies.length,
           itemBuilder: (context, index) {
-            return SeeAllListViewItem(
+            return MoviesSeeAllListViewItem(
               movie: widget.movies[index],
             );
           },
